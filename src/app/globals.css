@@ -1,3 +1,4 @@
+/* Tailwind is compiled through postcss.config.js. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
