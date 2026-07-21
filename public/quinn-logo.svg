@@ -1,0 +1,11 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Quinn Logo</title>
+  <desc id="desc">Ruhiges Q-Symbol für die Quinn Assistenz Quinn</desc>
+  <rect width="128" height="128" rx="32" fill="#FBFAF6"/>
+  <rect x="6" y="6" width="116" height="116" rx="28" stroke="#DDE8E4" stroke-width="4"/>
+  <circle cx="62" cy="58" r="32" fill="#E7F1EE" stroke="#1E6B72" stroke-width="8"/>
+  <path d="M82 80L99 97" stroke="#1E6B72" stroke-width="9" stroke-linecap="round"/>
+  <path d="M42 61C48 50 57 46 66 49C72 51 77 56 80 63" stroke="#102F33" stroke-width="6" stroke-linecap="round"/>
+  <path d="M44 74H73" stroke="#102F33" stroke-width="6" stroke-linecap="round"/>
+  <path d="M33 31C40 22 49 17 61 16" stroke="#FFF2B8" stroke-width="7" stroke-linecap="round"/>
+</svg>
