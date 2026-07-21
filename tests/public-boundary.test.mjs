@@ -64,6 +64,8 @@ test("login crosses the repository and domain boundary explicitly", () => {
   assert.match(header, /publicConfig\.loginUrl/);
   assert.doesNotMatch(header, /href=["']\/dashboard/);
   assert.match(config, /https:\/\/app\.quinnhealth\.de/);
+  assert.match(config, /loginUrl:\s*appUrl/);
+  assert.doesNotMatch(config, /loginUrl:\s*`[^`]*\/login/);
 });
 
 test("marketing forms use narrow server-side proxy routes without app secrets", () => {
