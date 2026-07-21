@@ -63,7 +63,8 @@ test("login crosses the repository and domain boundary explicitly", () => {
   const config = read("src/lib/public-config.ts");
   assert.match(header, /publicConfig\.loginUrl/);
   assert.doesNotMatch(header, /href=["']\/dashboard/);
-  assert.match(config, /https:\/\/app\.quinnhealth\.de/);
+  assert.match(config, /const appUrl = ["']https:\/\/app\.quinnhealth\.de["']/);
+  assert.doesNotMatch(config, /NEXT_PUBLIC_APP_URL/);
   assert.match(config, /loginUrl:\s*appUrl/);
   assert.doesNotMatch(config, /loginUrl:\s*`[^`]*\/login/);
 });
