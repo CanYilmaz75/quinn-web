@@ -66,5 +66,24 @@ test("marketing forms use narrow server-side proxy routes without app secrets", 
   assert.match(demoRoute, /demoRequestSchema/);
   assert.match(newsletterRoute, /newsletterSignupSchema/);
   assert.match(proxy, /QUINN_APP_URL/);
+  assert.match(proxy, /maxMarketingPayloadBytes/);
+  assert.match(proxy, /status: 413/);
+  assert.match(proxy, /Response\.json\(\{ ok: true \}/);
   assert.doesNotMatch(proxy, /SERVICE_ROLE|SUPABASE|OPENAI/);
+});
+
+test("sitemap explicitly covers every public page route", () => {
+  const sitemap = read("src/app/sitemap.ts");
+  const pageFiles = allFiles("src/app").filter((file) => file.endsWith("/page.tsx") || file === "src/app/page.tsx");
+  const routes = pageFiles
+    .filter((file) => !file.includes("(protected)") && !file.includes("(auth)") && !file.includes("/api/"))
+    .map((file) => {
+      const relative = file.slice("src/app".length, -"/page.tsx".length);
+      return relative || "/";
+    });
+
+  assert.equal(routes.length, 44);
+  for (const route of routes) {
+    assert.equal(sitemap.includes(`"${route}"`), true, `${route} fehlt in der Sitemap`);
+  }
 });
