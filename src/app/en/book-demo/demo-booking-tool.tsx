@@ -47,7 +47,7 @@ export function EnglishDemoBookingTool() {
       form.organisation &&
       form.teamSize &&
       form.country &&
-      form.interest &&
+      form.interest.trim().length >= 5 &&
       form.consent
   );
 
@@ -192,7 +192,7 @@ export function EnglishDemoBookingTool() {
 
         <label className="space-y-2 text-sm font-medium text-secondary-foreground">
           Your interest in Quinn
-          <Textarea className="min-h-24 rounded-[10px] border-[#D7D2CC] bg-white px-3 py-3 text-sm placeholder:text-[#A9A29D]" value={form.interest} onChange={(event) => updateForm("interest", event.target.value)} placeholder="What interests you about Quinn..." required />
+          <Textarea className="min-h-24 rounded-[10px] border-[#D7D2CC] bg-white px-3 py-3 text-sm placeholder:text-[#A9A29D]" value={form.interest} onChange={(event) => updateForm("interest", event.target.value)} placeholder="What interests you about Quinn..." minLength={5} required />
         </label>
 
         <label className="flex items-start gap-3 text-[11px] leading-5 text-secondary-foreground">

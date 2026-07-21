@@ -73,13 +73,20 @@ test("marketing forms use narrow server-side proxy routes without app secrets", 
   const demoRoute = read("src/app/api/demo-requests/route.ts");
   const newsletterRoute = read("src/app/api/newsletter/route.ts");
   const proxy = read("src/lib/marketing-proxy.ts");
+  const demoForm = read("src/app/demo-buchen/demo-booking-tool.tsx");
+  const englishDemoForm = read("src/app/en/book-demo/demo-booking-tool.tsx");
   assert.match(demoRoute, /demoRequestSchema/);
   assert.match(newsletterRoute, /newsletterSignupSchema/);
-  assert.match(proxy, /QUINN_APP_URL/);
+  assert.match(proxy, /const appUrl = ["']https:\/\/app\.quinnhealth\.de["']/);
+  assert.doesNotMatch(proxy, /QUINN_APP_URL|NEXT_PUBLIC_APP_URL/);
   assert.match(proxy, /maxMarketingPayloadBytes/);
   assert.match(proxy, /status: 413/);
   assert.match(proxy, /Response\.json\(\{ ok: true \}/);
   assert.doesNotMatch(proxy, /SERVICE_ROLE|SUPABASE|OPENAI/);
+  for (const form of [demoForm, englishDemoForm]) {
+    assert.match(form, /form\.interest\.trim\(\)\.length >= 5/);
+    assert.match(form, /minLength=\{5\}/);
+  }
 });
 
 test("sitemap explicitly covers every public page route", () => {

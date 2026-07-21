@@ -47,7 +47,7 @@ export function DemoBookingTool() {
       form.organisation &&
       form.teamSize &&
       form.country &&
-      form.interest &&
+      form.interest.trim().length >= 5 &&
       form.consent
   );
 
@@ -239,6 +239,7 @@ export function DemoBookingTool() {
             value={form.interest}
             onChange={(event) => updateForm("interest", event.target.value)}
             placeholder="Was interessiert Sie an Quinn..."
+            minLength={5}
             required
           />
         </label>

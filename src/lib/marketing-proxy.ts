@@ -1,4 +1,4 @@
-const appUrl = (process.env.QUINN_APP_URL ?? process.env.NEXT_PUBLIC_APP_URL ?? "https://app.quinnhealth.de").replace(/\/$/, "");
+const appUrl = "https://app.quinnhealth.de";
 const maxMarketingPayloadBytes = 16_384;
 
 export async function readMarketingJson(request: Request) {
