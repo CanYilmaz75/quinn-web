@@ -44,6 +44,13 @@ test("protected app and auth code are absent", () => {
   }
 });
 
+test("Tailwind is wired through PostCSS for production CSS", () => {
+  assert.equal(fs.existsSync(path.join(root, "postcss.config.js")), true, "PostCSS-Konfiguration fehlt");
+  const postcss = read("postcss.config.js");
+  assert.match(postcss, /tailwindcss/);
+  assert.match(postcss, /autoprefixer/);
+});
+
 test("public package excludes clinical runtime dependencies", () => {
   const pkg = JSON.parse(read("package.json"));
   for (const dependency of ["@supabase/supabase-js", "@supabase/ssr", "openai", "pdf-lib", "@sentry/nextjs"]) {
