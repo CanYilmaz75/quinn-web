@@ -111,6 +111,34 @@ test("Vercel Web Analytics is consent-gated and disclosed", () => {
   assert.match(legalCopy, /Vercel Web Analytics/);
 });
 
+test("newsletter popup is delayed, scroll-aware and disabled on conversion routes", () => {
+  const layout = read("src/app/layout.tsx");
+  const newsletter = read("src/components/newsletter/newsletter-signup.tsx");
+
+  assert.equal((layout.match(/variant="popup"/g) ?? []).length, 1);
+  assert.doesNotMatch(layout, /trigger="pricing"/);
+  assert.match(newsletter, /POPUP_DELAY_MS = 50_000/);
+  assert.match(newsletter, /SCROLL_THRESHOLD = 0\.55/);
+  assert.match(newsletter, /"\/demo-buchen"/);
+  assert.match(newsletter, /"\/en\/book-demo"/);
+  assert.match(newsletter, /"\/preise"/);
+  assert.match(newsletter, /"\/en\/pricing"/);
+  assert.match(newsletter, /addEventListener\("scroll"/);
+  assert.match(newsletter, /quinn:consent-updated/);
+  assert.doesNotMatch(newsletter, /900|1400/);
+});
+
+test("cookie consent exposes only necessary and analytics categories", () => {
+  const consent = read("src/components/consent/cookie-consent-manager.tsx");
+
+  assert.match(consent, /key: "necessary"/);
+  assert.match(consent, /key: "analytics"/);
+  assert.doesNotMatch(consent, /key: "marketing"/);
+  assert.doesNotMatch(consent, /key: "personalization"/);
+  assert.doesNotMatch(consent, /key: "saleOrShare"/);
+  assert.doesNotMatch(consent, /Marketing und Ads|CCPA\/CPRA|Sale or sharing under/);
+});
+
 test("public legal pages use confirmed operator details without uncontrolled go-live placeholders", () => {
   const legalDetails = read("src/lib/legal-details.ts");
   const legalPages = [

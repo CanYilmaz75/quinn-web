@@ -35,8 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <ConsentAwareAnalytics />
         <CookieConsentManager />
-        <NewsletterSignup variant="popup" trigger="after-consent" />
-        <NewsletterSignup variant="popup" trigger="pricing" />
+        <NewsletterSignup variant="popup" />
       </body>
     </html>
   );

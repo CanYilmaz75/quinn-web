@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Check, ChevronDown, Cookie, RotateCcw, ShieldCheck, SlidersHorizontal, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Check, ChevronDown, Cookie, RotateCcw, SlidersHorizontal, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -10,18 +10,13 @@ type ConsentStatus = "granted" | "denied";
 
 type ConsentPreferences = {
   necessary: true;
-  functional: boolean;
   analytics: boolean;
-  marketing: boolean;
-  personalization: boolean;
-  saleOrShare: boolean;
 };
 
 type StoredConsent = {
   version: 1;
   regionMode: "global";
   updatedAt: string;
-  gpcEnabled: boolean;
   preferences: ConsentPreferences;
 };
 
@@ -31,21 +26,13 @@ declare global {
     gtag?: (...args: unknown[]) => void;
     __quinnOpenConsentSettings?: () => void;
   }
-
-  interface Navigator {
-    globalPrivacyControl?: boolean;
-  }
 }
 
 const CONSENT_KEY = "quinn_cookie_consent_v1";
 
 const defaultPreferences: ConsentPreferences = {
   necessary: true,
-  functional: false,
-  analytics: false,
-  marketing: false,
-  personalization: false,
-  saleOrShare: false
+  analytics: false
 };
 
 const categories = [
@@ -55,62 +42,24 @@ const categories = [
     titleEn: "Necessary",
     required: true,
     description:
-      "Erforderlich fuer Sicherheit, Login, Sitzungen, Missbrauchsschutz und die Bereitstellung geschuetzter Bereiche.",
-    descriptionEn: "Required for security, login, sessions, abuse prevention and protected areas."
-  },
-  {
-    key: "functional",
-    title: "Funktional",
-    titleEn: "Functional",
-    description:
-      "Speichert Komfortfunktionen und Einstellungen, die nicht zwingend fuer den Betrieb erforderlich sind.",
-    descriptionEn: "Stores convenience functions and settings that are not strictly required for operation."
+      "Erforderlich für Sicherheit, Sitzungen, Missbrauchsschutz und die technische Bereitstellung der Website.",
+    descriptionEn: "Required for security, sessions, abuse prevention and technical delivery of the website."
   },
   {
     key: "analytics",
     title: "Analyse",
     titleEn: "Analytics",
     description:
-      "Hilft uns zu verstehen, wie Quinn genutzt wird. Aktiviert Vercel Web Analytics und Google Consent Mode analytics_storage erst nach Zustimmung.",
+      "Aktiviert Vercel Web Analytics erst nach Ihrer Zustimmung. Es werden keine Gesundheits- oder Pflegedaten als Analyseereignisse erfasst.",
     descriptionEn:
-      "Helps us understand how Quinn is used. Activates Vercel Web Analytics and Google Consent Mode analytics_storage only after consent."
-  },
-  {
-    key: "marketing",
-    title: "Marketing und Ads",
-    titleEn: "Marketing and ads",
-    description:
-      "Erlaubt werbliche Messung und Anzeigenfunktionen. Steuert ad_storage, ad_user_data und ad_personalization.",
-    descriptionEn: "Allows advertising measurement and ad functions. Controls ad_storage, ad_user_data and ad_personalization."
-  },
-  {
-    key: "personalization",
-    title: "Personalisierung",
-    titleEn: "Personalization",
-    description:
-      "Erlaubt nicht notwendige Personalisierung von Inhalten und Produkterlebnissen.",
-    descriptionEn: "Allows non-essential personalization of content and product experiences."
-  },
-  {
-    key: "saleOrShare",
-    title: "Verkauf oder Weitergabe nach CCPA/CPRA",
-    titleEn: "Sale or sharing under CCPA/CPRA",
-    description:
-      "Erlaubt Verarbeitung, die als Verkauf oder Sharing gelten kann. Bei Global Privacy Control bleibt diese Option deaktiviert.",
-    descriptionEn: "Allows processing that may count as sale or sharing. With Global Privacy Control this option remains disabled."
+      "Enables Vercel Web Analytics only after your consent. Health or care data is not collected as analytics events."
   }
 ] as const;
 
-function hasGpc() {
-  return typeof navigator !== "undefined" && navigator.globalPrivacyControl === true;
-}
-
-function normalizePreferences(preferences: ConsentPreferences, gpcEnabled: boolean): ConsentPreferences {
+function normalizePreferences(preferences: Partial<ConsentPreferences> | undefined): ConsentPreferences {
   return {
-    ...preferences,
     necessary: true,
-    marketing: gpcEnabled ? false : preferences.marketing,
-    saleOrShare: gpcEnabled ? false : preferences.saleOrShare
+    analytics: preferences?.analytics === true
   };
 }
 
@@ -120,12 +69,12 @@ function toConsentStatus(value: boolean): ConsentStatus {
 
 function consentModePayload(preferences: ConsentPreferences) {
   return {
-    ad_storage: toConsentStatus(preferences.marketing),
-    ad_user_data: toConsentStatus(preferences.marketing && preferences.saleOrShare),
-    ad_personalization: toConsentStatus(preferences.marketing && preferences.personalization),
+    ad_storage: "denied" as ConsentStatus,
+    ad_user_data: "denied" as ConsentStatus,
+    ad_personalization: "denied" as ConsentStatus,
     analytics_storage: toConsentStatus(preferences.analytics),
-    functionality_storage: toConsentStatus(preferences.functional),
-    personalization_storage: toConsentStatus(preferences.personalization),
+    functionality_storage: "denied" as ConsentStatus,
+    personalization_storage: "denied" as ConsentStatus,
     security_storage: "granted" as ConsentStatus
   };
 }
@@ -148,13 +97,12 @@ function applyConsentMode(preferences: ConsentPreferences, command: "default" | 
   });
 }
 
-function saveConsent(preferences: ConsentPreferences, gpcEnabled: boolean) {
-  const normalized = normalizePreferences(preferences, gpcEnabled);
+function saveConsent(preferences: ConsentPreferences) {
+  const normalized = normalizePreferences(preferences);
   const consent: StoredConsent = {
     version: 1,
     regionMode: "global",
     updatedAt: new Date().toISOString(),
-    gpcEnabled,
     preferences: normalized
   };
 
@@ -180,7 +128,7 @@ function readConsent(): StoredConsent | null {
     if (parsed.version !== 1 || !parsed.preferences) {
       return null;
     }
-    return parsed;
+    return { ...parsed, preferences: normalizePreferences(parsed.preferences) };
   } catch {
     return null;
   }
@@ -226,22 +174,17 @@ export function CookieConsentManager() {
   const [isVisible, setIsVisible] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [preferences, setPreferences] = useState<ConsentPreferences>(defaultPreferences);
-  const [gpcEnabled, setGpcEnabled] = useState(false);
 
   useEffect(() => {
-    const gpc = hasGpc();
-    setGpcEnabled(gpc);
-
     const stored = readConsent();
     if (stored) {
-      const normalized = normalizePreferences(stored.preferences, gpc);
+      const normalized = normalizePreferences(stored.preferences);
       setPreferences(normalized);
       applyConsentMode(normalized, "update");
       setIsVisible(false);
     } else {
-      const normalized = normalizePreferences(defaultPreferences, gpc);
-      setPreferences(normalized);
-      applyConsentMode(normalized, "default");
+      setPreferences(defaultPreferences);
+      applyConsentMode(defaultPreferences, "default");
       setIsVisible(true);
     }
 
@@ -257,46 +200,31 @@ export function CookieConsentManager() {
     };
   }, []);
 
-  const allOptionalEnabled = useMemo(
-    () => preferences.functional && preferences.analytics && preferences.marketing && preferences.personalization && preferences.saleOrShare,
-    [preferences]
-  );
-
   function updatePreference(key: keyof ConsentPreferences, value: boolean) {
     if (key === "necessary") {
       return;
     }
-    setPreferences((current) => normalizePreferences({ ...current, [key]: value }, gpcEnabled));
+    setPreferences((current) => normalizePreferences({ ...current, [key]: value }));
   }
 
   function acceptAll() {
-    const next = normalizePreferences(
-      {
-        necessary: true,
-        functional: true,
-        analytics: true,
-        marketing: true,
-        personalization: true,
-        saleOrShare: true
-      },
-      gpcEnabled
-    );
+    const next = normalizePreferences({ necessary: true, analytics: true });
     setPreferences(next);
-    saveConsent(next, gpcEnabled);
+    saveConsent(next);
     setIsVisible(false);
   }
 
   function rejectAll() {
-    const next = normalizePreferences(defaultPreferences, gpcEnabled);
+    const next = normalizePreferences(defaultPreferences);
     setPreferences(next);
-    saveConsent(next, gpcEnabled);
+    saveConsent(next);
     setIsVisible(false);
   }
 
   function saveSelection() {
-    const next = normalizePreferences(preferences, gpcEnabled);
+    const next = normalizePreferences(preferences);
     setPreferences(next);
-    saveConsent(next, gpcEnabled);
+    saveConsent(next);
     setIsVisible(false);
   }
 
@@ -323,12 +251,6 @@ export function CookieConsentManager() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-              {gpcEnabled ? (
-                <span className="inline-flex items-center gap-1 rounded-full border border-accent px-3 py-1 text-xs font-semibold text-foreground">
-                  <ShieldCheck className="h-3.5 w-3.5" />
-                  {isEnglish ? "Browser privacy signal detected" : "Browser-Datenschutzsignal erkannt"}
-                </span>
-              ) : null}
               <button
                 type="button"
                 onClick={() => setIsExpanded((current) => !current)}
@@ -342,7 +264,7 @@ export function CookieConsentManager() {
             </div>
 
           <div className="grid gap-2 sm:grid-cols-3 lg:w-[24rem]">
-            <Button type="button" size="sm" onClick={acceptAll} disabled={gpcEnabled && allOptionalEnabled} className="rounded-xl">
+            <Button type="button" size="sm" onClick={acceptAll} className="rounded-xl">
               <Check className="mr-2 h-4 w-4" />
               {isEnglish ? "Accept all" : "Alle akzeptieren"}
             </Button>
@@ -363,18 +285,13 @@ export function CookieConsentManager() {
                 const key = category.key;
                 const checked = preferences[key];
                 const isRequired = "required" in category && category.required;
-                const disabled = isRequired || (gpcEnabled && (key === "marketing" || key === "saleOrShare"));
+                const disabled = isRequired;
 
                 return (
                   <div key={category.key} className="grid gap-4 rounded-lg border border-border p-4 sm:grid-cols-[1fr_auto] sm:items-center">
                     <div>
                       <p className="text-sm font-semibold text-foreground">{isEnglish ? category.titleEn : category.title}</p>
                       <p className="mt-2 text-sm leading-6 text-secondary-foreground">{isEnglish ? category.descriptionEn : category.description}</p>
-                      {gpcEnabled && (key === "marketing" || key === "saleOrShare") ? (
-                        <p className="mt-2 text-xs font-semibold text-foreground">
-                          {isEnglish ? "Automatically disabled by Global Privacy Control." : "Durch Global Privacy Control automatisch deaktiviert."}
-                        </p>
-                      ) : null}
                     </div>
                     <Toggle
                       checked={checked}
@@ -390,12 +307,12 @@ export function CookieConsentManager() {
             <div className="mt-5 rounded-lg bg-[#F4F4F6] p-4 text-sm leading-6 text-secondary-foreground">
               <p>
                 {isEnglish
-                  ? "Sensitive data is not used for advertising. Your selection is stored locally and passed to connected services only as consent or refusal for the respective purpose."
-                  : "Sensible Daten werden nicht fuer Werbung verwendet. Ihre Auswahl wird lokal gespeichert und an eingebundene Dienste nur als Zustimmung oder Ablehnung fuer den jeweiligen Zweck weitergegeben."}
+                  ? "Only necessary storage and optional analytics are used. Your analytics choice is stored locally and can be changed at any time."
+                  : "Es werden nur notwendige Speicherung und optionale Analyse verwendet. Ihre Analyseauswahl wird lokal gespeichert und kann jederzeit geändert werden."}
               </p>
               <button type="button" onClick={rejectAll} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-foreground">
                 <RotateCcw className="h-4 w-4" />
-                {isEnglish ? "Reset to minimal settings" : "Auf minimale Einstellung zuruecksetzen"}
+                {isEnglish ? "Reset to necessary only" : "Auf nur notwendig zurücksetzen"}
               </button>
             </div>
           </div>

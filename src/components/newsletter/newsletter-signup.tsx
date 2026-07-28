@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { ArrowRight, Mail, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,13 +12,15 @@ type NewsletterLocale = "de" | "en";
 
 type NewsletterSignupProps = {
   variant?: "footer" | "popup";
-  trigger?: "after-consent" | "pricing";
   locale?: NewsletterLocale;
 };
 
 const DISMISSED_KEY = "quinn_newsletter_popup_dismissed_v1";
 const SIGNED_UP_KEY = "quinn_newsletter_signed_up_v1";
 const CONSENT_KEY = "quinn_cookie_consent_v1";
+const POPUP_DELAY_MS = 50_000;
+const SCROLL_THRESHOLD = 0.55;
+const POPUP_EXCLUDED_PATHS = new Set(["/demo-buchen", "/en/book-demo", "/preise", "/en/pricing"]);
 
 const copy = {
   de: {
@@ -143,64 +146,76 @@ function NewsletterForm({ compact = false, source, locale }: { compact?: boolean
   );
 }
 
-export function NewsletterSignup({ variant = "footer", trigger = "after-consent", locale }: NewsletterSignupProps) {
+export function NewsletterSignup({ variant = "footer", locale }: NewsletterSignupProps) {
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(variant === "footer");
-  const [pathLocale, setPathLocale] = useState<NewsletterLocale>(locale ?? "de");
 
-  const activeLocale = locale ?? pathLocale;
+  const activeLocale = locale ?? (pathname.startsWith("/en") ? "en" : "de");
   const t = copy[activeLocale];
-  const source = useMemo(() => (variant === "footer" ? (activeLocale === "en" ? "footer-en" : "footer") : `${trigger}${activeLocale === "en" ? "-en" : ""}`), [activeLocale, trigger, variant]);
-
-  useEffect(() => {
-    if (locale) {
-      setPathLocale(locale);
-      return;
-    }
-    setPathLocale(window.location.pathname.startsWith("/en") ? "en" : "de");
-  }, [locale]);
+  const source = useMemo(
+    () => (variant === "footer" ? (activeLocale === "en" ? "footer-en" : "footer") : activeLocale === "en" ? "popup-en" : "popup"),
+    [activeLocale, variant]
+  );
 
   useEffect(() => {
     if (variant !== "popup") {
       return;
     }
 
-    const dismissedKey = `${DISMISSED_KEY}:${trigger}`;
-    const isPricingPath = window.location.pathname === "/preise" || window.location.pathname === "/en/pricing";
-
-    if (trigger === "after-consent" && isPricingPath) {
+    setIsVisible(false);
+    if (POPUP_EXCLUDED_PATHS.has(pathname) || hasStored(DISMISSED_KEY) || hasStored(SIGNED_UP_KEY)) {
       return;
     }
 
-    if (hasStored(dismissedKey) || hasStored(SIGNED_UP_KEY)) {
-      return;
-    }
+    let timerId: number | undefined;
+    let isArmed = false;
 
-    const show = () => {
-      window.setTimeout(() => {
-        if (!hasStored(dismissedKey) && !hasStored(SIGNED_UP_KEY)) {
-          setIsVisible(true);
-        }
-      }, trigger === "pricing" ? 900 : 1400);
+    const cleanupTriggers = () => {
+      if (timerId !== undefined) {
+        window.clearTimeout(timerId);
+      }
+      window.removeEventListener("scroll", handleScroll);
     };
 
-    if (trigger === "pricing") {
-      if (isPricingPath) {
-        show();
+    const reveal = () => {
+      cleanupTriggers();
+      if (!hasStored(DISMISSED_KEY) && !hasStored(SIGNED_UP_KEY) && !POPUP_EXCLUDED_PATHS.has(window.location.pathname)) {
+        setIsVisible(true);
       }
-      return;
+    };
+
+    const handleScroll = () => {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollableHeight > 0 && window.scrollY / scrollableHeight >= SCROLL_THRESHOLD) {
+        reveal();
+      }
+    };
+
+    const armPopup = () => {
+      if (isArmed) {
+        return;
+      }
+      isArmed = true;
+      timerId = window.setTimeout(reveal, POPUP_DELAY_MS);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+    };
+
+    const consentIsSettled = hasStored(CONSENT_KEY) || !document.querySelector('[aria-label="Cookie-Einstellungen"], [aria-label="Cookie settings"]');
+    if (consentIsSettled) {
+      armPopup();
+    } else {
+      window.addEventListener("quinn:consent-updated", armPopup, { once: true });
     }
 
-    if (hasStored(CONSENT_KEY) || !document.querySelector('[aria-label="Cookie-Einstellungen"], [aria-label="Cookie settings"]')) {
-      show();
-      return;
-    }
-
-    window.addEventListener("quinn:consent-updated", show, { once: true });
-    return () => window.removeEventListener("quinn:consent-updated", show);
-  }, [trigger, variant]);
+    return () => {
+      cleanupTriggers();
+      window.removeEventListener("quinn:consent-updated", armPopup);
+    };
+  }, [pathname, variant]);
 
   function closePopup() {
-    remember(`${DISMISSED_KEY}:${trigger}`);
+    remember(DISMISSED_KEY);
     setIsVisible(false);
   }
 
