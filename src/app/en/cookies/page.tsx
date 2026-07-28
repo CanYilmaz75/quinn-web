@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Cookie, Lock, Settings, Shield } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/cookies"),
   title: "Cookie notice | Quinn",
   description: "Information about cookies and comparable technologies at Quinn."
 };

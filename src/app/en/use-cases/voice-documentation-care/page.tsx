@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/use-cases/voice-documentation-care"),
   title: "Voice documentation for care with human review | Quinn",
   description: "Voice documentation for care teams with reviewable drafts, gap cues and human approval before transfer into existing systems."
 };

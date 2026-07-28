@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
 
@@ -8,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/ueber-uns"),
   title: "Über Quinn und Gründer Can Yilmaz",
   description: "Wer Quinn entwickelt, in welcher Phase das Produkt ist und welche Prinzipien die Dokumentationsassistenz leiten."
 };
@@ -15,7 +18,7 @@ export const metadata: Metadata = {
 const principles = [
   ["Assistenz statt Autopilot", "Quinn erstellt prüfbare Entwürfe. Fachliche Verantwortung, Freigabe und Übergabe bleiben bei den zuständigen Menschen."],
   ["Ergänzen statt ersetzen", "Bestehende Pflegedokumentations- und Fachsysteme bleiben führend. Quinn vereinfacht die Arbeit davor und darum herum."],
-  ["Vertrauen durch konkrete Kontrollen", "Rollen, Review, Freigabe, Export und Datenschutzprüfung werden im jeweiligen Einsatz sichtbar und nachvollziehbar gemacht."]
+  ["Vertrauen durch konkrete Kontrollen", "Rollen, fachliche Prüfung, Freigabe, Export und Datenschutzprüfung werden im jeweiligen Einsatz sichtbar und nachvollziehbar gemacht."]
 ];
 
 export default function AboutPage() {
@@ -29,7 +32,7 @@ export default function AboutPage() {
             Quinn wird direkt von Can Yilmaz entwickelt.
           </h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-secondary-foreground">
-            Quinn entsteht als review-first Dokumentationsassistenz für Pflege und Medizin. Produktgespräche, Demo-Anfragen und Pilot-Scoping laufen derzeit direkt über den Gründer.
+            Quinn entsteht als Dokumentationsassistenz mit fachlicher Prüfung für Pflege und Medizin. Produktgespräche, Demo-Anfragen und Pilot-Scoping laufen derzeit direkt über den Gründer.
           </p>
         </div>
       </section>

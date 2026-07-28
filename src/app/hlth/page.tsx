@@ -10,14 +10,14 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Quinn in Amsterdam | HLTH Europe 2026",
   description:
-    "Triff Quinn rund um HLTH Europe in Amsterdam: AI-Workflow-Layer fuer Healthcare-Dokumentation, beginnend in der Langzeitpflege."
+    "Triff Quinn rund um HLTH Europe in Amsterdam: AI-Workflow-Layer für Healthcare-Dokumentation, beginnend in der Langzeitpflege."
 };
 
 const proofPoints = [
   "Start in der Langzeitpflege",
   "Gespräche, Notizen und Beobachtungen strukturieren",
   "Bestehende Systeme bleiben führend",
-  "Review und fachliche Freigabe vor Weitergabe"
+  "Prüfung und fachliche Freigabe vor Weitergabe"
 ];
 
 const meetingTargets = [

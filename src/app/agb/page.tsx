@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Building2, CreditCard, FileCheck, ShieldCheck } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,15 +8,16 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/agb"),
   title: "AGB | Quinn",
   description: "Allgemeine Geschäftsbedingungen und Nutzungsbedingungen für Quinn."
 };
 
 const highlights = [
-  { label: "Zielgruppe", value: "B2B SaaS fuer Pflege- und Versorgungsteams", icon: Building2 },
-  { label: "Leistungsbild", value: "Dokumentationsworkflow, KI-Entwurf, Review, Export", icon: FileCheck },
+  { label: "Zielgruppe", value: "B2B SaaS für Pflege- und Versorgungsteams", icon: Building2 },
+  { label: "Leistungsbild", value: "Dokumentationsworkflow, KI-Entwurf, Prüfung, Export", icon: FileCheck },
   { label: "Abrechnung", value: "Beratungsgestuetztes Paket oder individueller Vertrag nach Teamgroesse", icon: CreditCard },
-  { label: "Verantwortung", value: "Menschliche Pruefung vor fachlicher Nutzung", icon: ShieldCheck }
+  { label: "Verantwortung", value: "Menschliche Prüfung vor fachlicher Nutzung", icon: ShieldCheck }
 ];
 
 const terms = [
@@ -31,17 +34,17 @@ const terms = [
   {
     title: "3. Leistungsgegenstand",
     body:
-      "Quinn stellt eine webbasierte Anwendung fuer Dokumentationsablaeufe bereit. Funktionen koennen insbesondere Audioaufnahme oder Upload, Transkription, KI-gestuetzte Entwurfserstellung, SIS-nahe Strukturierung, Review, Freigabe, Teamverwaltung und Export umfassen."
+      "Quinn stellt eine webbasierte Anwendung für Dokumentationsabläufe bereit. Funktionen können insbesondere Audioaufnahme oder Upload, Transkription, KI-gestützte Entwurfserstellung, SIS-nahe Strukturierung, Prüfung, Freigabe, Teamverwaltung und Export umfassen."
   },
   {
     title: "4. Kein Ersatz fachlicher Verantwortung",
     body:
-      "Quinn erzeugt technische Vorschlaege und Dokumentationsentwuerfe. Die fachliche, pflegerische, medizinische, organisatorische und rechtliche Pruefung sowie die finale Freigabe liegen ausschliesslich beim Kunden und seinen Nutzern."
+      "Quinn erzeugt technische Vorschläge und Dokumentationsentwürfe. Die fachliche, pflegerische, medizinische, organisatorische und rechtliche Prüfung sowie die finale Freigabe liegen ausschließlich beim Kunden und seinen Nutzern."
   },
   {
     title: "5. Registrierung und Nutzerkonten",
     body:
-      "Nutzer muessen zutreffende Angaben machen, Zugangsdaten geheim halten und Konten nur im Rahmen ihrer Berechtigung verwenden. Administratoren sind fuer Einladungen, Rollen, Aktivierung und Deaktivierung von Nutzern verantwortlich."
+      "Nutzer müssen zutreffende Angaben machen, Zugangsdaten geheim halten und Konten nur im Rahmen ihrer Berechtigung verwenden. Administratoren sind für Einladungen, Rollen, Aktivierung und Deaktivierung von Nutzern verantwortlich."
   },
   {
     title: "6. Preise und Zahlung",
@@ -49,19 +52,19 @@ const terms = [
       "Es gelten ausschließlich die im Angebot, Bestellformular oder individuellen Vertrag vereinbarten Preise, Zahlungsfristen und Abrechnungsbedingungen. Preise können insbesondere Pilotumfang, aktive Nutzer, Standorte, Rollout, Support und Zusatzleistungen berücksichtigen."
   },
   {
-    title: "7. Laufzeit und Kuendigung",
+    title: "7. Laufzeit und Kündigung",
     body:
-      "Laufzeit, Verlaengerung und Kuendigung richten sich nach dem gewaehlten Tarif oder dem individuellen Vertrag. Fuer Enterprise-Kunden gelten vorrangig die schriftlich vereinbarten Regelungen."
+      "Laufzeit, Verlängerung und Kündigung richten sich nach dem gewählten Tarif oder dem individuellen Vertrag. Für Enterprise-Kunden gelten vorrangig die schriftlich vereinbarten Regelungen."
   },
   {
-    title: "8. Verfuegbarkeit und Wartung",
+    title: "8. Verfügbarkeit und Wartung",
     body:
-      "Quinn wird mit angemessener Sorgfalt betrieben. Geplante Wartung, Sicherheitsupdates oder Stoerungen koennen die Verfuegbarkeit zeitweise beeinflussen. Konkrete Service Level muessen fuer Enterprise-Kunden gesondert vereinbart werden."
+      "Quinn wird mit angemessener Sorgfalt betrieben. Geplante Wartung, Sicherheitsupdates oder Störungen können die Verfügbarkeit zeitweise beeinflussen. Konkrete Service Level müssen für Enterprise-Kunden gesondert vereinbart werden."
   },
   {
     title: "9. Pflichten des Kunden",
     body:
-      "Der Kunde ist fuer rechtmaessige Datenerhebung, Informationspflichten gegenueber Betroffenen, Einwilligungen, interne Berechtigungen, fachliche Freigaben und die Einhaltung berufs- oder einrichtungsbezogener Vorgaben verantwortlich."
+      "Der Kunde ist für rechtmäßige Datenerhebung, Informationspflichten gegenüber Betroffenen, Einwilligungen, interne Berechtigungen, fachliche Freigaben und die Einhaltung berufs- oder einrichtungsbezogener Vorgaben verantwortlich."
   },
   {
     title: "10. Datenschutz und Auftragsverarbeitung",
@@ -71,22 +74,22 @@ const terms = [
   {
     title: "11. Nutzungsrechte",
     body:
-      "Kunden erhalten fuer die Vertragslaufzeit ein einfaches, nicht uebertragbares Recht zur Nutzung der Anwendung im vereinbarten Umfang. Rechte an Software, Marken, Designs und Dokumentation verbleiben beim Anbieter."
+      "Kunden erhalten für die Vertragslaufzeit ein einfaches, nicht uebertragbares Recht zur Nutzung der Anwendung im vereinbarten Umfang. Rechte an Software, Marken, Designs und Dokumentation verbleiben beim Anbieter."
   },
   {
-    title: "12. Unzulaessige Nutzung",
+    title: "12. Unzulässige Nutzung",
     body:
-      "Unzulaessig sind insbesondere missbraeuchliche Zugriffe, Umgehung von Sicherheitsfunktionen, Verarbeitung rechtswidriger Inhalte, Weitergabe von Zugangsdaten und Nutzung ausserhalb vereinbarter Organisationsgrenzen."
+      "Unzulässig sind insbesondere missbräuchliche Zugriffe, Umgehung von Sicherheitsfunktionen, Verarbeitung rechtswidriger Inhalte, Weitergabe von Zugangsdaten und Nutzung außerhalb vereinbarter Organisationsgrenzen."
   },
   {
     title: "13. Haftung",
     body:
-      "Die Haftung richtet sich nach den gesetzlichen Vorschriften, soweit nicht wirksam abweichend vereinbart. Fuer einfache Fahrlaessigkeit kann die Haftung im unternehmerischen Verkehr auf vertragstypische, vorhersehbare Schaeden begrenzt werden. Zwingende Haftung bleibt unberuehrt."
+      "Die Haftung richtet sich nach den gesetzlichen Vorschriften, soweit nicht wirksam abweichend vereinbart. Für einfache Fahrlaessigkeit kann die Haftung im unternehmerischen Verkehr auf vertragstypische, vorhersehbare Schaeden begrenzt werden. Zwingende Haftung bleibt unberuehrt."
   },
   {
-    title: "14. Aenderungen",
+    title: "14. Änderungen",
     body:
-      "Aenderungen dieser Bedingungen werden Kunden in geeigneter Weise mitgeteilt. Wesentliche Aenderungen gelten nur, soweit sie rechtlich zulaessig sind oder vereinbart werden."
+      "Änderungen dieser Bedingungen werden Kunden in geeigneter Weise mitgeteilt. Wesentliche Änderungen gelten nur, soweit sie rechtlich zulässig sind oder vereinbart werden."
   },
   {
     title: "15. Schlussbestimmungen",
@@ -108,7 +111,7 @@ export default function AgbPage() {
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <div className="max-w-xl">
             <Eyebrow>Nutzungsbedingungen</Eyebrow>
-            <h1 className="mt-5 quinn-h2">Allgemeine Geschaeftsbedingungen</h1>
+            <h1 className="mt-5 quinn-h2">Allgemeine Geschäftsbedingungen</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
               Bedingungen für die Nutzung von Quinn durch berufliche Kunden. Sie gelten nur, wenn sie in das konkrete
               Vertragsverhältnis einbezogen werden; individuelle Angebote und Vereinbarungen gehen vor.

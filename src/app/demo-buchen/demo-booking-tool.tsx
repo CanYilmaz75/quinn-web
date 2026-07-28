@@ -29,7 +29,7 @@ const initialForm: DemoForm = {
 const workflows = [
   "Pflegeaufnahme und SIS",
   "Pflege- oder Beratungsdokumentation",
-  "Übergabe und fachlicher Review",
+  "Übergabe und fachliche Prüfung",
   "Medizinischer Dokumentationsworkflow",
   "Anderer dokumentationsnaher Workflow"
 ];
@@ -39,6 +39,7 @@ export function DemoBookingTool() {
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const hasTrackedStart = useRef(false);
+  const hasTrackedValidationError = useRef(false);
 
   const canSubmit = Boolean(
     form.firstName && form.lastName && form.email && form.organisation && form.interest.trim().length >= 5 && form.consent
@@ -49,7 +50,14 @@ export function DemoBookingTool() {
       hasTrackedStart.current = true;
       trackPublicConversion("demo_form_started", { locale: "de", source: "demo-buchen" });
     }
+    hasTrackedValidationError.current = false;
     setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  function trackValidationError() {
+    if (hasTrackedValidationError.current) return;
+    hasTrackedValidationError.current = true;
+    trackPublicConversion("demo_form_validation_error", { locale: "de", source: "demo-buchen" });
   }
 
   async function submitDemo(event: React.FormEvent<HTMLFormElement>) {
@@ -83,7 +91,7 @@ export function DemoBookingTool() {
         <p className="mt-4 text-sm leading-7 text-secondary-foreground">
           Danke, {form.firstName}. Can prüft Ihre Anfrage für {form.organisation} persönlich und meldet sich mit einem passenden nächsten Schritt.
         </p>
-        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(initialForm); hasTrackedStart.current = false; }}>
+        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(initialForm); hasTrackedStart.current = false; hasTrackedValidationError.current = false; }}>
           Neue Anfrage starten
         </Button>
       </div>
@@ -109,7 +117,7 @@ export function DemoBookingTool() {
         Bitte keine echten Bewohner-, Patienten- oder Gesundheitsdaten eintragen. Ziel: persönliche Rückmeldung innerhalb von zwei Werktagen.
       </p>
 
-      <form className="mt-7 space-y-4" onSubmit={submitDemo}>
+      <form className="mt-7 space-y-4" onSubmit={submitDemo} onInvalidCapture={trackValidationError}>
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-2 text-sm font-medium text-secondary-foreground">
             Vorname
@@ -149,7 +157,7 @@ export function DemoBookingTool() {
             Die Anfrage konnte gerade nicht gespeichert werden. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.
           </p>
         ) : null}
-        <Button type="submit" size="lg" className="h-11 w-full justify-between px-4 text-sm" disabled={!canSubmit || status === "submitting"}>
+        <Button type="submit" size="lg" className="h-11 w-full justify-between px-4 text-sm" disabled={status === "submitting"}>
           {status === "submitting" ? "Anfrage wird gesendet …" : "15-minütige Demo anfragen"}
           <ArrowRight className="h-4 w-4" />
         </Button>

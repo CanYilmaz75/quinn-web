@@ -190,6 +190,62 @@ test("P1 trust and conversion surfaces are founder-led, concrete and low-frictio
   assert.match(demoForms, /trackPublicConversion\("demo_form_submitted"/);
 });
 
+test("P2 SEO, language and funnel measurement are complete", () => {
+  const publicSite = read("src/content/public-site.ts");
+  const publicConfig = read("src/lib/public-config.ts");
+  const sitemap = read("src/app/sitemap.ts");
+  const layout = read("src/app/layout.tsx");
+  const structuredData = read("src/components/marketing/public-structured-data.tsx");
+  const documentLanguage = read("src/components/analytics/document-language.tsx");
+  const seoLanding = read("src/components/marketing/seo-landing-page.tsx");
+  const homepage = read("src/app/page.tsx");
+  const conversionEvents = read("src/lib/consent-aware-events.ts");
+  const trackedDemoLink = read("src/components/analytics/tracked-demo-link.tsx");
+  const publicDemoLinkTracker = read("src/components/analytics/public-demo-link-tracker.tsx");
+  const demoForms = [
+    read("src/app/demo-buchen/demo-booking-tool.tsx"),
+    read("src/app/en/book-demo/demo-booking-tool.tsx")
+  ].join("\n");
+
+  assert.match(publicSite, /"x-default"/);
+  assert.match(publicConfig, /siteUrl: "https:\/\/quinnhealth\.de"/);
+  assert.doesNotMatch(publicSite, /quinn\.care/);
+  assert.match(sitemap, /"x-default"/);
+  assert.match(layout, /metadataBase: new URL\(siteUrl\)/);
+  assert.match(layout, /<PublicStructuredData \/>/);
+  assert.match(layout, /<DocumentLanguage \/>/);
+  assert.match(documentLanguage, /pathname\.startsWith\("\/en"\) \? "en" : "de"/);
+  assert.match(structuredData, /"@type": "Organization"/);
+  assert.match(structuredData, /"@type": "WebSite"/);
+  assert.match(structuredData, /buildSoftwareApplicationJsonLd/);
+  assert.doesNotMatch(publicSite, /price: "0"/);
+  assert.match(layout, /<PublicDemoLinkTracker \/>/);
+  assert.match(conversionEvents, /demo_form_validation_error/);
+  assert.match(trackedDemoLink, /data-quinn-tracked-demo="true"/);
+  assert.match(publicDemoLinkTracker, /source: "public-page"/);
+  assert.match(publicDemoLinkTracker, /demoPaths/);
+  assert.match(demoForms, /onInvalidCapture=\{trackValidationError\}/);
+  assert.match(demoForms, /status === "submitting"/);
+  assert.doesNotMatch(demoForms, /disabled=\{!canSubmit/);
+  assert.match(seoLanding, /locale === "de"/);
+  assert.doesNotMatch(homepage, /Dokumentationslayer|Review-Status|Dokumentationsreview|Live Review/);
+
+  const seoPairs = [...publicSite.matchAll(/\["(\/[^"\n]*|\/)", "(\/en[^"\n]*)"\]/g)].map((match) => [match[1], match[2]]);
+  assert.equal(seoPairs.length, 21);
+  for (const pair of seoPairs) {
+    for (const slug of pair) {
+      const pageFile = slug === "/" ? "src/app/page.tsx" : `src/app${slug}/page.tsx`;
+      assert.match(read(pageFile), new RegExp(`buildSeoAlternates\\(["']${slug.replaceAll("/", "\\/")}["']\\)`), `${slug} hat keine eigenen Canonical-/Hreflang-Metadaten`);
+    }
+  }
+
+  const germanPublicCopy = allFiles("src/app")
+    .filter((file) => file.endsWith(".tsx") && !file.includes("/en/"))
+    .map(read)
+    .join("\n");
+  assert.doesNotMatch(germanPublicCopy, /\b(?:fuer|Fuer|pruefbare|Uebersicht|geschuetzte|koennen|muessen)\b/);
+});
+
 test("public legal pages use confirmed operator details without uncontrolled go-live placeholders", () => {
   const legalDetails = read("src/lib/legal-details.ts");
   const legalPages = [

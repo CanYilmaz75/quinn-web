@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Building2, Clock3, Sparkles } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { EnglishDemoBookingTool } from "./demo-booking-tool";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/book-demo"),
   title: "Book a demo | Quinn",
   description: "Request a 15-minute Quinn demo directly with the founder and review one concrete documentation workflow."
 };

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import Link from "next/link";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/loesungen/psychologen"),
   title: "Quinn für Psychologen",
   description: "Quinn unterstützt psychologische Praxen bei ruhigen, prüfbaren Dokumentationsentwürfen mit menschlicher Freigabe."
 };
@@ -32,7 +35,7 @@ export default function PsychologistsPage() {
             <article key={item} className="rounded-2xl border border-border bg-white p-6">
               <h2 className="text-xl font-semibold">{item}</h2>
               <p className="mt-3 text-sm leading-7 text-secondary-foreground">
-                Warum Quinn hilft: weniger Formulierungsdruck, klare Verantwortung und ein ruhiger Review vor der Ablage.
+                Warum Quinn hilft: weniger Formulierungsdruck, klare Verantwortung und eine ruhige fachliche Prüfung vor der Ablage.
               </p>
             </article>
           ))}

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Mail, Phone } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/impressum"),
   title: "Impressum | Quinn",
   description: "Anbieterkennzeichnung, Kontaktangaben und rechtliche Hinweise für Quinn."
 };
@@ -33,24 +36,24 @@ const legalSections = [
       "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
   },
   {
-    title: "Haftung fuer Inhalte",
+    title: "Haftung für Inhalte",
     body:
-      "Die Inhalte dieser Website werden mit Sorgfalt erstellt. Fuer Richtigkeit, Vollstaendigkeit und Aktualitaet der Inhalte kann jedoch keine Gewaehr uebernommen werden. Gesetzliche Verpflichtungen zur Entfernung oder Sperrung von Informationen bleiben unberuehrt."
+      "Die Inhalte dieser Website werden mit Sorgfalt erstellt. Für Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Gesetzliche Verpflichtungen zur Entfernung oder Sperrung von Informationen bleiben unberührt."
   },
   {
-    title: "Haftung fuer Links",
+    title: "Haftung für Links",
     body:
-      "Diese Website kann Links zu externen Websites enthalten. Fuer deren Inhalte sind ausschliesslich die jeweiligen Anbieter verantwortlich. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar."
+      "Diese Website kann Links zu externen Websites enthalten. Für deren Inhalte sind ausschliesslich die jeweiligen Anbieter verantwortlich. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar."
   },
   {
     title: "Urheberrecht",
     body:
-      "Die auf dieser Website erstellten Inhalte, Texte, Markenbestandteile und Gestaltungen unterliegen dem deutschen Urheberrecht. Nutzung, Vervielfaeltigung oder Bearbeitung ausserhalb gesetzlicher Grenzen beduerfen einer vorherigen Zustimmung."
+      "Die auf dieser Website erstellten Inhalte, Texte, Markenbestandteile und Gestaltungen unterliegen dem deutschen Urheberrecht. Nutzung, Vervielfältigung oder Bearbeitung außerhalb gesetzlicher Grenzen bedürfen einer vorherigen Zustimmung."
   },
   {
     title: "Medizinischer und pflegerischer Hinweis",
     body:
-      "Quinn stellt technische Werkzeuge fuer Dokumentationsablaeufe bereit. Inhalte auf dieser Website ersetzen keine medizinische, pflegerische, rechtliche oder organisatorische Einzelfallpruefung."
+      "Quinn stellt technische Werkzeuge für Dokumentationsablaeufe bereit. Inhalte auf dieser Website ersetzen keine medizinische, pflegerische, rechtliche oder organisatorische Einzelfallpruefung."
   }
 ];
 

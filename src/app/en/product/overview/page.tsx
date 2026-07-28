@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
@@ -7,6 +9,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/product/overview"),
   title: "Product overview | Quinn",
   description: "Quinn product overview: Quinn guides teams from notes, conversation or audio to reviewable documentation drafts for care organisations."
 };

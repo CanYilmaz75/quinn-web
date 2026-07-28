@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/pilot-program"),
   title: "Pilot partners for AI care documentation | Quinn",
   description: "Pilot partners for review-first AI care documentation: 4–6 week structure with usage, quality and review-effort metrics."
 };

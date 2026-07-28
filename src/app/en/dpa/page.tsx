@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { ClipboardCheck, Database, KeyRound, ServerCog } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/dpa"),
   title: "DPA and TOM | Quinn",
   description: "Information on data processing agreements and technical and organisational measures at Quinn."
 };

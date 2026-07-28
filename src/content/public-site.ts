@@ -1,5 +1,7 @@
 import type { Route } from "next";
 
+import { publicConfig } from "@/lib/public-config";
+
 type PublicPageStatus = "live" | "sprint-2" | "sprint-3";
 
 type PublicPage = {
@@ -16,7 +18,7 @@ type PublicPage = {
   riskGuardrails: string[];
 };
 
-export const siteUrl = "https://quinn.care";
+export const siteUrl = publicConfig.siteUrl;
 
 export const forbiddenPublicClaims = [
   "DSGVO-" + "sicher",
@@ -48,7 +50,7 @@ export const publicSitePages: PublicPage[] = [
     locale: "de",
     slug: "/" as Route,
     title: "Quinn | KI-Dokumentation für Pflegegespräche",
-    description: "Review-first KI-Dokumentation für Pflegegespräche, Aufnahme, Übergabe, Anamnese, Audio und Notizen vor bestehenden Pflege-, Klinik- oder Praxissystemen.",
+    description: "Prüfbare KI-Dokumentationsentwürfe für Pflegegespräche, Aufnahme, Übergabe, Anamnese, Audio und Notizen vor bestehenden Pflege-, Klinik- oder Praxissystemen.",
     primaryKeyword: "KI Pflegedokumentation",
     secondaryKeywords: [
       "KI-basierte Sprachdokumentation in der Pflege",
@@ -62,7 +64,7 @@ export const publicSitePages: PublicPage[] = [
     primaryCta: "Unverbindlich Demo anfragen",
     secondaryCta: "Pilotprogramm ansehen",
     status: "live",
-    positioning: "review-first Dokumentationslayer für Pflegegespräche als erster Wedge, erweitert auf Klinik-, Praxis- und Versorgungsworkflows vor bestehenden Systemen",
+    positioning: "prüfbare Dokumentationsassistenz für Pflegegespräche als erster Einsatzbereich, erweitert auf Klinik-, Praxis- und Versorgungsabläufe vor bestehenden Systemen",
     riskGuardrails: deGuardrails
   },
   {
@@ -82,7 +84,7 @@ export const publicSitePages: PublicPage[] = [
     locale: "de",
     slug: "/anwendungen/sprachdokumentation-pflege" as Route,
     title: "KI-basierte Sprachdokumentation in der Pflege",
-    description: "Quinn nutzt Sprache als möglichen Input und macht daraus einen prüfbaren Entwurf mit Review, Lückenhinweisen und Transferlogik.",
+    description: "Quinn nutzt Sprache als möglichen Input und macht daraus einen prüfbaren Entwurf mit fachlicher Prüfung, Lückenhinweisen und klarer Übergabe.",
     primaryKeyword: "KI-basierte Sprachdokumentation in der Pflege",
     secondaryKeywords: ["Sprachdokumentation Pflege", "Pflegedokumentation per Sprache", "Pflegeberichte automatisch strukturieren"],
     primaryCta: "Unverbindlich Demo anfragen",
@@ -95,7 +97,7 @@ export const publicSitePages: PublicPage[] = [
     locale: "de",
     slug: "/pilotprogramm" as Route,
     title: "Pilotpartner für KI-Dokumentation in der Pflege gesucht",
-    description: "Quinn validiert mit Pflegeeinrichtungen Aufnahme-/SIS-Workflows, Editieraufwand, Vollständigkeit und Review-Zeit.",
+    description: "Quinn validiert mit Pflegeeinrichtungen Aufnahme-/SIS-Workflows, Editieraufwand, Vollständigkeit und Prüfzeit.",
     primaryKeyword: "Pilot KI Pflegedokumentation",
     secondaryKeywords: ["Pflegeheim Dokumentation entlasten", "Qualitätsmanagement Pflegedokumentation", "stationäre Pflege Dokumentation KI"],
     primaryCta: "Pilotgespräch anfragen",
@@ -120,10 +122,10 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "de",
     slug: "/forschung" as Route,
-    title: "Forschung und Pilotmetriken für Review-first KI-Dokumentation",
-    description: "Quinn zeigt transparent, welche Pilotmetriken gemessen werden: Zeit pro Fall, Editierquote, Vollständigkeit, Review-Aufwand und Akzeptanz.",
+    title: "Forschung und Pilotmetriken für prüfbare KI-Dokumentation",
+    description: "Quinn zeigt transparent, welche Pilotmetriken gemessen werden: Zeit pro Fall, Editierquote, Vollständigkeit, Prüfaufwand und Akzeptanz.",
     primaryKeyword: "Pilotmetriken KI Pflegedokumentation",
-    secondaryKeywords: ["Review-first KI Pflege", "Pflegedokumentation Evaluation", "KI Pflege Pilot"],
+    secondaryKeywords: ["Prüfbare KI-Dokumentation Pflege", "Pflegedokumentation Evaluation", "KI Pflege Pilot"],
     primaryCta: "Evaluationsdesign besprechen",
     secondaryCta: "Pilotprogramm ansehen",
     status: "live",
@@ -134,9 +136,9 @@ export const publicSitePages: PublicPage[] = [
     locale: "de",
     slug: "/updates" as Route,
     title: "Quinn Updates",
-    description: "Produkt- und Website-Updates zu Quinns review-first Dokumentationslayer für Pflegeeinrichtungen.",
+    description: "Produkt- und Website-Updates zu Quinns prüfbarer Dokumentationsassistenz für Pflegeeinrichtungen.",
     primaryKeyword: "Quinn Updates",
-    secondaryKeywords: ["Quinn Produktupdates", "KI Pflegedokumentation Launch", "Review-first Dokumentation"],
+    secondaryKeywords: ["Quinn Produktupdates", "KI Pflegedokumentation Launch", "Prüfbare Dokumentation"],
     primaryCta: "Demo anfragen",
     secondaryCta: "Forschung ansehen",
     status: "live",
@@ -248,11 +250,11 @@ export const publicFaqsByLocale = {
     },
     {
       question: "Wie läuft ein Pilot ab?",
-      answer: "Wir starten mit einem klar abgegrenzten Aufnahme-, SIS- oder Review-Workflow, definieren Metriken und prüfen nach 4–6 Wochen Nutzung, Qualität und Entlastung."
+      answer: "Wir starten mit einem klar abgegrenzten Aufnahme-, SIS- oder Prüfablauf, definieren Metriken und prüfen nach 4–6 Wochen Nutzung, Qualität und Entlastung."
     },
     {
       question: "Was unterscheidet Quinn von Sprachdokumentation?",
-      answer: "Sprache kann ein Input sein. Quinns Produktwert liegt im review-first Entwurf mit Lückenhinweisen, Freigabe und Transferlogik."
+      answer: "Sprache kann ein Eingabeweg sein. Quinns Produktwert liegt im prüfbaren Entwurf mit Lückenhinweisen, fachlicher Freigabe und klarer Übergabe."
     }
   ],
   en: [
@@ -280,7 +282,7 @@ export const pilotMetricsByLocale = {
     minutesPerCase: "Minuten pro Fall",
     editRate: "Editierquote",
     completeness: "Vollständigkeit",
-    reviewEffort: "PDL/QM-Review-Aufwand",
+    reviewEffort: "PDL/QM-Prüfaufwand",
     teamAcceptance: "Akzeptanz im Team"
   },
   en: {
@@ -299,19 +301,33 @@ export const demoCtaByLocale = {
 
 export const publicSeoPairs = [
   ["/", "/en"],
-  ["/preise", "/en/pricing"],
-  ["/forschung", "/en/research"],
-  ["/updates", "/en/updates"],
-  ["/pilotprogramm", "/en/pilot-program"],
+  ["/agb", "/en/terms"],
   ["/anwendungen/sis-aufnahme", "/en/use-cases/sis-intake"],
   ["/anwendungen/sprachdokumentation-pflege", "/en/use-cases/voice-documentation-care"],
+  ["/avv", "/en/dpa"],
+  ["/cookies", "/en/cookies"],
+  ["/datenschutz", "/en/privacy"],
+  ["/demo-buchen", "/en/book-demo"],
+  ["/forschung", "/en/research"],
+  ["/kunden", "/en/customers"],
+  ["/loesungen/ambulante-pflege", "/en/solutions/home-care"],
+  ["/loesungen/medizin", "/en/solutions/medicine"],
   ["/loesungen/pflegeheime", "/en/solutions/care-homes"],
-  ["/loesungen/traeger-qm", "/en/solutions/operators-quality-management"]
+  ["/loesungen/psychologen", "/en/solutions/psychologists"],
+  ["/loesungen/traeger-qm", "/en/solutions/operators-quality-management"],
+  ["/pilotprogramm", "/en/pilot-program"],
+  ["/preise", "/en/pricing"],
+  ["/produkt/uebersicht", "/en/product/overview"],
+  ["/ueber-uns", "/en/about"],
+  ["/updates", "/en/updates"],
+  ["/impressum", "/en/legal-notice"]
 ] as const;
 
 export function buildSeoAlternates(slug: string) {
   const pair = publicSeoPairs.find(([de, en]) => de === slug || en === slug);
-  const languages = pair ? { de: `${siteUrl}${pair[0]}`, en: `${siteUrl}${pair[1]}` } : undefined;
+  const languages = pair
+    ? { de: `${siteUrl}${pair[0]}`, en: `${siteUrl}${pair[1]}`, "x-default": `${siteUrl}${pair[0]}` }
+    : undefined;
   return {
     canonical: `${siteUrl}${slug}`,
     ...(languages ? { languages } : {})
@@ -342,14 +358,15 @@ export function buildSoftwareApplicationJsonLd(locale: "de" | "en" = "de") {
     operatingSystem: "Web",
     description:
       locale === "de"
-        ? "Review-first KI-Dokumentationslayer für Pflegegespräche vor dem bestehenden Fachsystem."
-        : "Review-first AI documentation layer for care conversations before information enters the existing system.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "EUR",
-      availability: "https://schema.org/PreOrder",
-      description: locale === "de" ? "Preis nach Beratung und Pilotumfang." : "Pricing follows consultation and pilot scope."
-    }
+        ? "KI-Assistenz für prüfbare Dokumentationsentwürfe aus Pflegegesprächen vor dem bestehenden Fachsystem."
+        : "AI assistance for reviewable documentation drafts from care conversations before information enters the existing system.",
+    url: siteUrl,
+    provider: { "@id": `${siteUrl}/#organization` },
+    inLanguage: locale === "de" ? "de-DE" : "en",
+    isAccessibleForFree: false,
+    featureList:
+      locale === "de"
+        ? ["Gespräche und Notizen erfassen", "Prüfbare Entwürfe", "Offene Punkte", "Fachliche Freigabe", "Übergabe ins bestehende System"]
+        : ["Capture conversations and notes", "Reviewable drafts", "Open points", "Professional approval", "Handoff to the existing system"]
   };
 }

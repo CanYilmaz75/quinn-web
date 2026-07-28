@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/solutions/home-care"),
   title: "AI documentation for home care workflows | Quinn",
   description: "Quinn helps home care teams evaluate review-first documentation drafts for notes, handovers and structured care documentation."
 };

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/use-cases/sis-intake"),
   title: "AI-assisted SIS-style intake documentation | Quinn",
   description: "AI-assisted SIS-style intake documentation for care teams with human review before information enters the existing system."
 };

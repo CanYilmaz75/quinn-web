@@ -4,11 +4,16 @@ import { track } from "@vercel/analytics";
 
 const CONSENT_KEY = "quinn_cookie_consent_v1";
 
-type PublicConversionEvent = "demo_form_started" | "demo_form_submitted" | "demo_form_failed" | "demo_cta_clicked";
+type PublicConversionEvent =
+  | "demo_form_started"
+  | "demo_form_validation_error"
+  | "demo_form_submitted"
+  | "demo_form_failed"
+  | "demo_cta_clicked";
 
 type PublicConversionContext = {
   locale: "de" | "en";
-  source: "demo-buchen" | "book-demo" | "site-header" | "homepage";
+  source: "demo-buchen" | "book-demo" | "site-header" | "homepage" | "seo-landing" | "public-page";
 };
 
 function hasAnalyticsConsent() {

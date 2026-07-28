@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -24,16 +26,17 @@ import { Button } from "@/components/ui/button";
 
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/"),
   title: "Quinn | KI-Dokumentation für Pflegegespräche",
   description:
-    "Review-first KI-Dokumentation für Pflegegespräche, Aufnahme, Übergabe, Anamnese, Audio und Notizen vor bestehenden Pflege-, Klinik- oder Praxissystemen."
+    "Prüfbare KI-Dokumentationsentwürfe für Pflegegespräche, Aufnahme, Übergabe, Anamnese, Audio und Notizen vor bestehenden Pflege-, Klinik- oder Praxissystemen."
 };
 
 const metricCards = [
   { value: "Pflege", label: "Gespräch und SIS vorbereiten" },
   { value: "Klinik", label: "Aufnahme, Visite und Übergabe strukturieren" },
   { value: "Praxis", label: "Anamnese und Verlauf prüfbar formulieren" },
-  { value: "Review", label: "Fachlich prüfen und sicher weitergeben" }
+  { value: "Prüfung", label: "Fachlich prüfen und sicher weitergeben" }
 ];
 
 const workflowSteps = [
@@ -73,7 +76,7 @@ const productFeatures = [
     title: "Freigabe statt Blackbox",
     description:
       "Jeder Entwurf bleibt sichtbar bearbeitbar. Export und Weitergabe erfolgen erst nach fachlicher Prüfung durch das verantwortliche Team.",
-    points: ["Review-Status", "Freigabe", "PDF & Kopieren"],
+    points: ["Prüfstatus", "Freigabe", "PDF & Kopieren"],
     icon: BadgeCheck
   }
 ];
@@ -84,7 +87,7 @@ const useCases = [
   "Ärztliche Anamnese",
   "Visiten- und Verlaufsnotizen",
   "Entlass- und Versorgungsplanung",
-  "Dokumentationsreview"
+  "Dokumentationsprüfung"
 ];
 
 const securityItems = [
@@ -147,7 +150,7 @@ function ProductMockup() {
           </div>
           <div className="hidden items-center gap-2 rounded-full bg-[#E7F1EE] px-3 py-2 text-xs font-semibold text-[#1E6B72] sm:flex">
             <span className="h-2 w-2 animate-pulse rounded-full bg-[#1E6B72]" />
-            Live Review
+            Live-Prüfung
           </div>
         </div>
 
@@ -265,7 +268,7 @@ export default function HomePage() {
             Dokumentation sollte Versorgung entlasten — nicht den Arbeitstag bestimmen.
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-            Quinn bringt Gespräch, Kontext, Review und Export in einen ruhigen Workflow für Gesundheits- und Pflegeorganisationen.
+            Quinn bringt Gespräch, Kontext, Prüfung und Export in einen ruhigen Workflow für Gesundheits- und Pflegeorganisationen.
             So wird KI zur Assistenz im Alltag, nicht zur Blackbox im Hintergrund.
           </p>
         </div>
@@ -346,7 +349,7 @@ export default function HomePage() {
           <div>
             <Eyebrow>Kern-Workflows</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
-              Ein Dokumentationslayer für Pflege, Klinik und Praxis.
+              Eine Dokumentationsassistenz für Pflege, Klinik und Praxis.
             </h2>
             <p className="mt-6 text-lg leading-8 text-secondary-foreground">
               Der erste Aha-Moment: Rolle wählen, Aufgabe wählen, Gespräch oder Stichpunkte erfassen, Entwurf prüfen und ins bestehende System übernehmen.
@@ -397,7 +400,7 @@ export default function HomePage() {
             </h2>
             <p className="mt-6 text-lg leading-8 text-secondary-foreground">
               Quinn macht keine künstlichen Zertifizierungsversprechen auf der Startseite. Gezeigt werden die
-              Kontrollpunkte, die im Produkt angelegt sind: geschützte Arbeitsbereiche, Organisation, Rollen, Review,
+              Kontrollpunkte, die im Produkt angelegt sind: geschützte Arbeitsbereiche, Organisation, Rollen, Prüfung,
               Freigabe, Export und klare menschliche Verantwortung. Quinn stellt keine medizinische Diagnose.
             </p>
           </div>

@@ -55,7 +55,8 @@ function languageAlternates(path: string) {
 
   return {
     de: `${siteUrl}${pair[0]}`,
-    en: `${siteUrl}${pair[1]}`
+    en: `${siteUrl}${pair[1]}`,
+    "x-default": `${siteUrl}${pair[0]}`
   };
 }
 

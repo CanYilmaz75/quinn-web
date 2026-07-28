@@ -5,6 +5,7 @@ import { ArrowRight, BadgeCheck, CheckCircle2, HelpCircle, ShieldCheck, Target }
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { TrackedDemoLink } from "@/components/analytics/tracked-demo-link";
 import { Button } from "@/components/ui/button";
 
 type SeoLandingPageProps = {
@@ -61,6 +62,21 @@ export function SeoLandingPage({
   footerDescription
 }: SeoLandingPageProps) {
   const demoHref = (locale === "en" ? "/en/book-demo" : "/demo-buchen") as Route;
+  const labels = locale === "de"
+    ? {
+        reviewWorkflow: "Prüfbarer Ablauf",
+        humanApproval: "Freigabe durch Fachkraft",
+        workflow: "Ablauf",
+        metrics: "Pilotmetriken",
+        pilotReady: "Bereit für einen kontrollierten Pilot"
+      }
+    : {
+        reviewWorkflow: "Review-first workflow",
+        humanApproval: "Human approval",
+        workflow: "Workflow",
+        metrics: "Pilot metrics",
+        pilotReady: "Ready for a controlled pilot"
+      };
 
   return (
     <main className="min-h-screen bg-quinn-warm text-foreground">
@@ -74,10 +90,10 @@ export function SeoLandingPage({
           <p className="mt-7 max-w-2xl text-lg leading-8 text-secondary-foreground">{description}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg" className="rounded-xl bg-[#0A0A0F] px-7 hover:bg-[#1E6B72]">
-              <Link href={demoHref}>
+              <TrackedDemoLink href={demoHref} locale={locale} source="seo-landing">
                 {primaryCta}
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </TrackedDemoLink>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-xl border-[#DDE8E4] bg-white px-7">
               <Link href={secondaryHref}>{secondaryCta}</Link>
@@ -89,9 +105,9 @@ export function SeoLandingPage({
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Quinn</p>
-                <h2 className="mt-2 text-2xl font-semibold text-[#0A0A0F]">Review-first workflow</h2>
+                <h2 className="mt-2 text-2xl font-semibold text-[#0A0A0F]">{labels.reviewWorkflow}</h2>
               </div>
-              <span className="rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#1E6B72]">Human approval</span>
+              <span className="rounded-full bg-white px-3 py-2 text-xs font-semibold text-[#1E6B72]">{labels.humanApproval}</span>
             </div>
             <div className="mt-6 space-y-3">
               {points.map((point) => (
@@ -128,7 +144,7 @@ export function SeoLandingPage({
       <section className={problemTitle ? "bg-quinn-warm py-16 sm:py-24" : "bg-white py-16 sm:py-24"}>
         <div className="quinn-container grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Workflow</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">{labels.workflow}</p>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">{workflowTitle}</h2>
             <p className="mt-6 text-lg leading-8 text-secondary-foreground">{workflowDescription}</p>
           </div>
@@ -165,7 +181,7 @@ export function SeoLandingPage({
         <section className="bg-white py-16 sm:py-24">
           <div className="quinn-container">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Pilotmetriken</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">{labels.metrics}</p>
               <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">{metricsTitle}</h2>
               {metricsDescription ? <p className="mt-6 text-lg leading-8 text-secondary-foreground">{metricsDescription}</p> : null}
             </div>
@@ -204,12 +220,12 @@ export function SeoLandingPage({
       <section className="bg-[#102F33] py-16 text-white sm:py-24">
         <div className="quinn-container grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">Pilot-ready</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">{labels.pilotReady}</p>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] sm:text-[52px]">{footerTitle}</h2>
             <p className="mt-6 text-lg leading-8 text-white/75">{footerDescription}</p>
           </div>
           <Button asChild size="lg" className="rounded-xl bg-white px-7 text-[#0A0A0F] hover:bg-[#E7F1EE]">
-            <Link href={demoHref}>{primaryCta}</Link>
+            <TrackedDemoLink href={demoHref} locale={locale} source="seo-landing">{primaryCta}</TrackedDemoLink>
           </Button>
         </div>
       </section>

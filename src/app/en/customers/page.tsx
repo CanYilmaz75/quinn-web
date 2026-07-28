@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { ArrowRight, Building2, Home, ShieldCheck, Stethoscope } from "lucide-react";
 import Link from "next/link";
 
@@ -7,6 +9,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/customers"),
   title: "Use cases | Quinn",
   description: "Use cases for Quinn in care homes, operator organisations, home care and healthcare settings."
 };

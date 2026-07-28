@@ -10,12 +10,12 @@ import { buildSeoAlternates, buildSoftwareApplicationJsonLd, pilotMetricsByLocal
 export const metadata: Metadata = {
   title: "Forschung & Pilotmetriken | Quinn",
   description:
-    "Quinn Forschung: Evaluationsdesign, Pilotmetriken und Seed-ready Evidenz für review-first KI-Dokumentation in der Pflege.",
+    "Quinn Forschung: Evaluationsdesign, Pilotmetriken und belastbare Evidenz für prüfbare KI-Dokumentation in der Pflege.",
   alternates: buildSeoAlternates("/forschung")
 };
 
 const principles = [
-  "Review-first: KI-Ergebnisse bleiben Entwürfe und müssen fachlich geprüft werden.",
+  "Prüfprinzip: KI-Ergebnisse bleiben Entwürfe und müssen fachlich geprüft werden.",
   "Quinn ergänzt bestehende Fachsysteme, statt sie zu ersetzen.",
   "Datenschutz, Nachvollziehbarkeit und menschliche Verantwortung stehen vor Automatisierung.",
   "Keine behaupteten Ergebnisse: Zeitersparnis, Qualität und Akzeptanz werden im Pilot gemessen."
@@ -25,15 +25,15 @@ const metrics = [
   { label: pilotMetricsByLocale.de.minutesPerCase, description: "Zeit vom Gespräch, Audio oder Notiz bis zum prüfbaren Entwurf." },
   { label: pilotMetricsByLocale.de.editRate, description: "Wie viel muss korrigiert, ergänzt oder verworfen werden, bevor ein Entwurf passt?" },
   { label: pilotMetricsByLocale.de.completeness, description: "Wie zuverlässig werden offene Angaben, Risiken, Wünsche und Lücken sichtbar?" },
-  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Review-Aufwand für PDL, QM oder Fachkraft?" },
+  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Prüfaufwand für PDL, QM oder Fachkraft?" },
   { label: pilotMetricsByLocale.de.teamAcceptance, description: "Nutzen Teams Quinn wiederholt und empfinden sie den Ablauf als Entlastung?" }
 ];
 
 const thresholds = [
   "Demand: qualifizierte Gespräche mit Pflegeeinrichtungen, PDL/QM oder Trägern.",
-  "Usage: wiederholte Nutzung in einem abgegrenzten Aufnahme-, SIS- oder Review-Workflow.",
+  "Usage: wiederholte Nutzung in einem abgegrenzten Aufnahme-, SIS- oder Prüfablauf.",
   "Quality: Entwürfe brauchen überwiegend leichte statt vollständige Nacharbeit.",
-  "ROI-Signal: messbare Reduktion von Minuten pro Fall oder Review-Aufwand, ohne pauschale Zusage.",
+  "ROI-Signal: messbare Reduktion von Minuten pro Fall oder Prüfaufwand, ohne pauschale Zusage.",
   "Seed-ready Evidenz: bezahlte Piloten, klare Buyer-Learnings, Datenpfad und wiederholbare Pilotstruktur."
 ];
 
@@ -47,7 +47,7 @@ export default function ResearchPage() {
       <section className="quinn-container py-20 sm:py-28">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Forschung</p>
         <h1 className="mt-6 max-w-5xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
-          Evaluationsdesign für review-first KI-Dokumentation in der Pflege.
+          Evaluationsdesign für prüfbare KI-Dokumentation in der Pflege.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
           Quinn Forschung heißt: klare Grenzen, Pilotmetriken und nachvollziehbare Evidenz. Wir behaupten keine fertigen Ergebnisse, sondern messen, ob Quinn Nachfrage, Nutzung, Entwurfsqualität und Entlastung im Pflegealltag erzeugt.
@@ -81,7 +81,7 @@ export default function ResearchPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Was wir messen</p>
           <h2 className="mt-5 quinn-h2">Pilotmetriken statt Hype-Zahlen.</h2>
           <p className="mt-5 text-base leading-7 text-secondary-foreground">
-            Diese Metriken zeigen, ob Quinn mehr ist als eine gute Demo: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Review-Aufwand und Akzeptanz im Team müssen zusammenpassen.
+            Diese Metriken zeigen, ob Quinn mehr ist als eine gute Demo: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Prüfaufwand und Akzeptanz im Team müssen zusammenpassen.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">

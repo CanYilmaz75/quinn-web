@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { ArrowRight, Building2, Home, ShieldCheck, Stethoscope } from "lucide-react";
 import Link from "next/link";
 
@@ -7,13 +9,14 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/kunden"),
   title: "Einsatzbereiche | Quinn",
   description: "Einsatzbereiche für Quinn in Pflegeheimen, Trägerorganisationen, ambulanter Pflege und medizinischen Einrichtungen."
 };
 
 const useCases = [
   ["Pflegeheime", "Gespräche, SIS-nahe Aufnahme, Verlaufs- und Beratungsdokumentation als prüfbare Entwürfe vorbereiten.", Home],
-  ["Träger und QM", "Einheitliche Workflows, Rollen, Review und nachvollziehbare Übergaben über Einrichtungen hinweg gestalten.", ShieldCheck],
+  ["Träger und QM", "Einheitliche Workflows, Rollen, Prüfung und nachvollziehbare Übergaben über Einrichtungen hinweg gestalten.", ShieldCheck],
   ["Ambulante Pflege", "Informationen aus Gesprächen und Besuchen kompakt strukturieren, bevor sie ins führende System übertragen werden.", Building2],
   ["Medizinische Einrichtungen", "Dokumentationsnahe Gespräche und Befunde strukturiert vorbereiten; fachliche Prüfung und Freigabe bleiben verpflichtend.", Stethoscope]
 ] as const;

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
 
@@ -8,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/about"),
   title: "About Quinn and founder Can Yilmaz",
   description: "Who builds Quinn, where the product stands and which principles guide its documentation assistance."
 };

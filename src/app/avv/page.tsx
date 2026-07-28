@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { ClipboardCheck, Database, KeyRound, ServerCog } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/avv"),
   title: "AVV und TOM | Quinn",
-  description: "Hinweise zu Auftragsverarbeitung und technischen und organisatorischen Massnahmen bei Quinn."
+  description: "Hinweise zu Auftragsverarbeitung und technischen und organisatorischen Maßnahmen bei Quinn."
 };
 
 const avvFacts = [
   { label: "Rolle", value: "Quinn als Auftragsverarbeiter, Kunde als Verantwortlicher", icon: ClipboardCheck },
   { label: "Datenarten", value: "Account-, Organisations-, Audio-, Transkript-, Dokumentations- und Auditdaten", icon: Database },
   { label: "Technik", value: "Mandantentrennung, Zugriffsschutz, Protokollierung, private Speicherwege", icon: ServerCog },
-  { label: "Zugriff", value: "Rollen, Organisationen und geschuetzte App-Bereiche", icon: KeyRound }
+  { label: "Zugriff", value: "Rollen, Organisationen und geschützte App-Bereiche", icon: KeyRound }
 ];
 
 const avvSections = [
@@ -25,22 +28,22 @@ const avvSections = [
   {
     title: "2. Rollenverteilung",
     body:
-      "Der Kunde ist in der Regel Verantwortlicher fuer die Daten seiner Betroffenen, Mitarbeitenden und Organisation. Quinn handelt hinsichtlich der verarbeiteten Kundendaten als Auftragsverarbeiter, soweit keine eigene Verantwortlichkeit besteht."
+      "Der Kunde ist in der Regel Verantwortlicher für die Daten seiner Betroffenen, Mitarbeitenden und Organisation. Quinn handelt hinsichtlich der verarbeiteten Kundendaten als Auftragsverarbeiter, soweit keine eigene Verantwortlichkeit besteht."
   },
   {
     title: "3. Kategorien betroffener Personen",
     body:
-      "Betroffen sein koennen Nutzer, Mitarbeitende des Kunden, Pflegebeduerftige, Angehoerige, Kontaktpersonen und weitere Personen, die in Dokumentationsablaeufen genannt werden."
+      "Betroffen sein können Nutzer, Mitarbeitende des Kunden, Pflegebeduerftige, Angehoerige, Kontaktpersonen und weitere Personen, die in Dokumentationsablaeufen genannt werden."
   },
   {
     title: "4. Kategorien personenbezogener Daten",
     body:
-      "Verarbeitet werden koennen Identifikations- und Kontaktdaten, Accountdaten, Rollen, Audioinhalte, Transkripte, Freitexte, Pflege- und Gesundheitsinformationen, SIS-nahe Inhalte, Metadaten, Auditlogs und Exportdaten."
+      "Verarbeitet werden können Identifikations- und Kontaktdaten, Accountdaten, Rollen, Audioinhalte, Transkripte, Freitexte, Pflege- und Gesundheitsinformationen, SIS-nahe Inhalte, Metadaten, Auditlogs und Exportdaten."
   },
   {
     title: "5. Weisungen",
     body:
-      "Quinn verarbeitet Kundendaten grundsaetzlich nur auf dokumentierte Weisung des Kunden, soweit keine gesetzliche Pflicht entgegensteht. Produktkonfiguration, Nutzung der Anwendung und Supportanfragen koennen Weisungen konkretisieren."
+      "Quinn verarbeitet Kundendaten grundsaetzlich nur auf dokumentierte Weisung des Kunden, soweit keine gesetzliche Pflicht entgegensteht. Produktkonfiguration, Nutzung der Anwendung und Supportanfragen können Weisungen konkretisieren."
   },
   {
     title: "6. Unterauftragsverarbeiter",
@@ -48,14 +51,14 @@ const avvSections = [
       "Als technische Dienstleister sind nach aktuellem Produktstand insbesondere Vercel für Hosting, Supabase für Authentifizierung, Datenbank und private Speicherung sowie OpenAI für Transkription und KI-gestützte Entwürfe vorgesehen. Sentry und Upstash werden nur einbezogen, soweit sie für den vereinbarten Betriebsweg aktiviert sind. Die verbindliche Liste einschließlich Zweck, Region und Transfergrundlage wird im jeweiligen AVV geführt."
   },
   {
-    title: "7. Technische und organisatorische Massnahmen",
+    title: "7. Technische und organisatorische Maßnahmen",
     body:
-      "Zu den vorgesehenen Massnahmen gehoeren Zugriffskontrolle, rollenbasierte Berechtigungen, Organisationsgrenzen, geschuetzte Speicherbereiche, Auditlogs, Transportverschluesselung, kontrollierte Admin-Zugriffe, Backup- und Wiederherstellungsprozesse sowie Incident-Prozesse."
+      "Zu den vorgesehenen Maßnahmen gehören Zugriffskontrolle, rollenbasierte Berechtigungen, Organisationsgrenzen, geschützte Speicherbereiche, Auditlogs, Transportverschlüsselung, kontrollierte Admin-Zugriffe, Backup- und Wiederherstellungsprozesse sowie Incident-Prozesse."
   },
   {
-    title: "8. Loeschung und Rueckgabe",
+    title: "8. Löschung und Rückgabe",
     body:
-      "Nach Vertragsende werden Kundendaten nach Weisung geloescht oder in geeigneter Form bereitgestellt, soweit keine gesetzlichen Pflichten oder berechtigten Nachweiszwecke entgegenstehen. Konkrete Fristen muessen vertraglich festgelegt werden."
+      "Nach Vertragsende werden Kundendaten nach Weisung geloescht oder in geeigneter Form bereitgestellt, soweit keine gesetzlichen Pflichten oder berechtigten Nachweiszwecke entgegenstehen. Konkrete Fristen müssen vertraglich festgelegt werden."
   },
   {
     title: "9. Unterstuetzung des Kunden",
@@ -65,18 +68,18 @@ const avvSections = [
   {
     title: "10. Audit und Nachweise",
     body:
-      "Kunden erhalten angemessene Nachweise zur Einhaltung der vereinbarten Massnahmen. Umfang, Form und Frequenz von Audits muessen im finalen AVV geregelt werden."
+      "Kunden erhalten angemessene Nachweise zur Einhaltung der vereinbarten Maßnahmen. Umfang, Form und Frequenz von Audits müssen im finalen AVV geregelt werden."
   }
 ];
 
 const tomRows = [
-  ["Zugriffskontrolle", "Login, Supabase Auth, geschuetzte Routen, Rollen und Organisationskontext"],
+  ["Zugriffskontrolle", "Login, Supabase Auth, geschützte Routen, Rollen und Organisationskontext"],
   ["Zugangskontrolle", "Private Storage-Pfade, service role nur serverseitig, RLS-Policies und API-Kontext"],
   ["Weitergabekontrolle", "Kontrollierte Exporte, Auditlogs, keine oeffentlichen Audio- oder PDF-Pfade"],
   ["Eingabekontrolle", "Protokollierung von Erstellung, Bearbeitung, Freigabe, Export und Teamaktionen"],
   ["Mandantentrennung", "Organisation-ID in Datenmodell, RLS und serverseitiger Auth-Kontext"],
   ["Verfügbarkeit", "Backup-, Restore-, Monitoring- und Incident-Prozesse werden betriebsbezogen dokumentiert und über Nachweise geprüft"],
-  ["Datenschutz by Design", "Freigabe vor Export, Entwuerfe statt automatische Enddokumentation, klare Nutzerverantwortung"]
+  ["Datenschutz by Design", "Freigabe vor Export, Entwürfe statt automatische Enddokumentation, klare Nutzerverantwortung"]
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -94,7 +97,7 @@ export default function AvvPage() {
             <Eyebrow>Auftragsverarbeitung</Eyebrow>
             <h1 className="mt-5 quinn-h2">AVV und TOM</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Uebersicht fuer Kunden, die Quinn mit personenbezogenen oder gesundheitsbezogenen Daten einsetzen. Der
+              Übersicht für Kunden, die Quinn mit personenbezogenen oder gesundheitsbezogenen Daten einsetzen. Der
               finale AVV muss als Vertrag mit konkreten Parteien, Unterauftragsverarbeitern und Fristen abgeschlossen
               werden.
             </p>
@@ -141,7 +144,7 @@ export default function AvvPage() {
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
             <Eyebrow>TOM</Eyebrow>
-            <h2 className="mt-5 quinn-h2">Technische und organisatorische Massnahmen.</h2>
+            <h2 className="mt-5 quinn-h2">Technische und organisatorische Maßnahmen.</h2>
           </div>
           <div className="overflow-hidden rounded-lg border border-border">
             {tomRows.map((row) => (

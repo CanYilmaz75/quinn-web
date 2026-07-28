@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
@@ -7,6 +9,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/produkt/uebersicht"),
   title: "Produktübersicht | Quinn",
   description: "Quinn Produktübersicht: Quinn führt von Stichpunkten, Gespräch oder Audio zu prüfbaren Dokumentationsentwürfen für Pflegeeinrichtungen."
 };
@@ -15,7 +18,7 @@ const workflow = [
   "Stichpunkte, Gespräch oder Audio erfassen",
   "Quinn erzeugt prüfbare Dokumentationsentwürfe",
   "Qualitätscheck durchführen",
-  "Review und Freigabe durch das Team",
+  "Prüfung und Freigabe durch das Team",
   "Text ins Fachsystem übernehmen"
 ];
 

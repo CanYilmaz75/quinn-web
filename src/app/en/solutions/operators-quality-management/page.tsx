@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/solutions/operators-quality-management"),
   title: "AI care documentation for operators and quality management | Quinn",
   description: "Quinn helps care operators and quality management teams measure review effort, documentation gaps and rollout governance."
 };

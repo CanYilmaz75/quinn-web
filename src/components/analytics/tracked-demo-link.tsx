@@ -9,7 +9,7 @@ import { trackPublicConversion } from "@/lib/consent-aware-events";
 type TrackedDemoLinkProps = Omit<ComponentProps<typeof Link>, "href" | "onClick"> & {
   href: Route;
   locale: "de" | "en";
-  source: "site-header" | "homepage";
+  source: "site-header" | "homepage" | "seo-landing";
   children: ReactNode;
 };
 
@@ -18,6 +18,7 @@ export function TrackedDemoLink({ href, locale, source, children, ...props }: Tr
     <Link
       href={href}
       {...props}
+      data-quinn-tracked-demo="true"
       onClick={() => trackPublicConversion("demo_cta_clicked", { locale, source })}
     >
       {children}

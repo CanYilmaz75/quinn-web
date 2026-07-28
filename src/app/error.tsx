@@ -19,7 +19,7 @@ export default function GlobalError({
     <main className="flex min-h-screen flex-col items-center justify-center gap-4 px-6 text-center">
       <h1 className="text-3xl font-semibold">Etwas ist schiefgelaufen</h1>
       <p className="max-w-md text-sm text-muted-foreground">
-        In Quinn ist ein unerwarteter Fehler aufgetreten. Sie koennen die aktuelle Ansicht erneut laden.
+        In Quinn ist ein unerwarteter Fehler aufgetreten. Sie können die aktuelle Ansicht erneut laden.
       </p>
       <Button onClick={reset}>Erneut versuchen</Button>
     </main>

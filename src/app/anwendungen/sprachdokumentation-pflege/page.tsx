@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/anwendungen/sprachdokumentation-pflege"),
   title: "KI-basierte Sprachdokumentation in der Pflege | Quinn",
-  description: "KI-basierte Sprachdokumentation in der Pflege mit fachlicher Prüfung, Review-Flow und Transfer in bestehende Fachsysteme."
+  description: "KI-basierte Sprachdokumentation in der Pflege mit fachlicher Prüfung, Prüfablauf und Transfer in bestehende Fachsysteme."
 };
 
 const metrics = [
@@ -27,7 +30,7 @@ export default function SprachdokumentationPflegePage() {
       points={[
         "Audio und Notizen werden in pflegenahen Abschnitten statt als Rohtext abgelegt.",
         "Quinn markiert offene Punkte und trennt Beobachtung, Maßnahme und Reaktion.",
-        "Fachliche Verantwortung bleibt beim Team; Export erst nach Review."
+        "Fachliche Verantwortung bleibt beim Team; Export erst nach fachlicher Prüfung."
       ]}
       problemTitle="Sprache ist nur der Anfang"
       problemDescription="Reine Sprachdokumentation löst vor allem die Eingabe. Pflegeeinrichtungen brauchen aber häufig den überprüfbaren Entwurf: sachlich, neutral, vollständig und vor der Übernahme ins Fachsystem freigegeben."
@@ -38,15 +41,15 @@ export default function SprachdokumentationPflegePage() {
         "Bestehende Fachsysteme bleiben führend; Quinn arbeitet vor dem System, nicht dagegen."
       ]}
       workflowTitle="Was Quinn anders macht"
-      workflowDescription="Quinn verbindet Sprache, Notizen und Review zu einem Dokumentationsentwurf, der bewusst nicht blind übernommen wird."
+      workflowDescription="Quinn verbindet Sprache, Notizen und fachliche Prüfung zu einem Dokumentationsentwurf, der bewusst nicht blind übernommen wird."
       workflow={[
         { title: "Input", description: "Pflegekraft spricht, notiert oder lädt Audio hoch." },
         { title: "Draft", description: "Quinn strukturiert den Inhalt in pflegefachlich prüfbare Abschnitte." },
-        { title: "Review", description: "Das Team korrigiert, ergänzt und bestätigt, was fachlich passt." },
+        { title: "Prüfung", description: "Das Team korrigiert, ergänzt und bestätigt, was fachlich passt." },
         { title: "Transfer", description: "Bestehende Fachsysteme bleiben führend; nur freigegebene Inhalte werden übernommen." }
       ]}
       proofTitle="Bestehende Fachsysteme bleiben führend"
-      proofDescription="Quinn positioniert sich nicht als neue Akte und nicht als unkontrollierte Automatisierung, sondern als Entwurfs- und Review-Layer vor dem vorhandenen System."
+      proofDescription="Quinn positioniert sich nicht als neue Akte und nicht als unkontrollierte Automatisierung, sondern als prüfbare Entwurfsassistenz vor dem vorhandenen System."
       proofPoints={[
         "Quinn erstellt prüfbare Entwürfe, keine finalen Akteneinträge ohne Freigabe.",
         "Quinn ersetzt keine Verantwortlichkeit und keine bestehende Pflegedokumentation.",
@@ -59,7 +62,7 @@ export default function SprachdokumentationPflegePage() {
       faqTitle="Häufige Fragen"
       faqs={publicFaqsByLocale.de}
       footerTitle="Sprachdokumentation im Pflegeablauf testen."
-      footerDescription="Im Demo-Call zeigen wir einen realistischen Pflegefall und prüfen gemeinsam, ob der review-first Ansatz zu Ihren Abläufen passt."
+      footerDescription="Im Demo-Call zeigen wir einen realistischen Pflegefall und prüfen gemeinsam, ob der prüfbare Ablauf zu Ihren Prozessen passt."
     />
   );
 }

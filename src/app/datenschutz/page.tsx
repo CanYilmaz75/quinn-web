@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Database, FileText, LockKeyhole, UserCheck } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/datenschutz"),
   title: "Datenschutz | Quinn",
   description: "Datenschutzhinweise zu Quinn, verarbeiteten Daten, Rechtsgrundlagen und Betroffenenrechten."
 };
@@ -23,12 +26,12 @@ const quickFacts = [
   },
   {
     label: "Hosting und Auth",
-    value: "Supabase, serverseitige Anwendung, geschuetzte Organisationsbereiche",
+    value: "Supabase, serverseitige Anwendung, geschützte Organisationsbereiche",
     icon: Database
   },
   {
     label: "KI-Verarbeitung",
-    value: "OpenAI API fuer Transkription, Strukturierung und Entwurfsunterstuetzung",
+    value: "OpenAI API für Transkription, Strukturierung und Entwurfsunterstuetzung",
     icon: FileText
   }
 ];
@@ -47,7 +50,7 @@ const privacySections = [
   {
     title: "3. Verarbeitete Daten",
     body:
-      "Wir verarbeiten insbesondere Accountdaten, Organisationsdaten, Rollen und Rechte, Teammitgliedschaften, Protokollierung, Sicherheitsdaten, Abrechnungsinformationen sowie Inhalte, die Nutzer in Beratungs-, Pflege- oder Versorgungsablaeufen erfassen. Dazu koennen Audio, Transkripte, Freitext, Dokumentationsentwuerfe, SIS-nahe Inhalte und Exportdaten gehoeren. Einrichtungen koennen mit Pseudonyme arbeiten, wenn Klarnamen nicht erforderlich sind."
+      "Wir verarbeiten insbesondere Accountdaten, Organisationsdaten, Rollen und Rechte, Teammitgliedschaften, Protokollierung, Sicherheitsdaten, Abrechnungsinformationen sowie Inhalte, die Nutzer in Beratungs-, Pflege- oder Versorgungsablaeufen erfassen. Dazu können Audio, Transkripte, Freitext, Dokumentationsentwuerfe, SIS-nahe Inhalte und Exportdaten gehoeren. Einrichtungen können mit Pseudonyme arbeiten, wenn Klarnamen nicht erforderlich sind."
   },
   {
     title: "4. Besondere Kategorien personenbezogener Daten",
@@ -57,12 +60,12 @@ const privacySections = [
   {
     title: "5. Zwecke der Verarbeitung",
     body:
-      "Die Daten werden verarbeitet, um Nutzer zu authentifizieren, Organisationen zu verwalten, Dokumentationsablaeufe bereitzustellen, Audio und Texte in pruefbare Entwuerfe zu ueberfuehren, Freigaben und Exporte nachvollziehbar zu protokollieren, Support zu leisten, Sicherheit zu ueberwachen und Abrechnung zu ermoeglichen."
+      "Die Daten werden verarbeitet, um Nutzer zu authentifizieren, Organisationen zu verwalten, Dokumentationsabläufe bereitzustellen, Audio und Texte in prüfbare Entwürfe zu überführen, Freigaben und Exporte nachvollziehbar zu protokollieren, Support zu leisten, Sicherheit zu überwachen und Abrechnung zu ermöglichen."
   },
   {
     title: "6. Rechtsgrundlagen",
     body:
-      "Je nach Nutzung erfolgt die Verarbeitung auf Grundlage von Vertragserfuellung, berechtigten Interessen, gesetzlichen Pflichten, Einwilligungen oder, bei Gesundheitsdaten, einer gesondert zu pruefenden Grundlage nach Art. 9 DSGVO. Kunden bleiben fuer ihre eigene fachliche und rechtliche Nutzung verantwortlich."
+      "Je nach Nutzung erfolgt die Verarbeitung auf Grundlage von Vertragserfuellung, berechtigten Interessen, gesetzlichen Pflichten, Einwilligungen oder, bei Gesundheitsdaten, einer gesondert zu pruefenden Grundlage nach Art. 9 DSGVO. Kunden bleiben für ihre eigene fachliche und rechtliche Nutzung verantwortlich."
   },
   {
     title: "7. Dienstleister und Empfaenger",
@@ -72,32 +75,32 @@ const privacySections = [
   {
     title: "8. Drittlanduebermittlungen",
     body:
-      "Soweit Dienstleister ausserhalb der EU/des EWR eingesetzt werden oder Fernzugriffe aus Drittlaendern moeglich sind, werden geeignete Garantien wie EU-Standardvertragsklauseln, Angemessenheitsbeschluesse oder zusaetzliche Schutzmassnahmen geprueft und dokumentiert."
+      "Soweit Dienstleister außerhalb der EU/des EWR eingesetzt werden oder Fernzugriffe aus Drittländern möglich sind, werden geeignete Garantien wie EU-Standardvertragsklauseln, Angemessenheitsbeschlüsse oder zusätzliche Schutzmaßnahmen geprüft und dokumentiert."
   },
   {
-    title: "9. Speicherdauer und Loeschung",
+    title: "9. Speicherdauer und Löschung",
     body:
-      "Daten werden nur so lange gespeichert, wie dies fuer Vertrag, Betrieb, Nachweis, Sicherheit, Abrechnung oder gesetzliche Pflichten erforderlich ist. Das Löschkonzept umfasst Nutzerloeschung, Organisationsloeschung und fachliche Export-/Aufbewahrungsfristen je Kunde und Versorgungskontext."
+      "Daten werden nur so lange gespeichert, wie dies für Vertrag, Betrieb, Nachweis, Sicherheit, Abrechnung oder gesetzliche Pflichten erforderlich ist. Das Löschkonzept umfasst Nutzerloeschung, Organisationsloeschung und fachliche Export-/Aufbewahrungsfristen je Kunde und Versorgungskontext."
   },
   {
     title: "10. Cookies und lokale Speicherung",
     body:
-      "Quinn verwendet technisch notwendige Cookies und vergleichbare Speichertechnologien, insbesondere fuer Login-Sitzungen und Schutz geschuetzter Bereiche. Weitere Details stehen in den Cookie-Hinweisen."
+      "Quinn verwendet technisch notwendige Cookies und vergleichbare Speichertechnologien, insbesondere für Login-Sitzungen und Schutz geschützter Bereiche. Weitere Details stehen in den Cookie-Hinweisen."
   },
   {
     title: "11. Sicherheit",
     body:
-      "Quinn nutzt technische und organisatorische Schutzmassnahmen wie geschuetzte Bereiche, rollenbasierte Zugriffe, Protokollierung, getrennte Organisationsdaten und kontrollierte Speicherwege. Die konkreten TOM werden im AVV/TOM-Bereich beschrieben; fuer KI-Ausgaben gilt: keine Trainingsnutzung von Bewohnerdaten, fachliche Verantwortung beim Nutzer und keine medizinische Diagnose."
+      "Quinn nutzt technische und organisatorische Schutzmaßnahmen wie geschützte Bereiche, rollenbasierte Zugriffe, Protokollierung, getrennte Organisationsdaten und kontrollierte Speicherwege. Die konkreten TOM werden im AVV/TOM-Bereich beschrieben; für KI-Ausgaben gilt: keine Trainingsnutzung von Bewohnerdaten, fachliche Verantwortung beim Nutzer und keine medizinische Diagnose."
   },
   {
     title: "12. Betroffenenrechte",
     body:
-      "Betroffene Personen haben nach Massgabe der DSGVO Rechte auf Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung, Datenuebertragbarkeit, Widerspruch und Beschwerde bei einer Aufsichtsbehoerde."
+      "Betroffene Personen haben nach Maßgabe der DSGVO Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit, Widerspruch und Beschwerde bei einer Aufsichtsbehörde."
   },
   {
-    title: "13. Aenderungen",
+    title: "13. Änderungen",
     body:
-      "Diese Datenschutzhinweise koennen angepasst werden, wenn sich Produkt, Dienstleister, Rechtslage oder Verarbeitungsvorgaenge aendern."
+      "Diese Datenschutzhinweise können angepasst werden, wenn sich Produkt, Dienstleister, Rechtslage oder Verarbeitungsvorgaenge aendern."
   }
 ];
 

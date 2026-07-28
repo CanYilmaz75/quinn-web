@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/loesungen/pflegeheime"),
   title: "Quinn für stationäre Pflegeeinrichtungen",
   description: "Quinn unterstützt Pflegeheime bei Aufnahmequalität, SIS-nahen Gesprächen und prüfbaren Dokumentationsentwürfen vor dem Fachsystem."
 };
@@ -26,7 +29,7 @@ export default function NursingHomesPage() {
       secondaryHref="/pilotprogramm"
       points={[
         "Aufnahmegespräche und SIS-nahe Gespräche in prüfbare Entwürfe übersetzen.",
-        "Lücken, offene Angaben und Review-Punkte sichtbar machen.",
+        "Lücken, offene Angaben und Prüfpunkte sichtbar machen.",
         "Pilot ohne Systemwechsel starten und Entlastung anhand klarer Metriken bewerten."
       ]}
       problemTitle="Wo Pflegeheime Dokumentationszeit verlieren"
@@ -38,7 +41,7 @@ export default function NursingHomesPage() {
         "Bewohnerdaten erst nach geklärtem Datenpfad, Rollen und Vereinbarungen einzusetzen, schützt Vertrauen im Pilot."
       ]}
       workflowTitle="Vom Pflegegespräch zum freigegebenen Entwurf"
-      workflowDescription="Quinn schafft einen ruhigen Review-Ablauf zwischen Gespräch und Fachsystem."
+      workflowDescription="Quinn schafft einen ruhigen Prüfablauf zwischen Gespräch und Fachsystem."
       workflow={[
         { title: "Aufnahme vorbereiten", description: "Bewohnerkontext, Gespräch und Notizen werden in einem klaren Ablauf erfasst." },
         { title: "Entwurf erzeugen", description: "Quinn formuliert sachlich, trennt Beobachtung, Wunsch, Risiko und offenen Punkt." },

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/solutions/care-homes"),
   title: "Quinn for care homes",
   description: "Quinn supports care homes with intake quality, SIS-style conversations and reviewable documentation drafts before existing systems."
 };

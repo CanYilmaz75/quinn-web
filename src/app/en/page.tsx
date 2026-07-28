@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import Image from "next/image";
 import {
   ArrowRight,
@@ -23,6 +25,7 @@ import { ProductProofFlow } from "@/components/marketing/product-proof-flow";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en"),
   title: "Quinn | Review-first AI documentation for care conversations",
   description:
     "Review-first AI documentation for care conversations, intake, handover, anamnesis, notes and audio before existing care, clinic or practice systems."

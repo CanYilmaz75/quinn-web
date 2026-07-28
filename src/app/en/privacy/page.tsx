@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Database, FileText, LockKeyhole, UserCheck } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/en/privacy"),
   title: "Privacy | Quinn",
   description: "Privacy information for Quinn, processed data, legal bases and data subject rights."
 };

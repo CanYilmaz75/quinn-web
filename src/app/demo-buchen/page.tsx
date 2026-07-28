@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Building2, Clock3, Sparkles } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { DemoBookingTool } from "./demo-booking-tool";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/demo-buchen"),
   title: "Demo buchen | Quinn",
   description: "Eine 15-minütige Quinn-Demo direkt beim Gründer anfragen und einen konkreten Dokumentationsworkflow prüfen."
 };
@@ -26,7 +29,7 @@ const valuePoints = [
   {
     title: "Konkreter Test statt allgemeiner KI-Show",
     description:
-      "Die Demo nutzt einen fiktiven Fall und zeigt Entwurf, offenen Punkt, fachlichen Review und Übergabe.",
+      "Die Demo nutzt einen fiktiven Fall und zeigt Entwurf, offenen Punkt, fachliche Prüfung und Übergabe.",
     icon: Clock3
   }
 ];

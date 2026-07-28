@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import Link from "next/link";
 
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -6,6 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/loesungen/ambulante-pflege"),
   title: "Quinn für ambulante Pflege",
   description: "Warum Quinn ambulanten Pflegediensten bei Besuchsdokumentation, Tour-Notizen und Übergaben hilft."
 };

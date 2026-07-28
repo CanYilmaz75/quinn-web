@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+
+import { buildSeoAlternates } from "@/content/public-site";
 import { Cookie, Lock, Settings, Shield } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/cookies"),
   title: "Cookie-Hinweise | Quinn",
   description: "Hinweise zu Cookies und vergleichbaren Technologien bei Quinn."
 };
@@ -12,9 +15,9 @@ export const metadata: Metadata = {
 const cookieGroups = [
   {
     name: "Notwendige Cookies",
-    purpose: "Login-Sitzung, Authentifizierung, Schutz geschuetzter Bereiche und technische Bereitstellung.",
+    purpose: "Login-Sitzung, Authentifizierung, Schutz geschützter Bereiche und technische Bereitstellung.",
     examples: "Supabase Auth Cookies mit sb-Prefix, Next.js/Sitzungs- und Sicherheitsmechanismen",
-    legalBasis: "Erforderlich fuer die Bereitstellung des Dienstes"
+    legalBasis: "Erforderlich für die Bereitstellung des Dienstes"
   },
   {
     name: "Sicherheits- und Fehleranalyse",
@@ -34,27 +37,27 @@ const notes = [
   {
     title: "Keine Marketing-Cookies im aktuellen Grundaufbau",
     body:
-      "Im sichtbaren Code sind keine klassischen Marketing- oder Tracking-Pixel wie gtag, PostHog oder Meta Pixel aktiv eingebunden. Falls solche Dienste spaeter hinzukommen, muessen Banner, Anbieterlisten und Einwilligungen angepasst werden."
+      "Im sichtbaren Code sind keine klassischen Marketing- oder Tracking-Pixel wie gtag, PostHog oder Meta Pixel aktiv eingebunden. Falls solche Dienste spaeter hinzukommen, müssen Banner, Anbieterlisten und Einwilligungen angepasst werden."
   },
   {
     title: "Technisch notwendige Speicherung",
     body:
-      "Fuer geschuetzte App-Bereiche werden Cookies verwendet, um Nutzer wiederzuerkennen und Sitzungen sicher zu halten. Ohne diese Cookies kann die Anwendung nicht ordnungsgemaess genutzt werden."
+      "Für geschützte App-Bereiche werden Cookies verwendet, um Nutzer wiederzuerkennen und Sitzungen sicher zu halten. Ohne diese Cookies kann die Anwendung nicht ordnungsgemaess genutzt werden."
   },
   {
     title: "Browser-Einstellungen",
     body:
-      "Nutzer koennen Cookies im Browser loeschen oder blockieren. Das kann dazu fuehren, dass Login, Upload, Export oder andere geschuetzte Funktionen nicht mehr funktionieren."
+      "Nutzer können Cookies im Browser loeschen oder blockieren. Das kann dazu fuehren, dass Login, Upload, Export oder andere geschützte Funktionen nicht mehr funktionieren."
   },
   {
-    title: "Aenderungen",
+    title: "Änderungen",
     body:
-      "Diese Hinweise muessen aktualisiert werden, sobald neue Analyse-, Marketing-, Support- oder Zahlungsdienstleister eingebunden werden."
+      "Diese Hinweise müssen aktualisiert werden, sobald neue Analyse-, Marketing-, Support- oder Zahlungsdienstleister eingebunden werden."
   }
 ];
 
 const iconCards = [
-  { label: "Login", value: "Sitzungen und geschuetzte Bereiche", icon: Lock },
+  { label: "Login", value: "Sitzungen und geschützte Bereiche", icon: Lock },
   { label: "Sicherheit", value: "Missbrauchsschutz und Stabilitaet", icon: Shield },
   { label: "Einstellungen", value: "Browser kontrolliert lokale Speicherung", icon: Settings },
   { label: "Cookies", value: "Keine Marketing-Cookies im Grundaufbau", icon: Cookie }
@@ -75,7 +78,7 @@ export default function CookiesPage() {
             <Eyebrow>Cookie-Hinweise</Eyebrow>
             <h1 className="mt-5 quinn-h2">Cookies und lokale Speicherung</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Quinn nutzt im Grundaufbau vor allem technisch notwendige Cookies fuer Login und geschuetzte App-Bereiche.
+              Quinn nutzt im Grundaufbau vor allem technisch notwendige Cookies für Login und geschützte App-Bereiche.
               Vercel Web Analytics wird ausschließlich nach Zustimmung zur Kategorie Analyse geladen; Marketingdienste
               sind nicht aktiv.
             </p>

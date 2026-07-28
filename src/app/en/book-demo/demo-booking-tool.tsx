@@ -39,6 +39,7 @@ export function EnglishDemoBookingTool() {
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const hasTrackedStart = useRef(false);
+  const hasTrackedValidationError = useRef(false);
 
   const canSubmit = Boolean(
     form.firstName && form.lastName && form.email && form.organisation && form.interest.trim().length >= 5 && form.consent
@@ -49,7 +50,14 @@ export function EnglishDemoBookingTool() {
       hasTrackedStart.current = true;
       trackPublicConversion("demo_form_started", { locale: "en", source: "book-demo" });
     }
+    hasTrackedValidationError.current = false;
     setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  function trackValidationError() {
+    if (hasTrackedValidationError.current) return;
+    hasTrackedValidationError.current = true;
+    trackPublicConversion("demo_form_validation_error", { locale: "en", source: "book-demo" });
   }
 
   async function submitDemo(event: React.FormEvent<HTMLFormElement>) {
@@ -83,7 +91,7 @@ export function EnglishDemoBookingTool() {
         <p className="mt-4 text-sm leading-7 text-secondary-foreground">
           Thank you, {form.firstName}. Can will review your request for {form.organisation} personally and follow up with a suitable next step.
         </p>
-        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(initialForm); hasTrackedStart.current = false; }}>
+        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(initialForm); hasTrackedStart.current = false; hasTrackedValidationError.current = false; }}>
           Start a new request
         </Button>
       </div>
@@ -109,7 +117,7 @@ export function EnglishDemoBookingTool() {
         Please enter no real resident, patient or health data. Target: a personal reply within two business days.
       </p>
 
-      <form className="mt-7 space-y-4" onSubmit={submitDemo}>
+      <form className="mt-7 space-y-4" onSubmit={submitDemo} onInvalidCapture={trackValidationError}>
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-2 text-sm font-medium text-secondary-foreground">
             First name
@@ -149,7 +157,7 @@ export function EnglishDemoBookingTool() {
             The request could not be saved right now. Please try again or contact us directly.
           </p>
         ) : null}
-        <Button type="submit" size="lg" className="h-11 w-full justify-between px-4 text-sm" disabled={!canSubmit || status === "submitting"}>
+        <Button type="submit" size="lg" className="h-11 w-full justify-between px-4 text-sm" disabled={status === "submitting"}>
           {status === "submitting" ? "Sending request…" : "Request a 15-minute demo"}
           <ArrowRight className="h-4 w-4" />
         </Button>

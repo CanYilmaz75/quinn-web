@@ -2,13 +2,33 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 import { ConsentAwareAnalytics } from "@/components/analytics/consent-aware-analytics";
+import { DocumentLanguage } from "@/components/analytics/document-language";
+import { PublicDemoLinkTracker } from "@/components/analytics/public-demo-link-tracker";
 import { CookieConsentManager } from "@/components/consent/cookie-consent-manager";
+import { PublicStructuredData } from "@/components/marketing/public-structured-data";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
+import { siteUrl } from "@/content/public-site";
 import "@/app/globals.css";
 
+const defaultDescription = "Quinn unterstützt Pflege- und Gesundheitsteams dabei, Gespräche und Notizen in strukturierte, prüfbare Dokumentationsentwürfe zu überführen.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Quinn",
-  description: "Quinn ist eine deutschsprachige Anwendung fuer klinische und pflegerische Dokumentation."
+  description: defaultDescription,
+  openGraph: {
+    title: "Quinn",
+    description: defaultDescription,
+    url: siteUrl,
+    siteName: "Quinn",
+    locale: "de_DE",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quinn",
+    description: defaultDescription
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -32,7 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             });
           `}
         </Script>
+        <PublicStructuredData />
         {children}
+        <DocumentLanguage />
+        <PublicDemoLinkTracker />
         <ConsentAwareAnalytics />
         <CookieConsentManager />
         <NewsletterSignup variant="popup" />

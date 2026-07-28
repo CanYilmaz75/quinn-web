@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 
+import { buildSeoAlternates } from "@/content/public-site";
+
 import { SeoLandingPage } from "@/components/marketing/seo-landing-page";
 import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
+  alternates: buildSeoAlternates("/anwendungen/sis-aufnahme"),
   title: "SIS-Aufnahme mit KI vorbereiten | Quinn",
   description: "SIS-Aufnahme mit KI vorbereiten: Quinn hilft Pflegeeinrichtungen, Aufnahmegespräche und Notizen in prüfbare Entwürfe zu strukturieren."
 };
@@ -12,7 +15,7 @@ const metrics = [
   { label: pilotMetricsByLocale.de.minutesPerCase, description: "Wie lange dauert der Weg vom Gespräch zum prüfbaren SIS-nahen Entwurf?" },
   { label: pilotMetricsByLocale.de.editRate, description: "Wie stark muss das Team den Entwurf verändern, bevor er fachlich passt?" },
   { label: pilotMetricsByLocale.de.completeness, description: "Welche Ressourcen, Risiken, Wünsche oder offenen Angaben fehlen noch?" },
-  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie viel PDL/QM-Review-Aufwand entsteht vor und nach Quinn?" }
+  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie viel PDL/QM-Prüfaufwand entsteht vor und nach Quinn?" }
 ];
 
 export default function SisAufnahmePage() {
@@ -25,7 +28,7 @@ export default function SisAufnahmePage() {
       secondaryCta="Pilotprogramm ansehen"
       secondaryHref="/pilotprogramm"
       points={[
-        "Aufnahmegespräch, Kontext und Notizen in einem review-first Ablauf erfassen.",
+        "Aufnahmegespräch, Kontext und Notizen in einem durchgehend prüfbaren Ablauf erfassen.",
         "Ressourcen, Risiken und Wünsche für SIS-nahe Themenfelder vorbereiten.",
         "Offene Angaben sichtbar machen, bevor Inhalte ins bestehende Fachsystem übernommen werden."
       ]}
@@ -34,7 +37,7 @@ export default function SisAufnahmePage() {
       problemItems={[
         "Aufnahmegespräche enthalten biografische Hinweise, Risiken, Ressourcen und Wünsche in ungeordneter Reihenfolge.",
         "PDL und Fachkräfte müssen Lücken erkennen, ohne das Gespräch in eine Checkliste zu verwandeln.",
-        "Bestehende Fachsysteme speichern die Dokumentation, lösen aber nicht automatisch den Entwurfs- und Review-Schritt davor.",
+        "Bestehende Fachsysteme speichern die Dokumentation, lösen aber nicht automatisch den Entwurfs- und Prüfschritt davor.",
         "Neue KI darf im Pflegekontext nur akzeptiert werden, wenn Verantwortung, Freigabe und Datenpfad klar bleiben."
       ]}
       workflowTitle="Gespräch → Entwurf → Lücken → Freigabe → Transfer"

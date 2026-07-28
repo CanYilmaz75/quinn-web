@@ -21,7 +21,7 @@ const updateBlocks = [
     label: "Sprint 3 · Forschung",
     title: "Forschung zeigt Pilotmetriken und Seed-ready Evidenz",
     text:
-      "Die Forschungseite macht sichtbar, was Quinn im Pilot messen muss: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Review-Aufwand und Akzeptanz im Team — ohne behauptete Ergebnisse."
+      "Die Forschungseite macht sichtbar, was Quinn im Pilot messen muss: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Prüfaufwand und Akzeptanz im Team — ohne behauptete Ergebnisse."
   },
   {
     label: "Sprint 3 · SEO Technicals",

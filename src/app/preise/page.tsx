@@ -19,15 +19,15 @@ const plans = [
   {
     name: "Pilot Einrichtung",
     price: "Pilotbudget nach Umfang",
-    subtitle: "4–6 Wochen für einen klaren Aufnahme-, SIS- oder Review-Workflow",
+    subtitle: "4–6 Wochen für einen klaren Aufnahme-, SIS- oder Prüfablauf",
     audience:
       "Für eine Einrichtung, die Quinn mit fiktiven, anonymisierten oder klar abgegrenzten Fällen prüft, bevor Echtdaten und Rollout entschieden werden.",
     cta: "Pilot-Preisgespräch anfragen",
     href: "/demo-buchen" as Route,
     featured: true,
     features: [
-      "Scope für einen Workflow: Aufnahme, SIS-nah oder Review",
-      "Pilotmetriken: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Review-Aufwand",
+      "Scope für einen Workflow: Aufnahme, SIS-nah oder Prüfung",
+      "Pilotmetriken: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Prüfaufwand",
       "Auswertung nach 4–6 Wochen mit Teamfeedback und Akzeptanz im Team",
       "keine harte ROI-Zusage — Entlastung wird im Pilot gemessen",
       "Datenpfad, Rollen und Freigabe vor Echtdaten klären"
@@ -44,10 +44,10 @@ const plans = [
     featured: false,
     features: [
       "Nutzung nach aktivem Team, Rollen und Dokumentationsvolumen",
-      "Einrichtung von Review-Regeln, Standards und fachlicher Freigabe",
+      "Einrichtung von Prüfregeln, Standards und fachlicher Freigabe",
       "Support für PDL/QM und Schulung im Team",
       "Transferlogik in bestehende Fachsysteme ohne Systemwechsel",
-      "regelmäßige Review- und Qualitätsauswertung"
+      "regelmäßige Prüfung- und Qualitätsauswertung"
     ]
   },
   {
@@ -63,7 +63,7 @@ const plans = [
       "Standortstaffel nach Einrichtungen, Rollen und Supportbedarf",
       "QM-Leitplanken, Standards und Sprachvorgaben je Einrichtung",
       "Pilotvergleich zwischen Teams oder Standorten",
-      "Rollout-Entscheidung anhand Nutzung, Qualität und Review-Aufwand",
+      "Rollout-Entscheidung anhand Nutzung, Qualität und Prüfaufwand",
       "gemeinsame Roadmap für Datenschutz-, Betriebs- und Supportfragen"
     ]
   }
@@ -74,7 +74,7 @@ const included = [
   "prüfbare Dokumentationsentwürfe",
   "fachliche Freigabe durch Ihr Team",
   "Pilotmetriken statt pauschaler Versprechen",
-  "Kopieren/Export nach Review",
+  "Kopieren/Export nach Prüfung",
   "Datenschutzunterlagen für konkrete Prüfung"
 ];
 
@@ -83,12 +83,12 @@ const faqs = [
   {
     question: "Warum gibt es keinen öffentlichen Nutzerpreis?",
     answer:
-      "Der sinnvolle Preis hängt aktuell stärker von Workflow, Einrichtung, Review-Aufwand, Support und Datenpfad ab als von einer einfachen Nutzerzahl. Deshalb starten wir beratungsgestützt."
+      "Der sinnvolle Preis hängt aktuell stärker von Workflow, Einrichtung, Prüfaufwand, Support und Datenpfad ab als von einer einfachen Nutzerzahl. Deshalb starten wir beratungsgestützt."
   },
   {
     question: "Was passiert nach dem Pilot?",
     answer:
-      "Nach 4–6 Wochen bewerten wir Nutzung, Entwurfsqualität, Editieraufwand, Vollständigkeit, Review-Aufwand und Teamakzeptanz. Erst danach entscheiden wir gemeinsam über Standort- oder Trägerumfang."
+      "Nach 4–6 Wochen bewerten wir Nutzung, Entwurfsqualität, Editieraufwand, Vollständigkeit, Prüfaufwand und Teamakzeptanz. Erst danach entscheiden wir gemeinsam über Standort- oder Trägerumfang."
   }
 ];
 
