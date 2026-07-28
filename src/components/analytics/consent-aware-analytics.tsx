@@ -42,5 +42,5 @@ export function ConsentAwareAnalytics() {
     return () => window.removeEventListener("quinn:consent-updated", updateConsent);
   }, []);
 
-  return enabled ? <Analytics /> : null;
+  return enabled ? <Analytics beforeSend={(event) => (hasAnalyticsConsent() ? event : null)} /> : null;
 }

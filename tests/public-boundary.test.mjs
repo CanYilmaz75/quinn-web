@@ -106,7 +106,7 @@ test("Vercel Web Analytics is consent-gated and disclosed", () => {
   assert.match(analytics, /from ["']@vercel\/analytics\/next["']/);
   assert.match(analytics, /preferences\?\.analytics === true/);
   assert.match(analytics, /quinn:consent-updated/);
-  assert.match(analytics, /enabled \? <Analytics \/> : null/);
+  assert.match(analytics, /beforeSend=\{\(event\) => \(hasAnalyticsConsent\(\) \? event : null\)\}/);
   assert.match(consent, /Vercel Web Analytics/);
   assert.match(legalCopy, /Vercel Web Analytics/);
 });
