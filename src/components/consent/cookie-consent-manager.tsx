@@ -189,6 +189,7 @@ export function CookieConsentManager() {
     }
 
     window.__quinnOpenConsentSettings = () => {
+      window.dispatchEvent(new Event("quinn:consent-settings-opened"));
       setIsExpanded(true);
       setIsVisible(true);
     };

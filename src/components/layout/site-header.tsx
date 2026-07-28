@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, BriefcaseMedical, ChevronDown, FileText, HeartHandshake, Menu, Mic, Newspaper, ShieldCheck, Stethoscope, Users, UserRoundCheck } from "lucide-react";
 
+import { TrackedDemoLink } from "@/components/analytics/tracked-demo-link";
 import { Button } from "@/components/ui/button";
 import { publicConfig } from "@/lib/public-config";
 
@@ -58,7 +59,7 @@ const resourceMenu: MenuGroup = {
   columns: [
     {
       items: [
-        { label: "Kunden", href: "/kunden" as Route, icon: Users },
+        { label: "Einsatzbereiche", href: "/kunden" as Route, icon: Users },
         { label: "Updates", href: "/updates" as Route, icon: Newspaper },
         { label: "Forschung", href: "/forschung" as Route, icon: FileText },
         { label: "Über Uns", href: "/ueber-uns" as Route, icon: BriefcaseMedical }
@@ -105,7 +106,7 @@ const englishMenus: MenuGroup[] = [
     columns: [
       {
         items: [
-          { label: "Customers", href: "/en/customers" as Route, icon: Users },
+          { label: "Use cases", href: "/en/customers" as Route, icon: Users },
           { label: "Updates", href: "/en/updates" as Route, icon: Newspaper },
           { label: "Research", href: "/en/research" as Route, icon: FileText },
           { label: "About", href: "/en/about" as Route, icon: BriefcaseMedical }
@@ -190,7 +191,7 @@ export function SiteHeader({ locale = "de" }: { locale?: SiteHeaderLocale }) {
               <a href={publicConfig.loginUrl}>{labels.login}</a>
             </Button>
             <Button asChild className="rounded-xl px-4">
-              <Link href={locale === "en" ? "/en/book-demo" : "/demo-buchen"}>{labels.demo}</Link>
+              <TrackedDemoLink href={locale === "en" ? "/en/book-demo" : "/demo-buchen"} locale={locale} source="site-header">{labels.demo}</TrackedDemoLink>
             </Button>
           </div>
 
@@ -222,9 +223,9 @@ export function SiteHeader({ locale = "de" }: { locale?: SiteHeaderLocale }) {
                   English
                 </Link>
               </div>
-              <Link href={locale === "en" ? "/en/book-demo" : "/demo-buchen"} className="mt-1 flex min-h-11 items-center rounded-xl px-2 text-sm font-semibold text-foreground">
+              <TrackedDemoLink href={locale === "en" ? "/en/book-demo" : "/demo-buchen"} locale={locale} source="site-header" className="mt-1 flex min-h-11 items-center rounded-xl px-2 text-sm font-semibold text-foreground">
                 {labels.demo}
-              </Link>
+              </TrackedDemoLink>
               <a href={publicConfig.loginUrl} className="mt-1 flex min-h-11 items-center rounded-xl px-2 text-sm font-semibold text-foreground">
                 {labels.login}
               </a>

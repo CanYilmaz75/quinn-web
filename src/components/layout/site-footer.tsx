@@ -26,7 +26,7 @@ const columns: Array<{ title: string; links: Array<[string, Route]> }> = [
   {
     title: "Ressourcen",
     links: [
-      ["Kunden", "/kunden"],
+      ["Einsatzbereiche", "/kunden"],
       ["Updates", "/updates"],
       ["Forschung", "/forschung"]
     ]
@@ -66,7 +66,7 @@ const englishColumns: Array<{ title: string; links: Array<[string, Route]> }> = 
   {
     title: "Resources",
     links: [
-      ["Customers", "/en/customers"],
+      ["Use cases", "/en/customers"],
       ["Updates", "/en/updates"],
       ["Research", "/en/research"]
     ]

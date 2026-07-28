@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -19,6 +18,8 @@ import {
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { TrackedDemoLink } from "@/components/analytics/tracked-demo-link";
+import { ProductProofFlow } from "@/components/marketing/product-proof-flow";
 import { Button } from "@/components/ui/button";
 
 
@@ -115,13 +116,6 @@ const launchWorkflows = [
   { title: "SIS und Versorgungsplanung", description: "Ressourcen, Risiken und Wünsche werden für die Übernahme ins bestehende Pflegesystem vorbereitet — Quinn bleibt keine Ersatzakte." },
   { title: "Übergabe oder Tagesbericht", description: "Mehrere Einträge werden zu einer klaren, kopierbaren Zusammenfassung für Pflege, Station oder Praxis verdichtet." },
   { title: "Qualitätscheck", description: "Sachlich, neutral, vollständig: keine Diagnosefantasie, keine Therapieentscheidung, keine erfundenen Maßnahmen." }
-];
-
-const demoCases = [
-  { title: "Pflegefall Frau M. · Unruhe am Abend", text: "Bewohnerin läuft wiederholt über den Flur. Quinn trennt Beobachtung, Maßnahme, Reaktion und offenen Punkt." },
-  { title: "Klinische Übergabe nach Sturzereignis", text: "Situation, Sofortmaßnahme, Information und Beobachtung werden als prüfbarer Übergabeentwurf strukturiert." },
-  { title: "Anamnese mit mehreren Beschwerden", text: "Gesprächsinhalte, relevante Vorgeschichte und offene Rückfragen werden sauber getrennt, ohne Diagnose zu erfinden." },
-  { title: "Entlass- und Versorgungsplanung", text: "Vereinbarungen mit Angehörigen, Pflege, Praxis oder Sozialdienst werden in eine klare Zusammenfassung gebracht." }
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -237,10 +231,10 @@ export default function HomePage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="rounded-xl bg-[#0A0A0F] px-7 hover:bg-[#1E6B72]">
-                <Link href="/demo-buchen">
+                <TrackedDemoLink href="/demo-buchen" locale="de" source="homepage">
                   Unverbindlich Demo anfragen
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </TrackedDemoLink>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-xl border-[#DDE8E4] bg-white px-7">
                 <a href="#pilotprogramm">Pilotprogramm ansehen</a>
@@ -369,28 +363,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="demo-faelle" className="bg-white py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <Eyebrow>Demo-Modus</Eyebrow>
-            <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
-              Mit fiktiven Fällen in zwei Minuten verstehen.
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-secondary-foreground">
-              Keine echten Patienten- oder Bewohnerdaten nötig: Die Demo zeigt realistische Situationen aus Pflege,
-              Klinik und Praxis und den Transfer in bestehende Fachsysteme.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {demoCases.map((demo) => (
-              <div key={demo.title} className="rounded-3xl border border-[#E8E8EC] bg-[#FBFAF6] p-6">
-                <h3 className="text-xl font-semibold text-foreground">{demo.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-secondary-foreground">{demo.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProductProofFlow />
 
       <section className="bg-[#102F33] py-16 text-white sm:py-24">
         <div className="quinn-container grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
@@ -462,10 +435,10 @@ export default function HomePage() {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <Button asChild size="lg" className="rounded-xl bg-[#0A0A0F] px-7 hover:bg-[#1E6B72]">
-                <Link href="/demo-buchen">Unverbindlich Demo anfragen</Link>
+                <TrackedDemoLink href="/demo-buchen" locale="de" source="homepage">Unverbindlich Demo anfragen</TrackedDemoLink>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-xl border-[#0A0A0F]/15 bg-white/70 px-7">
-                <Link href="/demo-buchen">15-Minuten-Gespräch buchen</Link>
+                <TrackedDemoLink href="/demo-buchen" locale="de" source="homepage">15-Minuten-Gespräch buchen</TrackedDemoLink>
               </Button>
             </div>
           </div>

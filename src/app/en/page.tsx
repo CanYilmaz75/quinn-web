@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -19,6 +18,8 @@ import {
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { TrackedDemoLink } from "@/components/analytics/tracked-demo-link";
+import { ProductProofFlow } from "@/components/marketing/product-proof-flow";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -82,13 +83,6 @@ const launchWorkflows = [
   { title: "SIS and care planning", description: "Resources, risks and wishes are prepared for transfer into the existing care system." },
   { title: "Handover or daily report", description: "Several entries are condensed into a clear copy-ready summary for care, ward or practice teams." },
   { title: "Quality check", description: "Factual, neutral and complete: no invented diagnosis, no treatment decision, no fabricated measures." }
-];
-
-const demoCases = [
-  { title: "Care case Mrs M. · Restlessness in the evening", text: "Resident repeatedly walks through the hallway. Quinn separates observation, action, response and open point." },
-  { title: "Clinical handover after a fall event", text: "Situation, immediate action, notification and observation become a reviewable handover draft." },
-  { title: "Anamnesis with several complaints", text: "Conversation content, relevant history and open questions are separated without inventing a diagnosis." },
-  { title: "Discharge and care planning", text: "Agreements with relatives, care, practice or social service are turned into a clear summary." }
 ];
 
 const useCases = ["Care intake & SIS", "Clinical handover", "Medical anamnesis", "Rounds and progress notes", "Discharge and care planning", "Documentation review"];
@@ -227,10 +221,10 @@ export default function EnglishLandingPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="rounded-xl bg-[#0A0A0F] px-7 hover:bg-[#1E6B72]">
-                <Link href="/en/book-demo">
+                <TrackedDemoLink href="/en/book-demo" locale="en" source="homepage">
                   Request a demo
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </TrackedDemoLink>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-xl border-[#DDE8E4] bg-white px-7">
                 <a href="#pilot-program">View pilot program</a>
@@ -357,27 +351,7 @@ export default function EnglishLandingPage() {
         </div>
       </section>
 
-      <section id="demo-cases" className="bg-white py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <Eyebrow>Demo mode</Eyebrow>
-            <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
-              Understand the flow in two minutes with fictional cases.
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-secondary-foreground">
-              No real patient or resident data needed: the demo uses realistic situations from care, clinic and practice and shows the transfer into existing specialist systems.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {demoCases.map((demo) => (
-              <div key={demo.title} className="rounded-3xl border border-[#E8E8EC] bg-[#FBFAF6] p-6">
-                <h3 className="text-xl font-semibold text-foreground">{demo.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-secondary-foreground">{demo.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProductProofFlow locale="en" />
 
       <section className="bg-[#102F33] py-16 text-white sm:py-24">
         <div className="quinn-container grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
@@ -446,10 +420,10 @@ export default function EnglishLandingPage() {
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <Button asChild size="lg" className="rounded-xl bg-[#0A0A0F] px-7 hover:bg-[#1E6B72]">
-                <Link href="/en/book-demo">Request a demo</Link>
+                <TrackedDemoLink href="/en/book-demo" locale="en" source="homepage">Request a demo</TrackedDemoLink>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-xl border-[#0A0A0F]/15 bg-white/70 px-7">
-                <Link href="/en/book-demo">Book a 15-minute call</Link>
+                <TrackedDemoLink href="/en/book-demo" locale="en" source="homepage">Book a 15-minute call</TrackedDemoLink>
               </Button>
             </div>
           </div>

@@ -177,9 +177,19 @@ export function NewsletterSignup({ variant = "footer", locale }: NewsletterSignu
       window.removeEventListener("scroll", handleScroll);
     };
 
+    const consentUiIsVisible = () =>
+      Boolean(document.querySelector('[aria-label="Cookie-Einstellungen"], [aria-label="Cookie settings"]'));
+
     const reveal = () => {
+      if (consentUiIsVisible()) {
+        return;
+      }
       cleanupTriggers();
-      if (!hasStored(DISMISSED_KEY) && !hasStored(SIGNED_UP_KEY) && !POPUP_EXCLUDED_PATHS.has(window.location.pathname)) {
+      if (
+        !hasStored(DISMISSED_KEY) &&
+        !hasStored(SIGNED_UP_KEY) &&
+        !POPUP_EXCLUDED_PATHS.has(window.location.pathname)
+      ) {
         setIsVisible(true);
       }
     };
@@ -201,16 +211,20 @@ export function NewsletterSignup({ variant = "footer", locale }: NewsletterSignu
       handleScroll();
     };
 
-    const consentIsSettled = hasStored(CONSENT_KEY) || !document.querySelector('[aria-label="Cookie-Einstellungen"], [aria-label="Cookie settings"]');
+    const consentIsSettled = hasStored(CONSENT_KEY);
     if (consentIsSettled) {
       armPopup();
     } else {
       window.addEventListener("quinn:consent-updated", armPopup, { once: true });
     }
 
+    const hideForConsentSettings = () => setIsVisible(false);
+    window.addEventListener("quinn:consent-settings-opened", hideForConsentSettings);
+
     return () => {
       cleanupTriggers();
       window.removeEventListener("quinn:consent-updated", armPopup);
+      window.removeEventListener("quinn:consent-settings-opened", hideForConsentSettings);
     };
   }, [pathname, variant]);
 

@@ -7,7 +7,7 @@ import { EnglishDemoBookingTool } from "./demo-booking-tool";
 
 export const metadata: Metadata = {
   title: "Book a demo | Quinn",
-  description: "Request a demo appointment for Quinn documentation workflows in care and healthcare."
+  description: "Request a 15-minute Quinn demo directly with the founder and review one concrete documentation workflow."
 };
 
 const valuePoints = [
@@ -18,15 +18,15 @@ const valuePoints = [
     icon: Building2
   },
   {
-    title: "AI that fits into existing workflows",
+    title: "A flow that fits existing systems",
     description:
-      "The workflow remains traceable: capture, structure, review, approve and export.",
+      "The path remains traceable: capture, structure, review, approve and transfer into the existing specialist system.",
     icon: Sparkles
   },
   {
-    title: "Less documentation effort in daily work",
+    title: "A concrete test instead of a generic AI show",
     description:
-      "The goal is less follow-up work after care consultations, SIS conversations or healthcare documentation.",
+      "The demo uses a fictional case and shows draft, open point, professional review and handoff.",
     icon: Clock3
   }
 ];
@@ -40,7 +40,7 @@ export default function DemoBuchenPage() {
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <div className="pt-6 lg:pt-24">
             <h1 className="max-w-lg font-serif text-[30px] font-semibold leading-[1.1] text-foreground sm:text-[36px] lg:text-[40px]">
-              Quinn helps care and healthcare teams deliver better documentation with less administrative effort.
+              Review Quinn against one concrete documentation workflow.
             </h1>
 
             <div className="mt-10 space-y-7">

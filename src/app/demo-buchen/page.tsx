@@ -7,26 +7,26 @@ import { DemoBookingTool } from "./demo-booking-tool";
 
 export const metadata: Metadata = {
   title: "Demo buchen | Quinn",
-  description: "Demo-Termin fuer Quinn Dokumentationsablaeufe in Pflege und Versorgung anfragen."
+  description: "Eine 15-minütige Quinn-Demo direkt beim Gründer anfragen und einen konkreten Dokumentationsworkflow prüfen."
 };
 
 const valuePoints = [
   {
-    title: "Entwickelt fuer den Alltag in Pflege und Versorgung",
+    title: "Für den Alltag in Pflege und Versorgung",
     description:
-      "Quinn unterstuetzt Teams dabei, Gespraeche, Kontext und Dokumentationsanforderungen in pruefbare Entwuerfe zu ueberfuehren.",
+      "Quinn unterstützt Teams dabei, Gespräche, Kontext und Dokumentationsanforderungen in prüfbare Entwürfe zu überführen.",
     icon: Building2
   },
   {
-    title: "KI, die sich in bestehende Ablaeufe einfuegt",
+    title: "Ein Workflow, der sich in bestehende Abläufe einfügt",
     description:
-      "Der Workflow bleibt nachvollziehbar: aufnehmen, strukturieren, pruefen, freigeben und exportieren.",
+      "Der Weg bleibt nachvollziehbar: aufnehmen, strukturieren, prüfen, freigeben und in das bestehende Fachsystem übertragen.",
     icon: Sparkles
   },
   {
-    title: "Weniger Dokumentationsaufwand im Alltag",
+    title: "Konkreter Test statt allgemeiner KI-Show",
     description:
-      "Das Ziel ist weniger Nacharbeit nach Pflegeberatung, SIS-Gespraech oder Versorgungsdokumentation.",
+      "Die Demo nutzt einen fiktiven Fall und zeigt Entwurf, offenen Punkt, fachlichen Review und Übergabe.",
     icon: Clock3
   }
 ];
@@ -40,7 +40,7 @@ export default function DemoBuchenPage() {
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
           <div className="pt-6 lg:pt-24">
             <h1 className="max-w-lg font-serif text-[30px] font-semibold leading-[1.1] text-foreground sm:text-[36px] lg:text-[40px]">
-              Quinn hilft Pflege- und Versorgungsteams, bessere Dokumentation bei geringerem administrativem Aufwand zu leisten.
+              Prüfen Sie Quinn an einem konkreten Dokumentationsworkflow.
             </h1>
 
             <div className="mt-10 space-y-7">

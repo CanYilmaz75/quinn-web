@@ -75,6 +75,7 @@ test("marketing forms use narrow server-side proxy routes without app secrets", 
   const proxy = read("src/lib/marketing-proxy.ts");
   const demoForm = read("src/app/demo-buchen/demo-booking-tool.tsx");
   const englishDemoForm = read("src/app/en/book-demo/demo-booking-tool.tsx");
+  const demoSchema = read("src/schemas/demo-request.ts");
   assert.match(demoRoute, /demoRequestSchema/);
   assert.match(newsletterRoute, /newsletterSignupSchema/);
   assert.match(proxy, /const appUrl = ["']https:\/\/app\.quinnhealth\.de["']/);
@@ -85,8 +86,11 @@ test("marketing forms use narrow server-side proxy routes without app secrets", 
   assert.doesNotMatch(proxy, /SERVICE_ROLE|SUPABASE|OPENAI/);
   for (const form of [demoForm, englishDemoForm]) {
     assert.match(form, /form\.interest\.trim\(\)\.length >= 5/);
-    assert.match(form, /minLength=\{5\}/);
+    assert.match(form, /<select value=\{form\.interest\}/);
   }
+  assert.match(demoSchema, /phone:.*optional/);
+  assert.match(demoSchema, /teamSize:.*optional/);
+  assert.match(demoSchema, /country:.*optional/);
 });
 
 test("Vercel Web Analytics is consent-gated and disclosed", () => {
@@ -125,6 +129,10 @@ test("newsletter popup is delayed, scroll-aware and disabled on conversion route
   assert.match(newsletter, /"\/en\/pricing"/);
   assert.match(newsletter, /addEventListener\("scroll"/);
   assert.match(newsletter, /quinn:consent-updated/);
+  assert.match(newsletter, /const consentIsSettled = hasStored\(CONSENT_KEY\)/);
+  assert.match(newsletter, /consentUiIsVisible/);
+  assert.match(newsletter, /quinn:consent-settings-opened/);
+  assert.doesNotMatch(newsletter, /hasStored\(CONSENT_KEY\) \|\|/);
   assert.doesNotMatch(newsletter, /900|1400/);
 });
 
@@ -137,6 +145,49 @@ test("cookie consent exposes only necessary and analytics categories", () => {
   assert.doesNotMatch(consent, /key: "personalization"/);
   assert.doesNotMatch(consent, /key: "saleOrShare"/);
   assert.doesNotMatch(consent, /Marketing und Ads|CCPA\/CPRA|Sale or sharing under/);
+});
+
+test("P1 trust and conversion surfaces are founder-led, concrete and low-friction", () => {
+  const homepage = read("src/app/page.tsx");
+  const englishHomepage = read("src/app/en/page.tsx");
+  const productProof = read("src/components/marketing/product-proof-flow.tsx");
+  const about = read("src/app/ueber-uns/page.tsx");
+  const englishAbout = read("src/app/en/about/page.tsx");
+  const customers = read("src/app/kunden/page.tsx");
+  const englishCustomers = read("src/app/en/customers/page.tsx");
+  const header = read("src/components/layout/site-header.tsx");
+  const footer = read("src/components/layout/site-footer.tsx");
+  const conversionEvents = read("src/lib/consent-aware-events.ts");
+  const trackedDemoLink = read("src/components/analytics/tracked-demo-link.tsx");
+  const demoForms = [
+    read("src/app/demo-buchen/demo-booking-tool.tsx"),
+    read("src/app/en/book-demo/demo-booking-tool.tsx")
+  ].join("\n");
+
+  assert.match(about, /Can Yilmaz/);
+  assert.match(englishAbout, /Can Yilmaz/);
+  assert.doesNotMatch(`${about}\n${englishAbout}\n${demoForms}`, /Brand Guideline|brand guideline|teamMembers|\["MS", "AK", "JL", "TR"\]|unserem Team|our team/);
+  assert.match(productProof, /Offener Punkt/);
+  assert.match(productProof, /Open point/);
+  assert.match(productProof, /Freigegeben durch Fachkraft/);
+  assert.match(homepage, /ProductProofFlow/);
+  assert.match(englishHomepage, /ProductProofFlow/);
+  assert.match(customers, /Einsatzbereiche/);
+  assert.match(englishCustomers, /Use cases/);
+  assert.match(header, /label: "Einsatzbereiche"/);
+  assert.match(header, /label: "Use cases"/);
+  assert.match(footer, /\["Einsatzbereiche", "\/kunden"\]/);
+  assert.match(footer, /\["Use cases", "\/en\/customers"\]/);
+  assert.doesNotMatch(demoForms, /Telefonnummer|Phone number|Mitarbeiter|Employees|Land der Tätigkeit|Country of operation/);
+  assert.match(demoForms, /15 Minuten|15-minute/);
+  assert.match(demoForms, /keine echten Bewohner|no real resident/);
+  assert.match(conversionEvents, /preferences\?\.analytics === true/);
+  assert.match(conversionEvents, /demo_form_started/);
+  assert.match(conversionEvents, /demo_form_submitted/);
+  assert.doesNotMatch(conversionEvents, /email|organisation|firstName|lastName|interest/);
+  assert.match(trackedDemoLink, /demo_cta_clicked/);
+  assert.match(demoForms, /trackPublicConversion\("demo_form_started"/);
+  assert.match(demoForms, /trackPublicConversion\("demo_form_submitted"/);
 });
 
 test("public legal pages use confirmed operator details without uncontrolled go-live placeholders", () => {
