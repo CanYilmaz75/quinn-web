@@ -45,7 +45,7 @@ const avvSections = [
   {
     title: "6. Sub-processors",
     body:
-      "Sub-processors must be finally listed before go-live. Expected categories are hosting, database, storage, authentication, AI processing, error analysis and, where applicable, billing."
+      "Based on the current product setup, technical providers include Vercel for hosting, Supabase for authentication, database and private storage, and OpenAI for transcription and AI-assisted drafts. Sentry and Upstash are included only where activated for the agreed operational path. The binding list, including purpose, region and transfer basis, is maintained in the applicable DPA."
   },
   {
     title: "7. Technical and organisational measures",
@@ -75,7 +75,7 @@ const tomRows = [
   ["Transfer control", "Controlled exports, audit logs, no public audio or PDF paths"],
   ["Input control", "Logging of creation, editing, approval, export and team actions"],
   ["Tenant separation", "Organisation ID in data model, RLS and server-side auth context"],
-  ["Availability", "Finalise backup, restore, monitoring and incident processes according to compliance documentation"],
+  ["Availability", "Backup, restore, monitoring and incident processes are documented for the operating scope and reviewed through evidence"],
   ["Privacy by design", "Approval before export, drafts instead of automatic final documentation, clear user responsibility"]
 ];
 
@@ -97,7 +97,7 @@ export default function DpaPage() {
               Overview for customers using Quinn with personal or health-related data. The final DPA must be concluded
               as a contract with concrete parties, sub-processors and periods.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Last updated: May 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Last updated: July 2026</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

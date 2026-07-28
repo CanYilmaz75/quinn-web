@@ -45,7 +45,7 @@ const avvSections = [
   {
     title: "6. Unterauftragsverarbeiter",
     body:
-      "Unterauftragsverarbeiter muessen vor Go-live final gelistet werden. Erwartete Kategorien sind Hosting, Datenbank, Storage, Authentifizierung, KI-Verarbeitung, Fehleranalyse und gegebenenfalls Abrechnung."
+      "Als technische Dienstleister sind nach aktuellem Produktstand insbesondere Vercel für Hosting, Supabase für Authentifizierung, Datenbank und private Speicherung sowie OpenAI für Transkription und KI-gestützte Entwürfe vorgesehen. Sentry und Upstash werden nur einbezogen, soweit sie für den vereinbarten Betriebsweg aktiviert sind. Die verbindliche Liste einschließlich Zweck, Region und Transfergrundlage wird im jeweiligen AVV geführt."
   },
   {
     title: "7. Technische und organisatorische Massnahmen",
@@ -75,7 +75,7 @@ const tomRows = [
   ["Weitergabekontrolle", "Kontrollierte Exporte, Auditlogs, keine oeffentlichen Audio- oder PDF-Pfade"],
   ["Eingabekontrolle", "Protokollierung von Erstellung, Bearbeitung, Freigabe, Export und Teamaktionen"],
   ["Mandantentrennung", "Organisation-ID in Datenmodell, RLS und serverseitiger Auth-Kontext"],
-  ["Verfuegbarkeit", "Backup-, Restore-, Monitoring- und Incident-Prozesse laut Compliance-Dokumentation finalisieren"],
+  ["Verfügbarkeit", "Backup-, Restore-, Monitoring- und Incident-Prozesse werden betriebsbezogen dokumentiert und über Nachweise geprüft"],
   ["Datenschutz by Design", "Freigabe vor Export, Entwuerfe statt automatische Enddokumentation, klare Nutzerverantwortung"]
 ];
 
@@ -98,7 +98,7 @@ export default function AvvPage() {
               finale AVV muss als Vertrag mit konkreten Parteien, Unterauftragsverarbeitern und Fristen abgeschlossen
               werden.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Stand: Mai 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Stand: Juli 2026</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

@@ -3,6 +3,7 @@ import { Building2, CreditCard, FileCheck, ShieldCheck } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
   title: "Terms | Quinn",
@@ -20,12 +21,12 @@ const terms = [
   {
     title: "1. Scope",
     body:
-      "These terms apply to the use of Quinn by companies, care facilities, outpatient services, operators and other professional users. Consumer offers are not intended unless expressly agreed otherwise."
+      "These terms apply to the use of Quinn by companies, care facilities, outpatient services, operators and other professional users where incorporated into the applicable contract. Individual agreements take precedence. Consumer offers are not intended unless expressly agreed otherwise."
   },
   {
     title: "2. Contracting party",
     body:
-      "The contracting party is [enter Quinn legal entity with address]. Customers act through their authorised representatives or authorised administrators."
+      `The contracting party is ${legalDetails.providerNameEn}. ${legalDetails.addressPendingEn} Customers act through their authorised representatives or authorised administrators.`
   },
   {
     title: "3. Subject matter of the service",
@@ -45,7 +46,7 @@ const terms = [
   {
     title: "6. Prices and payment",
     body:
-      "The prices shown at contract conclusion or individually agreed terms apply. Prices may take active users, base packages, rollout, support and additional services into account. Payment terms, invoicing and taxes must be finalised before go-live."
+      "Only the prices, payment periods and billing conditions agreed in the offer, order form or individual contract apply. Pricing may take into account pilot scope, active users, locations, rollout, support and additional services."
   },
   {
     title: "7. Term and termination",
@@ -90,7 +91,7 @@ const terms = [
   {
     title: "15. Final provisions",
     body:
-      "German law applies. Place of jurisdiction and severability provisions must be added appropriately for the final company form and customer structure."
+      "German law applies, excluding the UN Convention on Contracts for the International Sale of Goods. Statutory provisions apply to jurisdiction and other final matters unless effectively agreed otherwise."
   }
 ];
 
@@ -109,10 +110,10 @@ export default function TermsPage() {
             <Eyebrow>Terms of use</Eyebrow>
             <h1 className="mt-5 quinn-h2">General terms and conditions</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Basis for the use of Quinn by professional customers. This template must be adapted to legal form, payment
-              model, terms and enterprise contracts before productive use.
+              Terms for the use of Quinn by professional customers. They apply only where incorporated into the concrete
+              contractual relationship; individual offers and agreements take precedence.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Last updated: May 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Last updated: {legalDetails.lastUpdatedEn}</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

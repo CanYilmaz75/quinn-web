@@ -1,47 +1,36 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
   title: "Impressum | Quinn",
-  description: "Anbieterkennzeichnung, Kontaktangaben und rechtliche Hinweise fuer Quinn."
+  description: "Anbieterkennzeichnung, Kontaktangaben und rechtliche Hinweise für Quinn."
 };
 
 const companyDetails = [
-  { label: "Anbieter", value: "Quinn [Rechtsform vor Go-live eintragen]" },
-  { label: "Anschrift", value: "[Strasse und Hausnummer], [PLZ Ort], Deutschland" },
-  { label: "Vertreten durch", value: "[Vertretungsberechtigte Person eintragen]" },
-  { label: "Registereintrag", value: "[Registergericht und Registernummer eintragen, falls vorhanden]" },
-  { label: "Umsatzsteuer-ID", value: "[USt-ID gemaess § 27a UStG eintragen, falls vorhanden]" }
+  { label: "Anbieter", value: legalDetails.providerName },
+  { label: "Inhaber", value: legalDetails.owner },
+  { label: "Anschrift", value: legalDetails.addressPendingDe },
+  { label: "Registereintrag", value: legalDetails.registerDe }
 ];
 
 const contactDetails = [
-  { label: "E-Mail", value: "[kontakt@quinn.example]", icon: Mail },
-  { label: "Telefon", value: "[Telefonnummer eintragen]", icon: Phone },
-  { label: "Sitz", value: "[Ort eintragen]", icon: MapPin }
+  { label: "E-Mail", value: legalDetails.email, href: `mailto:${legalDetails.email}`, icon: Mail },
+  { label: "Telefon", value: legalDetails.phoneDisplay, href: `tel:${legalDetails.phoneHref}`, icon: Phone }
 ];
 
 const legalSections = [
   {
-    title: "Verantwortlich fuer den Inhalt",
-    body: "[Name und Anschrift der inhaltlich verantwortlichen Person eintragen, falls abweichend vom Anbieter.]"
-  },
-  {
-    title: "Zustaendige Aufsichtsbehoerde",
-    body:
-      "Sollte Quinn im Rahmen einer erlaubnis- oder aufsichtsbeduerftigen Taetigkeit angeboten werden, muessen hier die zustaendige Behoerde und die relevanten Angaben ergaenzt werden."
-  },
-  {
-    title: "Berufsrechtliche Angaben",
-    body:
-      "Falls fuer den Anbieter besondere berufsrechtliche Regelungen gelten, muessen Berufsbezeichnung, Kammer, Staat der Verleihung und die einschlaegigen Regelungen aufgenommen werden."
+    title: "Verantwortlich für den Inhalt",
+    body: `${legalDetails.owner}; Anschrift wie beim Anbieter. ${legalDetails.addressPendingDe}`
   },
   {
     title: "Verbraucherstreitbeilegung",
     body:
-      "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Bitte vor Go-live pruefen, ob diese Angabe fuer eure konkrete Organisation zutrifft."
+      "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
   },
   {
     title: "Haftung fuer Inhalte",
@@ -80,14 +69,14 @@ export default function ImpressumPage() {
             <Eyebrow>Anbieterkennzeichnung</Eyebrow>
             <h1 className="mt-5 quinn-h2">Impressum</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Angaben gemaess den Informationspflichten fuer digitale Dienste. Die markierten Felder muessen vor dem
-              produktiven Einsatz mit den tatsaechlichen Unternehmensdaten abgeglichen und ersetzt werden.
+              Anbieterinformationen für diese Website. Quinn Health wird derzeit von Can Yilmaz aufgebaut. Die
+              ladungsfähige Geschäftsanschrift befindet sich noch in Klärung und wird vor Aufnahme des Geschäftsbetriebs ergänzt.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Stand: Mai 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Stand: {legalDetails.lastUpdatedDe}</p>
           </div>
 
           <div className="rounded-lg border border-border bg-[#F4F4F6] p-5 sm:p-6">
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               {contactDetails.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -96,7 +85,7 @@ export default function ImpressumPage() {
                     <p className="mt-4 text-xs font-semibold uppercase tracking-normal text-muted-foreground">
                       {item.label}
                     </p>
-                    <p className="mt-2 break-words text-sm leading-6 text-secondary-foreground">{item.value}</p>
+                    <a className="mt-2 block break-words text-sm leading-6 text-secondary-foreground underline-offset-4 hover:underline" href={item.href}>{item.value}</a>
                   </div>
                 );
               })}
@@ -130,8 +119,8 @@ export default function ImpressumPage() {
             <Eyebrow>Hinweise</Eyebrow>
             <h2 className="mt-5 quinn-h2">Transparenz und Verantwortlichkeit.</h2>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Diese Inhalte bilden eine belastbare Struktur fuer den Webauftritt. Die finale Fassung sollte vor
-              Veroeffentlichung juristisch geprueft werden.
+              Diese Angaben bilden den aktuellen Betreiberstand ab. Die ladungsfähige Anschrift bleibt bis zur
+              Festlegung ausdrücklich offen; eine externe rechtliche Prüfung der finalen Fassung steht weiterhin aus.
             </p>
           </div>
 

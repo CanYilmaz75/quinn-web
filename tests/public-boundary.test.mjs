@@ -111,6 +111,29 @@ test("Vercel Web Analytics is consent-gated and disclosed", () => {
   assert.match(legalCopy, /Vercel Web Analytics/);
 });
 
+test("public legal pages use confirmed operator details without uncontrolled go-live placeholders", () => {
+  const legalDetails = read("src/lib/legal-details.ts");
+  const legalPages = [
+    "src/app/impressum/page.tsx",
+    "src/app/datenschutz/page.tsx",
+    "src/app/agb/page.tsx",
+    "src/app/avv/page.tsx",
+    "src/app/en/legal-notice/page.tsx",
+    "src/app/en/privacy/page.tsx",
+    "src/app/en/terms/page.tsx",
+    "src/app/en/dpa/page.tsx"
+  ].map(read).join("\n");
+
+  assert.match(legalDetails, /Can Yilmaz, handelnd unter Quinn Health/);
+  assert.match(legalDetails, /can@quinnhealth\.de/);
+  assert.match(legalDetails, /\+49 176 81748167/);
+  assert.match(legalDetails, /Nicht im Handelsregister eingetragen/);
+  assert.match(legalDetails, /ladungsfähige Geschäftsanschrift wird derzeit festgelegt/);
+  assert.doesNotMatch(legalPages, /quinn\.example/i);
+  assert.doesNotMatch(legalPages, /\[(?:Quinn|kontakt|datenschutz|E-Mail|Strasse|Straße|Street|Enter|enter)/i);
+  assert.doesNotMatch(legalPages, /before go-live|vor Go-live|before productive use|vor produktiver Nutzung/i);
+});
+
 test("sitemap explicitly covers every public page route", () => {
   const sitemap = read("src/app/sitemap.ts");
   const pageFiles = allFiles("src/app").filter((file) => file.endsWith("/page.tsx") || file === "src/app/page.tsx");

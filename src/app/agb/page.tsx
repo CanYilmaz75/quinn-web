@@ -3,10 +3,11 @@ import { Building2, CreditCard, FileCheck, ShieldCheck } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
   title: "AGB | Quinn",
-  description: "Allgemeine Geschaeftsbedingungen und Nutzungsbedingungen fuer Quinn."
+  description: "Allgemeine Geschäftsbedingungen und Nutzungsbedingungen für Quinn."
 };
 
 const highlights = [
@@ -20,12 +21,12 @@ const terms = [
   {
     title: "1. Geltungsbereich",
     body:
-      "Diese AGB gelten fuer die Nutzung von Quinn durch Unternehmen, Pflegeeinrichtungen, ambulante Dienste, Traeger und sonstige berufliche Nutzer. Verbraucherangebote sind nicht vorgesehen, sofern nicht ausdruecklich anders vereinbart."
+      "Diese AGB gelten für die Nutzung von Quinn durch Unternehmen, Pflegeeinrichtungen, ambulante Dienste, Träger und sonstige berufliche Nutzer, wenn sie in den jeweiligen Vertrag einbezogen werden. Individuelle Vereinbarungen gehen vor. Verbraucherangebote sind nicht vorgesehen, sofern nicht ausdrücklich anders vereinbart."
   },
   {
     title: "2. Vertragspartner",
     body:
-      "Vertragspartner ist [Quinn Rechtstraeger mit Anschrift eintragen]. Kunden handeln durch ihre vertretungsberechtigten Personen oder autorisierte Administratoren."
+      `Vertragspartner ist ${legalDetails.providerName}. ${legalDetails.addressPendingDe} Kunden handeln durch ihre vertretungsberechtigten Personen oder autorisierte Administratoren.`
   },
   {
     title: "3. Leistungsgegenstand",
@@ -45,7 +46,7 @@ const terms = [
   {
     title: "6. Preise und Zahlung",
     body:
-      "Es gelten die zum Vertragsschluss angezeigten Preise oder individuell vereinbarte Konditionen. Preise koennen aktive Nutzer, Grundpakete, Rollout, Support und Zusatzleistungen beruecksichtigen. Zahlungsfristen, Rechnungsstellung und Steuern muessen vor Go-live final ergaenzt werden."
+      "Es gelten ausschließlich die im Angebot, Bestellformular oder individuellen Vertrag vereinbarten Preise, Zahlungsfristen und Abrechnungsbedingungen. Preise können insbesondere Pilotumfang, aktive Nutzer, Standorte, Rollout, Support und Zusatzleistungen berücksichtigen."
   },
   {
     title: "7. Laufzeit und Kuendigung",
@@ -90,7 +91,7 @@ const terms = [
   {
     title: "15. Schlussbestimmungen",
     body:
-      "Es gilt deutsches Recht. Gerichtsstand und salvatorische Regelungen muessen passend zur finalen Gesellschaftsform und Kundenstruktur ergaenzt werden."
+      "Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Für Gerichtsstand und sonstige Schlussbestimmungen gelten die gesetzlichen Vorschriften, soweit nicht wirksam etwas anderes vereinbart wird."
   }
 ];
 
@@ -109,10 +110,10 @@ export default function AgbPage() {
             <Eyebrow>Nutzungsbedingungen</Eyebrow>
             <h1 className="mt-5 quinn-h2">Allgemeine Geschaeftsbedingungen</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Grundlage fuer die Nutzung von Quinn durch berufliche Kunden. Diese Vorlage muss vor produktiver Nutzung
-              an Rechtsform, Zahlungsmodell, Laufzeiten und Enterprise-Vertraege angepasst werden.
+              Bedingungen für die Nutzung von Quinn durch berufliche Kunden. Sie gelten nur, wenn sie in das konkrete
+              Vertragsverhältnis einbezogen werden; individuelle Angebote und Vereinbarungen gehen vor.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Stand: Mai 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Stand: {legalDetails.lastUpdatedDe}</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

@@ -3,6 +3,7 @@ import { Database, FileText, LockKeyhole, UserCheck } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
   title: "Privacy | Quinn",
@@ -10,20 +11,20 @@ export const metadata: Metadata = {
 };
 
 const quickFacts = [
-  { label: "Controller", value: "[Enter Quinn legal entity, address and contact before go-live]", icon: UserCheck },
-  { label: "Privacy contact", value: "[Enter privacy@quinn.example or data protection officer contact]", icon: LockKeyhole },
+  { label: "Controller", value: `${legalDetails.providerNameEn}; ${legalDetails.addressPendingEn} Contact: ${legalDetails.email}`, icon: UserCheck },
+  { label: "Privacy contact", value: legalDetails.privacyContact, icon: LockKeyhole },
   { label: "Hosting and auth", value: "Supabase, server-side application, protected organisation areas", icon: Database },
   { label: "AI processing", value: "OpenAI API for transcription, structuring and draft support", icon: FileText }
 ];
 
 const privacySections = [
-  ["1. Controller", "The controller for this website and the Quinn application is [enter full company name, legal form, address, authorised representatives and contact]."],
-  ["2. Privacy contact", "For privacy questions, contact us at [enter email]. If a data protection officer is appointed, the name or contact route must be added here."],
+  ["1. Controller", `The controller for this website and the Quinn application is ${legalDetails.providerNameEn}. ${legalDetails.addressPendingEn} Contact: ${legalDetails.email}, ${legalDetails.phoneDisplay}.`],
+  ["2. Privacy contact", `For privacy questions, contact Can Yilmaz at ${legalDetails.privacyContact}. A separate data protection officer has not currently been appointed.`],
   ["3. Processed data", "We process account data, organisation data, roles and permissions, team memberships, logging, security data, billing information and content entered in consultation, care or healthcare workflows. This can include audio, transcripts, free text, documentation drafts, SIS-related content and export data."],
   ["4. Special categories of personal data", "In customer use, Quinn may process health data and care-related information. This requires an appropriate legal basis, clear role allocation and contractual rules between customer and provider."],
   ["5. Purposes of processing", "Data is processed to authenticate users, manage organisations, provide documentation workflows, turn audio and text into reviewable drafts, log approvals and exports, provide support, monitor security and enable billing."],
   ["6. Legal bases", "Depending on the use case, processing is based on contract performance, legitimate interests, legal obligations, consent or, for health data, a separately reviewed basis under Art. 9 GDPR. Customers remain responsible for their professional and legal use."],
-  ["7. Service providers and recipients", "We use Vercel for website hosting and consent-based Web Analytics, as well as other technical providers for authentication, storage, error analysis, AI processing and, where applicable, billing. The concrete processor list must be completed before go-live."],
+  ["7. Service providers and recipients", "We use Vercel for website hosting and consent-based Web Analytics, Supabase for authentication, database and private storage, and OpenAI for transcription and AI-assisted draft creation. Sentry for error analysis and Upstash for technical safeguards and rate limiting are used only where activated for the relevant operational path. Roles, regions, sub-processors and transfer safeguards are specified in the applicable DPA and provider assessment."],
   ["8. Third-country transfers", "Where providers outside the EU/EEA are used or remote access from third countries is possible, suitable safeguards such as EU standard contractual clauses, adequacy decisions or additional protective measures are reviewed and documented."],
   ["9. Retention and deletion", "Data is stored only as long as required for contract, operation, evidence, security, billing or legal obligations. The deletion concept covers user deletion, organisation deletion and customer-specific export or retention periods."],
   ["10. Cookies and local storage", "Quinn uses technically necessary cookies and comparable technologies, especially for login sessions and protected areas. Further details are provided in the cookie notice."],
@@ -43,8 +44,8 @@ export default function PrivacyPage() {
           <div className="max-w-xl">
             <Eyebrow>Privacy</Eyebrow>
             <h1 className="mt-5 quinn-h2">Privacy information</h1>
-            <p className="mt-5 text-base leading-7 text-secondary-foreground">These notes describe the intended data processing for the website and Quinn application. Before go-live, controller, providers, transfer bases and retention periods must be finally reviewed and completed.</p>
-            <p className="mt-6 text-sm text-muted-foreground">Last updated: July 2026</p>
+            <p className="mt-5 text-base leading-7 text-secondary-foreground">These notes describe the current processing for the website and Quinn application. Customer-specific processing, legal bases, retention periods and transfer assessments are additionally defined for the applicable contract and use case.</p>
+            <p className="mt-6 text-sm text-muted-foreground">Last updated: {legalDetails.lastUpdatedEn}</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {quickFacts.map((item) => { const Icon = item.icon; return <div key={item.label} className="rounded-lg border border-border bg-[#F4F4F6] p-5"><Icon className="h-4 w-4 text-foreground" /><p className="mt-4 text-xs font-semibold uppercase tracking-normal text-muted-foreground">{item.label}</p><p className="mt-2 text-sm leading-6 text-secondary-foreground">{item.value}</p></div>; })}

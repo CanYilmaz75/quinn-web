@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
   title: "Legal notice | Quinn",
@@ -10,38 +11,26 @@ export const metadata: Metadata = {
 };
 
 const companyDetails = [
-  { label: "Provider", value: "Quinn [enter legal form before go-live]" },
-  { label: "Address", value: "[Street and number], [Postal code City], Germany" },
-  { label: "Represented by", value: "[Enter authorised representative]" },
-  { label: "Register entry", value: "[Enter register court and registration number, if available]" },
-  { label: "VAT ID", value: "[Enter VAT ID according to § 27a UStG, if available]" }
+  { label: "Provider", value: legalDetails.providerNameEn },
+  { label: "Owner", value: legalDetails.owner },
+  { label: "Address", value: legalDetails.addressPendingEn },
+  { label: "Register entry", value: legalDetails.registerEn }
 ];
 
 const contactDetails = [
-  { label: "Email", value: "[contact@quinn.example]", icon: Mail },
-  { label: "Phone", value: "[Enter phone number]", icon: Phone },
-  { label: "Registered office", value: "[Enter city]", icon: MapPin }
+  { label: "Email", value: legalDetails.email, href: `mailto:${legalDetails.email}`, icon: Mail },
+  { label: "Phone", value: legalDetails.phoneDisplay, href: `tel:${legalDetails.phoneHref}`, icon: Phone }
 ];
 
 const legalSections = [
   {
     title: "Responsible for the content",
-    body: "[Enter name and address of the person responsible for content, if different from the provider.]"
-  },
-  {
-    title: "Responsible supervisory authority",
-    body:
-      "If Quinn is offered in the context of an activity that requires permission or supervision, the competent authority and relevant information must be added here."
-  },
-  {
-    title: "Professional-law information",
-    body:
-      "If special professional-law rules apply to the provider, the professional title, chamber, country of award and applicable rules must be included."
+    body: `${legalDetails.owner}; address as stated for the provider. ${legalDetails.addressPendingEn}`
   },
   {
     title: "Consumer dispute resolution",
     body:
-      "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board. Please review before go-live whether this statement applies to your specific organisation."
+      "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board."
   },
   {
     title: "Liability for content",
@@ -80,14 +69,14 @@ export default function LegalNoticePage() {
             <Eyebrow>Provider identification</Eyebrow>
             <h1 className="mt-5 quinn-h2">Legal notice</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Information according to the obligations for digital services. The marked fields must be matched with and
-              replaced by the actual company data before productive use.
+              Provider information for this website. Quinn Health is currently being built by Can Yilmaz. The serviceable
+              business address is still being determined and will be added before business operations begin.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Last updated: May 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Last updated: {legalDetails.lastUpdatedEn}</p>
           </div>
 
           <div className="rounded-lg border border-border bg-[#F4F4F6] p-5 sm:p-6">
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               {contactDetails.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -96,7 +85,7 @@ export default function LegalNoticePage() {
                     <p className="mt-4 text-xs font-semibold uppercase tracking-normal text-muted-foreground">
                       {item.label}
                     </p>
-                    <p className="mt-2 break-words text-sm leading-6 text-secondary-foreground">{item.value}</p>
+                    <a className="mt-2 block break-words text-sm leading-6 text-secondary-foreground underline-offset-4 hover:underline" href={item.href}>{item.value}</a>
                   </div>
                 );
               })}
@@ -130,8 +119,8 @@ export default function LegalNoticePage() {
             <Eyebrow>Notes</Eyebrow>
             <h2 className="mt-5 quinn-h2">Transparency and responsibility.</h2>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              This content provides a robust structure for the public website. The final version should be legally
-              reviewed before publication.
+              These details reflect the current provider status. The serviceable address remains expressly open until it
+              is determined; external legal review of the final version is still pending.
             </p>
           </div>
 

@@ -3,6 +3,7 @@ import { Database, FileText, LockKeyhole, UserCheck } from "lucide-react";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { legalDetails } from "@/lib/legal-details";
 
 export const metadata: Metadata = {
   title: "Datenschutz | Quinn",
@@ -12,12 +13,12 @@ export const metadata: Metadata = {
 const quickFacts = [
   {
     label: "Verantwortlicher",
-    value: "[Quinn Rechtstraeger, Anschrift und Kontakt vor Go-live eintragen]",
+    value: `${legalDetails.providerName}; ${legalDetails.addressPendingDe} Kontakt: ${legalDetails.email}`,
     icon: UserCheck
   },
   {
     label: "Datenschutzkontakt",
-    value: "[datenschutz@quinn.example oder Datenschutzbeauftragte Person eintragen]",
+    value: legalDetails.privacyContact,
     icon: LockKeyhole
   },
   {
@@ -36,12 +37,12 @@ const privacySections = [
   {
     title: "1. Verantwortlicher",
     body:
-      "Verantwortlich fuer diese Website und die Quinn-Anwendung ist [vollstaendige Firmierung, Rechtsform, Anschrift, Vertretungsberechtigte und Kontakt eintragen]."
+      `Verantwortlich für diese Website und die Quinn-Anwendung ist ${legalDetails.providerName}. ${legalDetails.addressPendingDe} Kontakt: ${legalDetails.email}, ${legalDetails.phoneDisplay}.`
   },
   {
     title: "2. Datenschutzkontakt",
     body:
-      "Bei Fragen zum Datenschutz erreichen Sie uns unter [E-Mail eintragen]. Falls ein Datenschutzbeauftragter benannt ist, muessen Name oder Kontaktweg hier ergaenzt werden."
+      `Bei Datenschutzfragen erreichen Sie Can Yilmaz unter ${legalDetails.privacyContact}. Ein gesonderter Datenschutzbeauftragter ist derzeit nicht benannt.`
   },
   {
     title: "3. Verarbeitete Daten",
@@ -66,7 +67,7 @@ const privacySections = [
   {
     title: "7. Dienstleister und Empfaenger",
     body:
-      "Wir setzen technische Dienstleister ein, insbesondere Vercel fuer Website-Hosting und einwilligungsgebundene Web Analytics sowie weitere Anbieter fuer Authentifizierung, Speicherung, Fehleranalyse, KI-Verarbeitung und gegebenenfalls Abrechnung. Die konkrete Liste der Unterauftragsverarbeiter muss vor Go-live mit Anbieter, Sitz, Zweck und Transfergrundlage ergaenzt werden."
+      "Wir setzen Vercel für Website-Hosting und einwilligungsgebundene Web Analytics, Supabase für Authentifizierung, Datenbank und private Speicherung sowie OpenAI für Transkription und KI-gestützte Entwurfserstellung ein. Sentry zur Fehleranalyse und Upstash für technische Schutz- und Rate-Limit-Funktionen werden nur eingesetzt, soweit sie für den jeweiligen Betriebsweg aktiviert sind. Einzelheiten zu Rollen, Regionen, Unterauftragnehmern und Transfergrundlagen werden im jeweiligen AVV und der Anbieterprüfung festgelegt."
   },
   {
     title: "8. Drittlanduebermittlungen",
@@ -115,11 +116,11 @@ export default function DatenschutzPage() {
             <Eyebrow>Datenschutz</Eyebrow>
             <h1 className="mt-5 quinn-h2">Datenschutzhinweise</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
-              Diese Hinweise beschreiben die vorgesehenen Datenverarbeitungen fuer Website und Quinn-Anwendung. Vor
-              dem Go-live muessen Verantwortlicher, Dienstleister, Transfergrundlagen und Aufbewahrungsfristen final
-              geprueft und ergaenzt werden.
+              Diese Hinweise beschreiben die Datenverarbeitungen der Website und der Quinn-Anwendung nach aktuellem
+              Stand. Konkrete Kundenverarbeitungen, Rechtsgrundlagen, Aufbewahrungsfristen und Transferprüfungen werden
+              zusätzlich im jeweiligen Vertrags- und Nutzungskontext festgelegt.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Stand: Juli 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Stand: {legalDetails.lastUpdatedDe}</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
