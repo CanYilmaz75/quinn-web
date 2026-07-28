@@ -23,7 +23,7 @@ const privacySections = [
   ["4. Special categories of personal data", "In customer use, Quinn may process health data and care-related information. This requires an appropriate legal basis, clear role allocation and contractual rules between customer and provider."],
   ["5. Purposes of processing", "Data is processed to authenticate users, manage organisations, provide documentation workflows, turn audio and text into reviewable drafts, log approvals and exports, provide support, monitor security and enable billing."],
   ["6. Legal bases", "Depending on the use case, processing is based on contract performance, legitimate interests, legal obligations, consent or, for health data, a separately reviewed basis under Art. 9 GDPR. Customers remain responsible for their professional and legal use."],
-  ["7. Service providers and recipients", "We use technical service providers, especially for hosting, authentication, storage, error analysis, AI processing and, where applicable, billing. The concrete processor list must be completed before go-live."],
+  ["7. Service providers and recipients", "We use Vercel for website hosting and consent-based Web Analytics, as well as other technical providers for authentication, storage, error analysis, AI processing and, where applicable, billing. The concrete processor list must be completed before go-live."],
   ["8. Third-country transfers", "Where providers outside the EU/EEA are used or remote access from third countries is possible, suitable safeguards such as EU standard contractual clauses, adequacy decisions or additional protective measures are reviewed and documented."],
   ["9. Retention and deletion", "Data is stored only as long as required for contract, operation, evidence, security, billing or legal obligations. The deletion concept covers user deletion, organisation deletion and customer-specific export or retention periods."],
   ["10. Cookies and local storage", "Quinn uses technically necessary cookies and comparable technologies, especially for login sessions and protected areas. Further details are provided in the cookie notice."],
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
             <Eyebrow>Privacy</Eyebrow>
             <h1 className="mt-5 quinn-h2">Privacy information</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">These notes describe the intended data processing for the website and Quinn application. Before go-live, controller, providers, transfer bases and retention periods must be finally reviewed and completed.</p>
-            <p className="mt-6 text-sm text-muted-foreground">Last updated: May 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Last updated: July 2026</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {quickFacts.map((item) => { const Icon = item.icon; return <div key={item.label} className="rounded-lg border border-border bg-[#F4F4F6] p-5"><Icon className="h-4 w-4 text-foreground" /><p className="mt-4 text-xs font-semibold uppercase tracking-normal text-muted-foreground">{item.label}</p><p className="mt-2 text-sm leading-6 text-secondary-foreground">{item.value}</p></div>; })}

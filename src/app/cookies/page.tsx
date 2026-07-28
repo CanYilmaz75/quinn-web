@@ -25,8 +25,8 @@ const cookieGroups = [
   {
     name: "Analyse",
     purpose: "Produktmetriken und Nutzungsanalyse nur bei aktivierter Funktion und passender Rechtsgrundlage.",
-    examples: "Derzeit als Feature Flag vorbereitet; vor Einsatz Anbieter und Einwilligungslogik ergaenzen",
-    legalBasis: "Einwilligung oder andere zu pruefende Grundlage"
+    examples: "Vercel Web Analytics; Aktivierung erst nach Zustimmung zur Kategorie Analyse",
+    legalBasis: "Einwilligung; bis zur Zustimmung deaktiviert"
   }
 ];
 
@@ -76,10 +76,10 @@ export default function CookiesPage() {
             <h1 className="mt-5 quinn-h2">Cookies und lokale Speicherung</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
               Quinn nutzt im Grundaufbau vor allem technisch notwendige Cookies fuer Login und geschuetzte App-Bereiche.
-              Analyse- oder Marketingdienste duerfen erst nach finaler Pruefung und passender Einwilligungslogik aktiv
-              werden.
+              Vercel Web Analytics wird ausschließlich nach Zustimmung zur Kategorie Analyse geladen; Marketingdienste
+              sind nicht aktiv.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Stand: Mai 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Stand: Juli 2026</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

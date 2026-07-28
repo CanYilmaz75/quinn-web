@@ -25,8 +25,8 @@ const cookieGroups = [
   {
     name: "Analytics",
     purpose: "Product metrics and usage analysis only when the function is enabled and a suitable legal basis exists.",
-    examples: "Currently prepared as a feature flag; add provider and consent logic before use",
-    legalBasis: "Consent or another basis to be reviewed"
+    examples: "Vercel Web Analytics; enabled only after consent to the Analytics category",
+    legalBasis: "Consent; disabled until consent is given"
   }
 ];
 
@@ -76,9 +76,10 @@ export default function CookiesPage() {
             <h1 className="mt-5 quinn-h2">Cookies and local storage</h1>
             <p className="mt-5 text-base leading-7 text-secondary-foreground">
               In the base setup, Quinn mainly uses technically necessary cookies for login and protected app areas.
-              Analytics or marketing services may only become active after final review and suitable consent logic.
+              Vercel Web Analytics is loaded only after consent to the Analytics category; marketing services are not
+              active.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Last updated: May 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Last updated: July 2026</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

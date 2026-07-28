@@ -66,7 +66,7 @@ const privacySections = [
   {
     title: "7. Dienstleister und Empfaenger",
     body:
-      "Wir setzen technische Dienstleister ein, insbesondere Hosting, Authentifizierung, Speicherung, Fehleranalyse, KI-Verarbeitung und gegebenenfalls Abrechnung. Die konkrete Liste der Unterauftragsverarbeiter muss vor Go-live mit Anbieter, Sitz, Zweck und Transfergrundlage ergaenzt werden."
+      "Wir setzen technische Dienstleister ein, insbesondere Vercel fuer Website-Hosting und einwilligungsgebundene Web Analytics sowie weitere Anbieter fuer Authentifizierung, Speicherung, Fehleranalyse, KI-Verarbeitung und gegebenenfalls Abrechnung. Die konkrete Liste der Unterauftragsverarbeiter muss vor Go-live mit Anbieter, Sitz, Zweck und Transfergrundlage ergaenzt werden."
   },
   {
     title: "8. Drittlanduebermittlungen",
@@ -119,7 +119,7 @@ export default function DatenschutzPage() {
               dem Go-live muessen Verantwortlicher, Dienstleister, Transfergrundlagen und Aufbewahrungsfristen final
               geprueft und ergaenzt werden.
             </p>
-            <p className="mt-6 text-sm text-muted-foreground">Stand: Mai 2026</p>
+            <p className="mt-6 text-sm text-muted-foreground">Stand: Juli 2026</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">

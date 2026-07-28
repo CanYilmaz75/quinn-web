@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 
+import { ConsentAwareAnalytics } from "@/components/analytics/consent-aware-analytics";
 import { CookieConsentManager } from "@/components/consent/cookie-consent-manager";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import "@/app/globals.css";
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
         {children}
+        <ConsentAwareAnalytics />
         <CookieConsentManager />
         <NewsletterSignup variant="popup" trigger="after-consent" />
         <NewsletterSignup variant="popup" trigger="pricing" />

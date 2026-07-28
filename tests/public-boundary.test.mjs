@@ -89,6 +89,28 @@ test("marketing forms use narrow server-side proxy routes without app secrets", 
   }
 });
 
+test("Vercel Web Analytics is consent-gated and disclosed", () => {
+  const pkg = JSON.parse(read("package.json"));
+  const layout = read("src/app/layout.tsx");
+  const analytics = read("src/components/analytics/consent-aware-analytics.tsx");
+  const consent = read("src/components/consent/cookie-consent-manager.tsx");
+  const legalCopy = [
+    read("src/app/datenschutz/page.tsx"),
+    read("src/app/cookies/page.tsx"),
+    read("src/app/en/privacy/page.tsx"),
+    read("src/app/en/cookies/page.tsx")
+  ].join("\n");
+
+  assert.equal(Boolean(pkg.dependencies?.["@vercel/analytics"]), true);
+  assert.match(layout, /<ConsentAwareAnalytics \/>/);
+  assert.match(analytics, /from ["']@vercel\/analytics\/next["']/);
+  assert.match(analytics, /preferences\?\.analytics === true/);
+  assert.match(analytics, /quinn:consent-updated/);
+  assert.match(analytics, /enabled \? <Analytics \/> : null/);
+  assert.match(consent, /Vercel Web Analytics/);
+  assert.match(legalCopy, /Vercel Web Analytics/);
+});
+
 test("sitemap explicitly covers every public page route", () => {
   const sitemap = read("src/app/sitemap.ts");
   const pageFiles = allFiles("src/app").filter((file) => file.endsWith("/page.tsx") || file === "src/app/page.tsx");

@@ -71,8 +71,9 @@ const categories = [
     title: "Analyse",
     titleEn: "Analytics",
     description:
-      "Hilft uns zu verstehen, wie Quinn genutzt wird. Aktiviert Google Consent Mode analytics_storage erst nach Zustimmung.",
-    descriptionEn: "Helps us understand how Quinn is used. Google Consent Mode analytics_storage is activated only after consent."
+      "Hilft uns zu verstehen, wie Quinn genutzt wird. Aktiviert Vercel Web Analytics und Google Consent Mode analytics_storage erst nach Zustimmung.",
+    descriptionEn:
+      "Helps us understand how Quinn is used. Activates Vercel Web Analytics and Google Consent Mode analytics_storage only after consent."
   },
   {
     key: "marketing",
