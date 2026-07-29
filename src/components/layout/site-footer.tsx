@@ -1,9 +1,9 @@
 import type { Route } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ConsentSettingsButton } from "@/components/consent/consent-settings-button";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
-import { QuinnWordmark } from "@/components/shared/logo";
 
 type SiteLocale = "de" | "en";
 
@@ -97,29 +97,42 @@ export function SiteFooter({ locale = "de" }: { locale?: SiteLocale }) {
 
   return (
     <footer className="border-t border-border bg-white">
-      <div className="quinn-container grid gap-10 py-12 lg:grid-cols-[1.4fr_repeat(5,auto)]">
-        <div className="max-w-md">
-          <QuinnWordmark subline="" />
-          <p className="mt-5 text-sm leading-6 text-secondary-foreground">{description}</p>
-          <div className="mt-6">
-            <NewsletterSignup locale={locale} />
-          </div>
-          <p className="mt-6 text-xs text-muted-foreground">© 2026 Quinn</p>
+      <div className="quinn-container">
+        <div className="py-10">
+          <NewsletterSignup locale={locale} />
         </div>
 
-        {activeColumns.map((column) => (
-          <div key={column.title} className="space-y-3 text-sm">
-            <p className="font-semibold text-foreground">{column.title}</p>
-            <div className="space-y-3 text-secondary-foreground">
-              {column.links.map(([label, href]) => (
-                <Link key={href} href={href} className="block transition-colors hover:text-foreground">
-                  {label}
-                </Link>
-              ))}
-              {column.title === legalColumnTitle ? <ConsentSettingsButton locale={locale} /> : null}
-            </div>
+        <div className="grid gap-10 border-t border-border py-10 lg:grid-cols-[1.4fr_repeat(5,auto)]">
+          <div className="max-w-md">
+            <Link
+              href={locale === "en" ? ("/en" as Route) : ("/" as Route)}
+              className="inline-flex items-center gap-3"
+              aria-label={locale === "en" ? "Quinn homepage" : "Quinn Startseite"}
+            >
+              <Image src="/quinn-logo.svg" alt="Quinn Logo" width={40} height={40} className="h-10 w-10 rounded-xl" />
+              <span className="text-lg font-semibold tracking-[-0.03em] text-[#0A0A0F]">Quinn</span>
+            </Link>
+            <p className="mt-5 text-sm leading-6 text-secondary-foreground">{description}</p>
           </div>
-        ))}
+
+          {activeColumns.map((column) => (
+            <div key={column.title} className="space-y-3 text-sm">
+              <p className="font-semibold text-foreground">{column.title}</p>
+              <div className="space-y-3 text-secondary-foreground">
+                {column.links.map(([label, href]) => (
+                  <Link key={href} href={href} className="block transition-colors hover:text-foreground">
+                    {label}
+                  </Link>
+                ))}
+                {column.title === legalColumnTitle ? <ConsentSettingsButton locale={locale} /> : null}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="border-t border-border py-5">
+          <p className="text-xs text-muted-foreground">© 2026 Quinn</p>
+        </div>
       </div>
     </footer>
   );

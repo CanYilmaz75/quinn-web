@@ -228,6 +228,26 @@ export function NewsletterSignup({ variant = "footer", locale }: NewsletterSignu
     };
   }, [pathname, variant]);
 
+  useEffect(() => {
+    if (variant !== "popup" || !isVisible) {
+      return;
+    }
+
+    const footerSignup = document.querySelector<HTMLElement>('[data-newsletter-variant="footer"]');
+    if (!footerSignup) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(false);
+      }
+    });
+    observer.observe(footerSignup);
+
+    return () => observer.disconnect();
+  }, [isVisible, variant]);
+
   function closePopup() {
     remember(DISMISSED_KEY);
     setIsVisible(false);
@@ -239,8 +259,12 @@ export function NewsletterSignup({ variant = "footer", locale }: NewsletterSignu
 
   if (variant === "footer") {
     return (
-      <section className="rounded-[1.5rem] border border-border bg-white p-5" aria-label={t.footerAria}>
-        <div className="mb-4 flex items-start gap-3">
+      <section
+        className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(24rem,0.9fr)] lg:items-end"
+        aria-label={t.footerAria}
+        data-newsletter-variant="footer"
+      >
+        <div className="flex max-w-xl items-start gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#E7F1EE]">
             <Mail className="h-5 w-5 text-[#1E6B72]" />
           </div>

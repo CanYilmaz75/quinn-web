@@ -190,6 +190,21 @@ test("P1 trust and conversion surfaces are founder-led, concrete and low-frictio
   assert.match(demoForms, /trackPublicConversion\("demo_form_submitted"/);
 });
 
+test("footer uses the canonical Quinn logo and gives newsletter its own calm row", () => {
+  const footer = read("src/components/layout/site-footer.tsx");
+  const newsletter = read("src/components/newsletter/newsletter-signup.tsx");
+
+  assert.match(footer, /import Image from "next\/image"/);
+  assert.match(footer, /src="\/quinn-logo\.svg"/);
+  assert.doesNotMatch(footer, /QuinnWordmark/);
+  assert.match(footer, /<NewsletterSignup locale=\{locale\} \/>[\s\S]*activeColumns\.map/);
+  assert.match(newsletter, /lg:grid-cols-\[minmax\(0,1fr\)_minmax\(24rem,0\.9fr\)\]/);
+  assert.match(newsletter, /data-newsletter-variant="footer"/);
+  assert.match(newsletter, /IntersectionObserver/);
+  assert.match(newsletter, /entry\.isIntersecting/);
+  assert.doesNotMatch(newsletter, /variant === "footer"[\s\S]{0,200}rounded-\[1\.5rem\] border border-border bg-white p-5/);
+});
+
 test("P2 SEO, language and funnel measurement are complete", () => {
   const publicSite = read("src/content/public-site.ts");
   const publicConfig = read("src/lib/public-config.ts");
