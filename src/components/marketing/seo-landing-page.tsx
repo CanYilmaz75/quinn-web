@@ -70,7 +70,7 @@ export function SeoLandingPage({
         reviewWorkflow: "Prüfbarer Ablauf",
         humanApproval: "Freigabe durch Fachkraft",
         workflow: "Ablauf",
-        metrics: "Pilotmetriken",
+        metrics: "Messwerte im Pilot",
         pilotReady: "Bereit für einen kontrollierten Pilot"
       }
     : {

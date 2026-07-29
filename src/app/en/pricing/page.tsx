@@ -100,25 +100,31 @@ export default function PricingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <SiteHeader locale="en" />
 
-      <section className="quinn-container py-20 text-center sm:py-28">
+      <section className="quinn-container py-12 text-center sm:py-28">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Pricing</p>
-        <h1 className="mx-auto mt-6 max-w-4xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
+        <h1 className="mx-auto mt-4 max-w-4xl text-[36px] font-semibold leading-tight tracking-[-0.03em] sm:mt-6 sm:text-[58px]">
           Consultation-led pricing for pilots, facilities and operators.
         </h1>
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
+        <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-secondary-foreground sm:mt-6 sm:text-lg sm:leading-8">
           Quinn does not start with a standard tariff. A short pricing conversation aligns workflow, roles, privacy review, pilot budget and rollout with the reality of your organisation.
         </p>
-        <p className="mx-auto mt-5 max-w-2xl rounded-2xl border border-[#DDE8E4] bg-[#FBFAF6] px-5 py-4 text-sm font-medium leading-6 text-secondary-foreground">
+        <p className="mx-auto mt-4 max-w-2xl rounded-2xl border border-[#DDE8E4] bg-[#FBFAF6] px-5 py-4 text-sm font-medium leading-6 text-secondary-foreground sm:mt-5">
           No public list price: in 15 minutes, we clarify the workflow, facility size and a suitable budget range — without a purchase commitment.
         </p>
+        <Button asChild size="lg" className="mt-5 px-7 sm:mt-6">
+          <Link href="/en/book-demo?intent=pilot-pricing">
+            Request pricing conversation
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
       </section>
 
       <section className="bg-[#FBFAF6] py-12 sm:py-16">
-        <div className="quinn-container grid gap-6 lg:grid-cols-3">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-3">
           {plans.map((plan) => (
             <article
               key={plan.name}
-              className={`rounded-[1.5rem] border bg-white p-6 shadow-subtle ${plan.featured ? "border-[#1E6B72]" : "border-[#E8E8EC]"}`}
+              className={`min-w-0 rounded-[1.5rem] border bg-white p-6 shadow-subtle ${plan.featured ? "border-[#1E6B72]" : "border-[#E8E8EC]"}`}
             >
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#1E6B72]">{plan.name}</p>
               <p className="mt-5 text-3xl font-semibold text-foreground">{plan.price}</p>

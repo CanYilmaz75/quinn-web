@@ -250,7 +250,7 @@ export const publicFaqsByLocale = {
     },
     {
       question: "Wie läuft ein Pilot ab?",
-      answer: "Wir starten mit einem klar abgegrenzten Aufnahme-, SIS- oder Prüfablauf, definieren Metriken und prüfen nach 4–6 Wochen Nutzung, Qualität und Entlastung."
+      answer: "Wir starten mit einem klar abgegrenzten Aufnahme-, SIS- oder Prüfablauf, definieren Messwerte und prüfen nach 4–6 Wochen Nutzung, Qualität und Entlastung."
     },
     {
       question: "Was unterscheidet Quinn von Sprachdokumentation?",
@@ -280,9 +280,9 @@ export const publicFaqsByLocale = {
 export const pilotMetricsByLocale = {
   de: {
     minutesPerCase: "Minuten pro Fall",
-    editRate: "Editierquote",
+    editRate: "Bearbeitungsaufwand",
     completeness: "Vollständigkeit",
-    reviewEffort: "PDL/QM-Prüfaufwand",
+    reviewEffort: "Prüfaufwand für PDL/QM",
     teamAcceptance: "Akzeptanz im Team"
   },
   en: {

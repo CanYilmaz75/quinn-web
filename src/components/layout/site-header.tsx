@@ -2,7 +2,7 @@ import type { Route } from "next";
 import type { ComponentType } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { BadgeCheck, BriefcaseMedical, ChevronDown, FileText, HeartHandshake, Menu, Mic, Newspaper, ShieldCheck, Stethoscope, Users, UserRoundCheck } from "lucide-react";
+import { BadgeCheck, BriefcaseMedical, ChevronDown, FileText, HeartHandshake, Menu, Mic, Newspaper, ShieldCheck, Stethoscope, Users, UserRoundCheck, X } from "lucide-react";
 
 import { TrackedDemoLink } from "@/components/analytics/tracked-demo-link";
 import { Button } from "@/components/ui/button";
@@ -160,8 +160,8 @@ export function SiteHeader({ locale = "de" }: { locale?: SiteHeaderLocale }) {
   const activeMenus = locale === "en" ? englishMenus : menus;
   const labels =
     locale === "en"
-      ? { home: "Quinn homepage", nav: "Main navigation", login: "Login", demo: "Request a demo", mobileNav: "Open menu" }
-      : { home: "Quinn Startseite", nav: "Hauptnavigation", login: "Einloggen", demo: "Unverbindlich Demo anfragen", mobileNav: "Menü öffnen" };
+      ? { home: "Quinn homepage", nav: "Main navigation", login: "Login", demo: "Request a demo", mobileNavOpen: "Open menu", mobileNavClose: "Close menu" }
+      : { home: "Quinn Startseite", nav: "Hauptnavigation", login: "Einloggen", demo: "Unverbindlich Demo anfragen", mobileNavOpen: "Menü öffnen", mobileNavClose: "Menü schließen" };
 
   return (
     <div className="sticky top-0 z-30 border-b border-border bg-quinn-warm">
@@ -196,8 +196,11 @@ export function SiteHeader({ locale = "de" }: { locale?: SiteHeaderLocale }) {
           </div>
 
           <details className="group md:hidden">
-            <summary aria-label={labels.mobileNav} className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-border bg-white [&::-webkit-details-marker]:hidden">
-              <Menu className="h-5 w-5 text-secondary-foreground" />
+            <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-border bg-white [&::-webkit-details-marker]:hidden">
+              <Menu className="h-5 w-5 text-secondary-foreground group-open:hidden" aria-hidden="true" />
+              <X className="hidden h-5 w-5 text-secondary-foreground group-open:block" aria-hidden="true" />
+              <span className="sr-only group-open:hidden">{labels.mobileNavOpen}</span>
+              <span className="sr-only hidden group-open:inline">{labels.mobileNavClose}</span>
             </summary>
             <div className="hidden group-open:block absolute left-4 right-4 z-40 mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl border border-border bg-white p-4 shadow-subtle">
               {activeMenus.map((menu) => (

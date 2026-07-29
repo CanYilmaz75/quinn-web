@@ -287,6 +287,45 @@ test("adversarial UX tickets keep mobile conversion routes clear and contextual"
   assert.doesNotMatch(pricing, /Pilotmetriken|Editierquote|Transferlogik|Rollout-Governance|Prüfung- und Qualitätsauswertung/);
 });
 
+test("post-fix UX review keeps mobile navigation explicit and German conversion copy plain", () => {
+  const header = read("src/components/layout/site-header.tsx");
+  const sisPage = read("src/app/anwendungen/sis-aufnahme/page.tsx");
+  const seoLanding = read("src/components/marketing/seo-landing-page.tsx");
+  const publicSite = read("src/content/public-site.ts");
+  const pricingDe = read("src/app/preise/page.tsx");
+  const pricingEn = read("src/app/en/pricing/page.tsx");
+  const demoDe = read("src/app/demo-buchen/demo-booking-tool.tsx");
+
+  assert.match(header, /Menu className="[^\"]*group-open:hidden/);
+  assert.match(header, /X className="hidden[^\"]*group-open:block/);
+  assert.match(header, /mobileNavOpen: "Menü öffnen"/);
+  assert.match(header, /mobileNavClose: "Menü schließen"/);
+  assert.match(header, /mobileNavOpen: "Open menu"/);
+  assert.match(header, /mobileNavClose: "Close menu"/);
+  assert.doesNotMatch(header, /summary aria-label=\{labels\.mobileNav\}/);
+
+  assert.match(sisPage, /Messwerte im Pilot/);
+  assert.match(sisPage, /Übernahme ins Fachsystem/);
+  assert.doesNotMatch(sisPage, /Pilotmetriken|Editierquote|PDL\/QM-Prüfaufwand|Freigabe & Transfer/);
+  assert.match(seoLanding, /metrics: "Messwerte im Pilot"/);
+  assert.doesNotMatch(publicSite, /definieren Metriken/);
+  assert.match(publicSite, /editRate: "Bearbeitungsaufwand"/);
+  assert.match(publicSite, /reviewEffort: "Prüfaufwand für PDL\/QM"/);
+
+  assert.match(pricingDe, /Kein öffentlicher Listenpreis:[\s\S]*Preisgespräch anfragen/);
+  assert.match(pricingDe, /href="\/demo-buchen\?intent=pilot-pricing"/);
+  assert.match(pricingDe, /quinn-container py-12 text-center sm:py-28/);
+  assert.match(pricingDe, /grid min-w-0 grid-cols-1 gap-6/);
+  assert.match(pricingEn, /No public list price:[\s\S]*Request pricing conversation/);
+  assert.match(pricingEn, /href="\/en\/book-demo\?intent=pilot-pricing"/);
+  assert.match(pricingEn, /quinn-container py-12 text-center sm:py-28/);
+  assert.match(pricingEn, /grid min-w-0 grid-cols-1 gap-6/);
+
+  assert.match(demoDe, /Welchen Ablauf möchten Sie ansehen\?/);
+  assert.match(demoDe, /Ablauf auswählen/);
+  assert.doesNotMatch(demoDe, /Welchen Workflow|Workflow auswählen|zu Ihrem Workflow passt|dokumentationsnaher Workflow/);
+});
+
 test("public legal pages use confirmed operator details without uncontrolled go-live placeholders", () => {
   const legalDetails = read("src/lib/legal-details.ts");
   const legalPages = [

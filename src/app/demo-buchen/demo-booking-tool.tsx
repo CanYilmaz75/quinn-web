@@ -32,11 +32,11 @@ const workflows = [
   "Pflegeaufnahme und SIS",
   "Pflege- oder Beratungsdokumentation",
   "Übergabe und fachliche Prüfung",
-  "Medizinischer Dokumentationsworkflow",
+  "Medizinischer Dokumentationsablauf",
   "Pilot und Preisrahmen",
   "Standortangebot und Einführung",
   "Träger- oder Verbundlösung",
-  "Anderer dokumentationsnaher Workflow"
+  "Anderer dokumentationsnaher Ablauf"
 ];
 
 export function DemoBookingTool({ initialInterest = "", heading = "Demo direkt mit dem Gründer klären." }: { initialInterest?: string; heading?: string }) {
@@ -116,7 +116,7 @@ export function DemoBookingTool({ initialInterest = "", heading = "Demo direkt m
         {heading}
       </h2>
       <p className="mx-auto mt-3 max-w-lg text-center text-sm leading-6 text-secondary-foreground">
-        In 15 Minuten sehen Sie einen fiktiven Produktfluss und klären, ob Quinn zu Ihrem Workflow passt.
+        In 15 Minuten sehen Sie einen fiktiven Produktfluss und klären, ob Quinn zu Ihrem Ablauf passt.
       </p>
       <p className="mx-auto mt-2 max-w-lg text-center text-xs leading-5 text-muted-foreground">
         Bitte keine echten Bewohner-, Patienten- oder Gesundheitsdaten eintragen. Ziel: persönliche Rückmeldung innerhalb von zwei Werktagen.
@@ -143,10 +143,10 @@ export function DemoBookingTool({ initialInterest = "", heading = "Demo direkt m
           <Input value={form.organisation} onChange={(event) => updateForm("organisation", event.target.value)} placeholder="Pflegeeinrichtung oder Praxis" autoComplete="organization" required />
         </label>
         <label className="space-y-2 text-sm font-medium text-secondary-foreground">
-          Welchen Workflow möchten Sie ansehen? <span aria-hidden="true">*</span>
+          Welchen Ablauf möchten Sie ansehen? <span aria-hidden="true">*</span>
           <span className="relative block">
             <select value={form.interest} onChange={(event) => updateForm("interest", event.target.value)} className="h-11 w-full appearance-none rounded-[10px] border border-[#D7D2CC] bg-white px-3 pr-9 text-sm text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" required>
-              <option value="">Workflow auswählen</option>
+              <option value="">Ablauf auswählen</option>
               {workflows.map((workflow) => <option key={workflow}>{workflow}</option>)}
             </select>
             <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary-foreground" />
