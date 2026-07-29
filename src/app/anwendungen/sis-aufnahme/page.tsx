@@ -21,6 +21,7 @@ const metrics = [
 export default function SisAufnahmePage() {
   return (
     <SeoLandingPage
+      demoIntent="sis"
       eyebrow="SIS-Aufnahme"
       title="SIS-Aufnahme mit KI vorbereiten: aus Gespräch und Notizen wird ein prüfbarer Entwurf"
       description="Quinn unterstützt den ersten Schritt vor der Bewohnerakte: Aufnahmegespräch, Notizen und Audio werden zu einem strukturierten Entwurf mit Lückenhinweisen und menschlicher Freigabe."

@@ -246,6 +246,47 @@ test("P2 SEO, language and funnel measurement are complete", () => {
   assert.doesNotMatch(germanPublicCopy, /\b(?:fuer|Fuer|pruefbare|Uebersicht|geschuetzte|koennen|muessen)\b/);
 });
 
+test("adversarial UX tickets keep mobile conversion routes clear and contextual", () => {
+  const globals = read("src/app/globals.css");
+  const header = read("src/components/layout/site-header.tsx");
+  const consent = read("src/components/consent/cookie-consent-manager.tsx");
+  const demoIntent = read("src/lib/demo-intent.ts");
+  const demoPages = [read("src/app/demo-buchen/page.tsx"), read("src/app/en/book-demo/page.tsx")].join("\n");
+  const demoForms = [
+    read("src/app/demo-buchen/demo-booking-tool.tsx"),
+    read("src/app/en/book-demo/demo-booking-tool.tsx")
+  ].join("\n");
+  const homepages = [read("src/app/page.tsx"), read("src/app/en/page.tsx")].join("\n");
+  const pricing = [read("src/app/preise/page.tsx"), read("src/app/en/pricing/page.tsx")].join("\n");
+  const seoLanding = read("src/components/marketing/seo-landing-page.tsx");
+
+  assert.match(globals, /quinn-container[\s\S]*min-w-0/);
+  assert.match(header, /hidden group-open:block/);
+  assert.match(header, /Prüfung & Qualität/);
+  assert.doesNotMatch(header, /Review & Qualität/);
+
+  assert.match(demoPages, /grid-cols-1/);
+  assert.match(demoPages, /className="contents lg:block/);
+  assert.match(demoPages, /order-2 min-w-0/);
+  assert.match(demoForms, /initialInterest/);
+  assert.match(demoForms, /\* Pflichtfelder|\* Required fields/);
+  assert.match(demoIntent, /pilot-pricing/);
+  assert.match(demoIntent, /operator-scope/);
+  assert.match(seoLanding, /demoIntent/);
+  assert.match(pricing, /intent=pilot-pricing/);
+  assert.match(pricing, /intent=site-offer/);
+  assert.match(pricing, /intent=operator-scope/);
+
+  assert.match(consent, /max-h-\[calc\(100dvh-1\.5rem\)\]/);
+  assert.match(consent, /overflow-y-auto/);
+  assert.match(consent, /overscroll-contain/);
+  assert.match(consent, /grid-cols-2/);
+
+  assert.doesNotMatch(homepages, /15-Minuten-Gespräch buchen|Book a 15-minute call/);
+  assert.doesNotMatch(homepages, /<Eyebrow>Warum Quinn<\/Eyebrow>|<Eyebrow>Why Quinn<\/Eyebrow>/);
+  assert.doesNotMatch(pricing, /Pilotmetriken|Editierquote|Transferlogik|Rollout-Governance|Prüfung- und Qualitätsauswertung/);
+});
+
 test("public legal pages use confirmed operator details without uncontrolled go-live placeholders", () => {
   const legalDetails = read("src/lib/legal-details.ts");
   const legalPages = [

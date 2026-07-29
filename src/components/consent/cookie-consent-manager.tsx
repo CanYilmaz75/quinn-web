@@ -237,7 +237,7 @@ export function CookieConsentManager() {
 
   return (
     <div className="fixed bottom-3 left-3 right-3 z-50 sm:bottom-4 sm:left-6 sm:right-6 md:bottom-6 md:left-auto md:right-6 md:w-[24rem]" role="region" aria-label={isEnglish ? "Cookie settings" : "Cookie-Einstellungen"}>
-      <div className="mx-auto rounded-2xl border border-border bg-white shadow-subtle">
+      <div className="mx-auto max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain rounded-2xl border border-border bg-white shadow-subtle">
         <div className="grid gap-3 p-3 sm:p-4">
           <div className="flex items-start gap-3">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#F4F4F6]">
@@ -264,7 +264,7 @@ export function CookieConsentManager() {
               </button>
             </div>
 
-          <div className="grid gap-2 sm:grid-cols-3 lg:w-[24rem]">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:w-[24rem]">
             <Button type="button" size="sm" onClick={acceptAll} className="rounded-xl">
               <Check className="mr-2 h-4 w-4" />
               {isEnglish ? "Accept all" : "Alle akzeptieren"}
@@ -273,7 +273,7 @@ export function CookieConsentManager() {
               <X className="mr-2 h-4 w-4" />
               {isEnglish ? "Reject" : "Ablehnen"}
             </Button>
-            <Button type="button" size="sm" variant="ghost" onClick={saveSelection} className="rounded-xl">
+            <Button type="button" size="sm" variant="ghost" onClick={saveSelection} className="col-span-2 rounded-xl sm:col-span-1">
               {isEnglish ? "Save selection" : "Auswahl speichern"}
             </Button>
           </div>

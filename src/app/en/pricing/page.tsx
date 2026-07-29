@@ -23,13 +23,13 @@ const plans = [
     audience:
       "For one facility that wants to test Quinn with fictional, anonymised or tightly scoped cases before real data and rollout are decided.",
     cta: "Request pilot pricing conversation",
-    href: "/en/book-demo" as Route,
+    href: "/en/book-demo?intent=pilot-pricing" as Route,
     featured: true,
     features: [
-      "Scope for one workflow: intake, SIS-style or review",
-      "Pilot metrics: minutes per case, edit rate, completeness, review effort",
+      "Defined workflow: intake, SIS-style documentation or review",
+      "Measures: minutes per case, editing effort, completeness and review effort",
       "Evaluation after 4-6 weeks with team feedback and team acceptance",
-      "no hard ROI promise — relief is measured in the pilot",
+      "relief is measured in the pilot, not promised in advance",
       "processing path, roles and approval clarified before real data"
     ]
   },
@@ -40,24 +40,24 @@ const plans = [
     audience:
       "For care homes or sites that want to use Quinn continuously after a pilot for intake and documentation-adjacent workflows.",
     cta: "Request site offer",
-    href: "/en/book-demo" as Route,
+    href: "/en/book-demo?intent=site-offer" as Route,
     featured: false,
     features: [
       "usage based on active team, roles and documentation volume",
       "setup of review rules, standards and professional approval",
       "support for care leadership and quality teams",
-      "transfer logic into existing systems without changing systems",
+      "reviewed handoff into existing systems without changing systems",
       "regular review and quality evaluation"
     ]
   },
   {
     name: "Operators & groups",
     price: "custom by locations",
-    subtitle: "for multiple facilities, quality management and rollout governance",
+    subtitle: "for multiple facilities, quality management and shared rollout",
     audience:
       "For operators and care groups that want to test Quinn step by step across several facilities and roll out based on pilot metrics.",
     cta: "Clarify operator scope",
-    href: "/en/book-demo" as Route,
+    href: "/en/book-demo?intent=operator-scope" as Route,
     featured: false,
     features: [
       "location tiers by facilities, roles and support needs",
@@ -107,6 +107,9 @@ export default function PricingPage() {
         </h1>
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
           Quinn does not start with a standard tariff. A short pricing conversation aligns workflow, roles, privacy review, pilot budget and rollout with the reality of your organisation.
+        </p>
+        <p className="mx-auto mt-5 max-w-2xl rounded-2xl border border-[#DDE8E4] bg-[#FBFAF6] px-5 py-4 text-sm font-medium leading-6 text-secondary-foreground">
+          No public list price: in 15 minutes, we clarify the workflow, facility size and a suitable budget range — without a purchase commitment.
         </p>
       </section>
 
@@ -184,7 +187,7 @@ export default function PricingPage() {
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Button asChild size="lg" className="px-7">
-            <Link href="/en/book-demo">Request pricing conversation</Link>
+            <Link href="/en/book-demo?intent=pilot-pricing">Request pricing conversation</Link>
           </Button>
         </div>
       </section>

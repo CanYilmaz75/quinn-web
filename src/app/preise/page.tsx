@@ -21,15 +21,15 @@ const plans = [
     price: "Pilotbudget nach Umfang",
     subtitle: "4–6 Wochen für einen klaren Aufnahme-, SIS- oder Prüfablauf",
     audience:
-      "Für eine Einrichtung, die Quinn mit fiktiven, anonymisierten oder klar abgegrenzten Fällen prüft, bevor Echtdaten und Rollout entschieden werden.",
+      "Für eine Einrichtung, die Quinn mit fiktiven, anonymisierten oder klar abgegrenzten Fällen prüft, bevor über Echtdaten und Einführung entschieden wird.",
     cta: "Pilot-Preisgespräch anfragen",
-    href: "/demo-buchen" as Route,
+    href: "/demo-buchen?intent=pilot-pricing" as Route,
     featured: true,
     features: [
-      "Scope für einen Workflow: Aufnahme, SIS-nah oder Prüfung",
-      "Pilotmetriken: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Prüfaufwand",
+      "Umfang für einen Ablauf: Aufnahme, SIS-nah oder Prüfung",
+      "Messwerte: Zeit pro Fall, Bearbeitungsaufwand, Vollständigkeit und PDL/QM-Prüfaufwand",
       "Auswertung nach 4–6 Wochen mit Teamfeedback und Akzeptanz im Team",
-      "keine harte ROI-Zusage — Entlastung wird im Pilot gemessen",
+      "Entlastung wird im Pilot gemessen, nicht vorab versprochen",
       "Datenpfad, Rollen und Freigabe vor Echtdaten klären"
     ]
   },
@@ -40,30 +40,30 @@ const plans = [
     audience:
       "Für Pflegeheime oder Standorte, die nach einem Pilot Quinn dauerhaft für Aufnahme- und dokumentationsnahe Abläufe einsetzen wollen.",
     cta: "Standort-Angebot anfragen",
-    href: "/demo-buchen" as Route,
+    href: "/demo-buchen?intent=site-offer" as Route,
     featured: false,
     features: [
       "Nutzung nach aktivem Team, Rollen und Dokumentationsvolumen",
       "Einrichtung von Prüfregeln, Standards und fachlicher Freigabe",
       "Support für PDL/QM und Schulung im Team",
-      "Transferlogik in bestehende Fachsysteme ohne Systemwechsel",
-      "regelmäßige Prüfung- und Qualitätsauswertung"
+      "Geprüfte Übergabe in bestehende Fachsysteme ohne Systemwechsel",
+      "regelmäßige Prüf- und Qualitätsauswertung"
     ]
   },
   {
     name: "Träger & Verbünde",
     price: "Individuell nach Standorten",
-    subtitle: "für mehrere Einrichtungen, QM und Rollout-Governance",
+    subtitle: "für mehrere Einrichtungen, QM und gemeinsame Einführung",
     audience:
-      "Für Betreiber, Träger und Verbünde, die Quinn schrittweise über mehrere Einrichtungen testen und anhand von Pilotmetriken ausrollen wollen.",
-    cta: "Träger-Scope klären",
-    href: "/demo-buchen" as Route,
+      "Für Betreiber, Träger und Verbünde, die Quinn schrittweise über mehrere Einrichtungen testen und anhand vereinbarter Messwerte ausrollen wollen.",
+    cta: "Trägerumfang klären",
+    href: "/demo-buchen?intent=operator-scope" as Route,
     featured: false,
     features: [
       "Standortstaffel nach Einrichtungen, Rollen und Supportbedarf",
       "QM-Leitplanken, Standards und Sprachvorgaben je Einrichtung",
       "Pilotvergleich zwischen Teams oder Standorten",
-      "Rollout-Entscheidung anhand Nutzung, Qualität und Prüfaufwand",
+      "Entscheidung über die Einführung anhand von Nutzung, Qualität und Prüfaufwand",
       "gemeinsame Roadmap für Datenschutz-, Betriebs- und Supportfragen"
     ]
   }
@@ -73,7 +73,7 @@ const included = [
   "Quinn ergänzt bestehende Fachsysteme",
   "prüfbare Dokumentationsentwürfe",
   "fachliche Freigabe durch Ihr Team",
-  "Pilotmetriken statt pauschaler Versprechen",
+  "Messbare Pilotkriterien statt pauschaler Versprechen",
   "Kopieren/Export nach Prüfung",
   "Datenschutzunterlagen für konkrete Prüfung"
 ];
@@ -83,12 +83,12 @@ const faqs = [
   {
     question: "Warum gibt es keinen öffentlichen Nutzerpreis?",
     answer:
-      "Der sinnvolle Preis hängt aktuell stärker von Workflow, Einrichtung, Prüfaufwand, Support und Datenpfad ab als von einer einfachen Nutzerzahl. Deshalb starten wir beratungsgestützt."
+      "Der sinnvolle Preis hängt aktuell stärker von Ablauf, Einrichtung, Prüfaufwand, Support und Datenpfad ab als von einer einfachen Nutzerzahl. Deshalb starten wir beratungsgestützt."
   },
   {
     question: "Was passiert nach dem Pilot?",
     answer:
-      "Nach 4–6 Wochen bewerten wir Nutzung, Entwurfsqualität, Editieraufwand, Vollständigkeit, Prüfaufwand und Teamakzeptanz. Erst danach entscheiden wir gemeinsam über Standort- oder Trägerumfang."
+      "Nach 4–6 Wochen bewerten wir Nutzung, Entwurfsqualität, Bearbeitungsaufwand, Vollständigkeit, Prüfaufwand und Teamakzeptanz. Erst danach entscheiden wir gemeinsam über Standort- oder Trägerumfang."
   }
 ];
 
@@ -106,7 +106,10 @@ export default function PricingPage() {
           Beratungsgestützte Preise für Pilot, Einrichtung und Träger.
         </h1>
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-          Quinn startet nicht über einen Standardtarif, sondern über ein kurzes Preisgespräch. So passen Workflow, Rollen, Datenschutzprüfung, Pilotbudget und Rollout zur Realität Ihrer Einrichtung.
+          Quinn startet nicht über einen Standardtarif, sondern über ein kurzes Preisgespräch. So passen Ablauf, Rollen, Datenschutzprüfung, Pilotbudget und Einführung zur Realität Ihrer Einrichtung.
+        </p>
+        <p className="mx-auto mt-5 max-w-2xl rounded-2xl border border-[#DDE8E4] bg-[#FBFAF6] px-5 py-4 text-sm font-medium leading-6 text-secondary-foreground">
+          Kein öffentlicher Listenpreis: In 15 Minuten klären wir Ablauf, Einrichtungsgröße und den passenden Budgetrahmen — ohne Kaufverpflichtung.
         </p>
       </section>
 
@@ -180,11 +183,11 @@ export default function PricingPage() {
       <section className="quinn-container py-16 text-center sm:py-20">
         <h2 className="mx-auto max-w-3xl quinn-h2">Lassen Sie uns den passenden Rahmen kurz klären.</h2>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-secondary-foreground">
-          In 15 Minuten klären wir Workflow, Teamgröße, Pilotbudget und nächsten Schritt. Wenn Sie lieber allgemein starten möchten: Beratung anfragen reicht als erster Schritt.
+          In 15 Minuten klären wir Ablauf, Teamgröße, Pilotbudget und nächsten Schritt. Wenn Sie lieber allgemein starten möchten: Beratung anfragen reicht als erster Schritt.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Button asChild size="lg" className="px-7">
-            <Link href="/demo-buchen">Preisgespräch anfragen</Link>
+            <Link href="/demo-buchen?intent=pilot-pricing">Preisgespräch anfragen</Link>
           </Button>
         </div>
       </section>

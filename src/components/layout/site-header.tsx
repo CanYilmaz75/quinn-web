@@ -31,7 +31,7 @@ const productMenu: MenuGroup = {
         { label: "Übersicht", href: "/produkt/uebersicht" as Route, icon: FileText },
         { label: "SIS-Aufnahme", href: "/anwendungen/sis-aufnahme" as Route, icon: FileText },
         { label: "Sprachdokumentation Pflege", href: "/anwendungen/sprachdokumentation-pflege" as Route, icon: Mic },
-        { label: "Review & Qualität", href: "/produkt/uebersicht#review" as Route, icon: BadgeCheck },
+        { label: "Prüfung & Qualität", href: "/produkt/uebersicht#review" as Route, icon: BadgeCheck },
         { label: "Preise", href: "/preise" as Route, icon: HeartHandshake }
       ]
     }
@@ -199,7 +199,7 @@ export function SiteHeader({ locale = "de" }: { locale?: SiteHeaderLocale }) {
             <summary aria-label={labels.mobileNav} className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-border bg-white [&::-webkit-details-marker]:hidden">
               <Menu className="h-5 w-5 text-secondary-foreground" />
             </summary>
-            <div className="absolute left-4 right-4 z-40 mt-3 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl border border-border bg-white p-4 shadow-subtle">
+            <div className="hidden group-open:block absolute left-4 right-4 z-40 mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl border border-border bg-white p-4 shadow-subtle">
               {activeMenus.map((menu) => (
                 <div key={menu.label} className="border-b border-border py-3 last:border-b-0">
                   <p className="px-2 text-sm font-semibold text-foreground">{menu.label}</p>

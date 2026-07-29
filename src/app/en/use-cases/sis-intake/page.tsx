@@ -22,6 +22,7 @@ export default function SisIntakePage() {
   return (
     <SeoLandingPage
       locale="en"
+      demoIntent="sis"
       eyebrow="SIS intake"
       title="AI-assisted SIS-style intake documentation for care teams"
       description="Quinn supports the step before the resident record: conversations, notes and audio become a structured draft with open cues and human approval."

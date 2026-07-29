@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { buildSeoAlternates } from "@/content/public-site";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -177,7 +178,7 @@ function ProductMockup() {
           </div>
 
           <div className="space-y-4 p-5">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-[#E8E8EC] bg-white p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Notizentwurf</p>
                 <h3 className="mt-3 text-lg font-semibold text-foreground">Transfer und Wohnumfeld</h3>
@@ -250,7 +251,7 @@ export default function HomePage() {
 
       <section className="border-b border-[#E8E8EC]/80 bg-white py-8">
         <div className="quinn-container">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {metricCards.map((item) => (
               <div key={item.value} className="rounded-3xl border border-[#E8E8EC] bg-[#FBFAF6] p-5">
                 <p className="text-3xl font-semibold tracking-[-0.04em] text-foreground">{item.value}</p>
@@ -261,21 +262,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="quinn-container py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl text-center">
-          <Eyebrow>Warum Quinn</Eyebrow>
-          <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
-            Dokumentation sollte Versorgung entlasten — nicht den Arbeitstag bestimmen.
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-            Quinn bringt Gespräch, Kontext, Prüfung und Export in einen ruhigen Workflow für Gesundheits- und Pflegeorganisationen.
-            So wird KI zur Assistenz im Alltag, nicht zur Blackbox im Hintergrund.
-          </p>
-        </div>
-      </section>
 
       <section id="produkt" className="bg-white py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <Eyebrow>Produkt</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -316,7 +305,7 @@ export default function HomePage() {
       </section>
 
       <section id="workflow" className="quinn-container py-16 sm:py-24">
-        <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div className="grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div>
             <Eyebrow>Arbeitsalltag</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -326,7 +315,7 @@ export default function HomePage() {
               Quinn folgt dem echten Versorgungsablauf: Pflegegespräch, Aufnahme, Visite, Übergabe oder Entlassplanung.
             </p>
           </div>
-          <div className="relative grid gap-5">
+          <div className="relative grid min-w-0 grid-cols-1 gap-5">
             <div className="absolute left-6 top-8 hidden h-[calc(100%-4rem)] w-px bg-[#DDE8E4] sm:block" />
             {workflowSteps.map((step) => {
               const Icon = step.icon;
@@ -345,7 +334,7 @@ export default function HomePage() {
       </section>
 
       <section className="bg-[#E7F1EE] py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <Eyebrow>Kern-Workflows</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -355,7 +344,7 @@ export default function HomePage() {
               Der erste Aha-Moment: Rolle wählen, Aufgabe wählen, Gespräch oder Stichpunkte erfassen, Entwurf prüfen und ins bestehende System übernehmen.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
             {launchWorkflows.map((workflow) => (
               <div key={workflow.title} className="rounded-3xl border border-[#E8E8EC] bg-white p-6">
                 <h3 className="text-xl font-semibold text-foreground">{workflow.title}</h3>
@@ -369,7 +358,7 @@ export default function HomePage() {
       <ProductProofFlow />
 
       <section className="bg-[#102F33] py-16 text-white sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">Anwendungsfälle</p>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] sm:text-[52px]">
@@ -380,7 +369,7 @@ export default function HomePage() {
               Gespräche, Verantwortung und Nachvollziehbarkeit zusammenkommen.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
             {useCases.map((useCase) => (
               <div key={useCase} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 p-4 text-sm font-semibold">
                 <Check className="h-5 w-5 text-[#FFF2B8]" />
@@ -392,7 +381,7 @@ export default function HomePage() {
       </section>
 
       <section id="sicherheit" className="bg-white py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <Eyebrow>Sicherheit & Kontrolle</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -404,7 +393,7 @@ export default function HomePage() {
               Freigabe, Export und klare menschliche Verantwortung. Quinn stellt keine medizinische Diagnose.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
             {securityItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -423,7 +412,7 @@ export default function HomePage() {
 
       <section id="pilotprogramm" className="quinn-container py-16 sm:py-24">
         <div className="overflow-hidden rounded-[2rem] border border-[#E8E8EC] bg-[#F6F0E3] p-8 sm:p-12 lg:p-14">
-          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-semibold text-[#0A0A0F]">
                 <Stethoscope className="h-4 w-4" />
@@ -441,7 +430,7 @@ export default function HomePage() {
                 <TrackedDemoLink href="/demo-buchen" locale="de" source="homepage">Unverbindlich Demo anfragen</TrackedDemoLink>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-xl border-[#0A0A0F]/15 bg-white/70 px-7">
-                <TrackedDemoLink href="/demo-buchen" locale="de" source="homepage">15-Minuten-Gespräch buchen</TrackedDemoLink>
+                <Link href="/pilotprogramm">Pilotprogramm ansehen</Link>
               </Button>
             </div>
           </div>

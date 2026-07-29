@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { buildSeoAlternates } from "@/content/public-site";
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -169,7 +170,7 @@ function ProductMockup() {
           </div>
 
           <div className="space-y-4 p-5">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-[#E8E8EC] bg-white p-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Draft note</p>
                 <h3 className="mt-3 text-lg font-semibold text-foreground">Transfer and living environment</h3>
@@ -240,7 +241,7 @@ export default function EnglishLandingPage() {
 
       <section className="border-b border-[#E8E8EC]/80 bg-white py-8">
         <div className="quinn-container">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {metricCards.map((item) => (
               <div key={item.value} className="rounded-3xl border border-[#E8E8EC] bg-[#FBFAF6] p-5">
                 <p className="text-3xl font-semibold tracking-[-0.04em] text-foreground">{item.value}</p>
@@ -251,20 +252,9 @@ export default function EnglishLandingPage() {
         </div>
       </section>
 
-      <section className="quinn-container py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl text-center">
-          <Eyebrow>Why Quinn</Eyebrow>
-          <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
-            Documentation should support care, not dominate the workday.
-          </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-            Quinn brings conversation, context, review and export into one calm workflow for healthcare and care organisations, so AI becomes a practical assistant rather than a hidden black box.
-          </p>
-        </div>
-      </section>
 
       <section id="product" className="bg-white py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <Eyebrow>Product</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -304,7 +294,7 @@ export default function EnglishLandingPage() {
       </section>
 
       <section id="workflow" className="quinn-container py-16 sm:py-24">
-        <div className="grid gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+        <div className="grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
           <div>
             <Eyebrow>Daily work</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -314,7 +304,7 @@ export default function EnglishLandingPage() {
               Quinn follows the real care delivery workflow: care conversation, intake, rounds, handover or discharge planning.
             </p>
           </div>
-          <div className="relative grid gap-5">
+          <div className="relative grid min-w-0 grid-cols-1 gap-5">
             <div className="absolute left-6 top-8 hidden h-[calc(100%-4rem)] w-px bg-[#DDE8E4] sm:block" />
             {workflowSteps.map((step) => {
               const Icon = step.icon;
@@ -333,7 +323,7 @@ export default function EnglishLandingPage() {
       </section>
 
       <section className="bg-[#E7F1EE] py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <Eyebrow>Core workflows</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -343,7 +333,7 @@ export default function EnglishLandingPage() {
               The first aha moment: choose a role, choose a task, capture a conversation or notes, review the draft and transfer it into the existing system.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
             {launchWorkflows.map((workflow) => (
               <div key={workflow.title} className="rounded-3xl border border-[#E8E8EC] bg-white p-6">
                 <h3 className="text-xl font-semibold text-foreground">{workflow.title}</h3>
@@ -357,7 +347,7 @@ export default function EnglishLandingPage() {
       <ProductProofFlow locale="en" />
 
       <section className="bg-[#102F33] py-16 text-white sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">Use cases</p>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] sm:text-[52px]">
@@ -367,7 +357,7 @@ export default function EnglishLandingPage() {
               Quinn focuses on documentation-adjacent workflows in healthcare and care organisations: where conversations, responsibility and traceability meet.
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
             {useCases.map((useCase) => (
               <div key={useCase} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/10 p-4 text-sm font-semibold">
                 <Check className="h-5 w-5 text-[#FFF2B8]" />
@@ -379,7 +369,7 @@ export default function EnglishLandingPage() {
       </section>
 
       <section id="security" className="bg-white py-16 sm:py-24">
-        <div className="quinn-container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="quinn-container grid min-w-0 grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <Eyebrow>Security & control</Eyebrow>
             <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">
@@ -389,7 +379,7 @@ export default function EnglishLandingPage() {
               Quinn does not make broad legal or certification promises on the landing page. It shows the product controls that matter: login, organisation context, roles, review, approval, export and clear human responsibility. Quinn does not provide medical diagnoses.
             </p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
             {securityItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -408,7 +398,7 @@ export default function EnglishLandingPage() {
 
       <section id="pilot-program" className="quinn-container py-16 sm:py-24">
         <div className="overflow-hidden rounded-[2rem] border border-[#E8E8EC] bg-[#F6F0E3] p-8 sm:p-12 lg:p-14">
-          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="grid min-w-0 grid-cols-1 gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-semibold text-[#0A0A0F]">
                 <Stethoscope className="h-4 w-4" />
@@ -426,7 +416,7 @@ export default function EnglishLandingPage() {
                 <TrackedDemoLink href="/en/book-demo" locale="en" source="homepage">Request a demo</TrackedDemoLink>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-xl border-[#0A0A0F]/15 bg-white/70 px-7">
-                <TrackedDemoLink href="/en/book-demo" locale="en" source="homepage">Book a 15-minute call</TrackedDemoLink>
+                <Link href="/en/pilot-program">View pilot program</Link>
               </Button>
             </div>
           </div>

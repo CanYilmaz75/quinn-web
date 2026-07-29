@@ -17,25 +17,30 @@ type DemoForm = {
   consent: boolean;
 };
 
-const initialForm: DemoForm = {
+function createInitialForm(initialInterest = ""): DemoForm {
+  return {
   firstName: "",
   lastName: "",
   email: "",
   organisation: "",
-  interest: "",
+  interest: initialInterest,
   consent: false
-};
+  };
+}
 
 const workflows = [
   "Care intake and SIS",
   "Care or consultation documentation",
   "Handoff and professional review",
   "Healthcare documentation workflow",
+  "Pilot and pricing range",
+  "Site offer and rollout",
+  "Operator or group solution",
   "Another documentation-adjacent workflow"
 ];
 
-export function EnglishDemoBookingTool() {
-  const [form, setForm] = useState<DemoForm>(initialForm);
+export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discuss your demo directly with the founder." }: { initialInterest?: string; heading?: string }) {
+  const [form, setForm] = useState<DemoForm>(() => createInitialForm(initialInterest));
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const hasTrackedStart = useRef(false);
@@ -91,7 +96,7 @@ export function EnglishDemoBookingTool() {
         <p className="mt-4 text-sm leading-7 text-secondary-foreground">
           Thank you, {form.firstName}. Can will review your request for {form.organisation} personally and follow up with a suitable next step.
         </p>
-        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(initialForm); hasTrackedStart.current = false; hasTrackedValidationError.current = false; }}>
+        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(createInitialForm(initialInterest)); hasTrackedStart.current = false; hasTrackedValidationError.current = false; }}>
           Start a new request
         </Button>
       </div>
@@ -99,7 +104,7 @@ export function EnglishDemoBookingTool() {
   }
 
   return (
-    <div className="justify-self-end rounded-[20px] border border-[#D7D2CC] bg-white px-5 py-6 shadow-[0_18px_48px_rgba(10,10,15,0.06)] sm:px-7 sm:py-7 lg:max-w-[560px] lg:px-8 lg:py-8">
+    <div className="min-w-0 w-full justify-self-end rounded-[20px] border border-[#D7D2CC] bg-white px-5 py-6 shadow-[0_18px_48px_rgba(10,10,15,0.06)] sm:px-7 sm:py-7 lg:max-w-[560px] lg:px-8 lg:py-8">
       <div className="flex items-center justify-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E7F1EE] text-xs font-semibold text-[#1E6B72]">CY</div>
         <div>
@@ -108,7 +113,7 @@ export function EnglishDemoBookingTool() {
         </div>
       </div>
       <h2 className="mx-auto mt-5 max-w-xl text-center font-serif text-[24px] font-semibold leading-[1.08] text-foreground sm:text-[28px] lg:text-[30px]">
-        Discuss your demo directly with the founder.
+        {heading}
       </h2>
       <p className="mx-auto mt-3 max-w-lg text-center text-sm leading-6 text-secondary-foreground">
         In a 15-minute call, you will see a fictional product flow and clarify whether Quinn fits your workflow.
@@ -118,26 +123,27 @@ export function EnglishDemoBookingTool() {
       </p>
 
       <form className="mt-7 space-y-4" onSubmit={submitDemo} onInvalidCapture={trackValidationError}>
+        <p className="text-right text-xs text-muted-foreground">* Required fields</p>
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-2 text-sm font-medium text-secondary-foreground">
-            First name
+            First name <span aria-hidden="true">*</span>
             <Input value={form.firstName} onChange={(event) => updateForm("firstName", event.target.value)} placeholder="e.g. Maya" autoComplete="given-name" required />
           </label>
           <label className="space-y-2 text-sm font-medium text-secondary-foreground">
-            Last name
+            Last name <span aria-hidden="true">*</span>
             <Input value={form.lastName} onChange={(event) => updateForm("lastName", event.target.value)} placeholder="e.g. Thompson" autoComplete="family-name" required />
           </label>
         </div>
         <label className="space-y-2 text-sm font-medium text-secondary-foreground">
-          Work email
+          Work email <span aria-hidden="true">*</span>
           <Input value={form.email} onChange={(event) => updateForm("email", event.target.value)} type="email" placeholder="name@organisation.com" autoComplete="email" required />
         </label>
         <label className="space-y-2 text-sm font-medium text-secondary-foreground">
-          Organisation
+          Organisation <span aria-hidden="true">*</span>
           <Input value={form.organisation} onChange={(event) => updateForm("organisation", event.target.value)} placeholder="Care provider or practice" autoComplete="organization" required />
         </label>
         <label className="space-y-2 text-sm font-medium text-secondary-foreground">
-          Which workflow would you like to see?
+          Which workflow would you like to see? <span aria-hidden="true">*</span>
           <span className="relative block">
             <select value={form.interest} onChange={(event) => updateForm("interest", event.target.value)} className="h-11 w-full appearance-none rounded-[10px] border border-[#D7D2CC] bg-white px-3 pr-9 text-sm text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" required>
               <option value="">Select a workflow</option>

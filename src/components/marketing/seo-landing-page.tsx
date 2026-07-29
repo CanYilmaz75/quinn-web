@@ -7,9 +7,11 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { TrackedDemoLink } from "@/components/analytics/tracked-demo-link";
 import { Button } from "@/components/ui/button";
+import { buildDemoHref, type DemoIntent } from "@/lib/demo-intent";
 
 type SeoLandingPageProps = {
   locale?: "de" | "en";
+  demoIntent?: DemoIntent;
   eyebrow: string;
   title: string;
   description: string;
@@ -37,6 +39,7 @@ type SeoLandingPageProps = {
 
 export function SeoLandingPage({
   locale = "de",
+  demoIntent,
   eyebrow,
   title,
   description,
@@ -61,7 +64,7 @@ export function SeoLandingPage({
   footerTitle,
   footerDescription
 }: SeoLandingPageProps) {
-  const demoHref = (locale === "en" ? "/en/book-demo" : "/demo-buchen") as Route;
+  const demoHref = buildDemoHref(locale, demoIntent);
   const labels = locale === "de"
     ? {
         reviewWorkflow: "Prüfbarer Ablauf",
