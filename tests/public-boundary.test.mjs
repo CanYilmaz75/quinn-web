@@ -205,6 +205,41 @@ test("footer uses the canonical Quinn logo and gives newsletter its own calm row
   assert.doesNotMatch(newsletter, /variant === "footer"[\s\S]{0,200}rounded-\[1\.5rem\] border border-border bg-white p-5/);
 });
 
+test("updates, research and pilot pages speak to care providers instead of investors", () => {
+  const customerPages = [
+    read("src/app/updates/page.tsx"),
+    read("src/app/forschung/page.tsx"),
+    read("src/app/pilotprogramm/page.tsx"),
+    read("src/app/en/updates/page.tsx"),
+    read("src/app/en/research/page.tsx"),
+    read("src/app/en/pilot-program/page.tsx")
+  ].join("\n");
+  const publicSite = read("src/content/public-site.ts");
+  const visiblePublicCopy = `${customerPages}\n${publicSite}`;
+
+  for (const internalTerm of [
+    /Fundraising/i,
+    /Seed[- ]ready/i,
+    /Seed-Runde/i,
+    /SEO Technicals/i,
+    /Launch-Vorbereitung/i,
+    /launch preparation/i,
+    /Zahlungsbereitschaft/i,
+    /willingness to pay/i,
+    /market validation/i,
+    /Buyer-Learnings/i,
+    /early customers and investors/i,
+    /frühe Kunden und Investoren/i
+  ]) {
+    assert.doesNotMatch(visiblePublicCopy, internalTerm);
+  }
+
+  assert.match(customerPages, /Woran Sie nach dem Pilot erkennen, ob Quinn zu Ihrer Einrichtung passt/);
+  assert.match(customerPages, /what your organisation can decide after the pilot/i);
+  assert.match(customerPages, /weniger Nacharbeit/i);
+  assert.match(customerPages, /less rework/i);
+});
+
 test("P2 SEO, language and funnel measurement are complete", () => {
   const publicSite = read("src/content/public-site.ts");
   const publicConfig = read("src/lib/public-config.ts");

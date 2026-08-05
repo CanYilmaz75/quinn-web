@@ -96,14 +96,14 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "de",
     slug: "/pilotprogramm" as Route,
-    title: "Pilotpartner für KI-Dokumentation in der Pflege gesucht",
-    description: "Quinn validiert mit Pflegeeinrichtungen Aufnahme-/SIS-Workflows, Editieraufwand, Vollständigkeit und Prüfzeit.",
+    title: "Pilotprogramm für KI-Dokumentation in der Pflege",
+    description: "Pflegeeinrichtungen testen Quinn in einem klaren Aufnahme-, SIS- oder Prüfablauf und werten Zeit, Nacharbeit, Vollständigkeit und Prüfaufwand aus.",
     primaryKeyword: "Pilot KI Pflegedokumentation",
     secondaryKeywords: ["Pflegeheim Dokumentation entlasten", "Qualitätsmanagement Pflegedokumentation", "stationäre Pflege Dokumentation KI"],
     primaryCta: "Pilotgespräch anfragen",
     secondaryCta: "Demo ansehen",
     status: "live",
-    positioning: "ehrliche Pilotphase für erste Einrichtungen statt überzogene Marktführer-Claims",
+    positioning: "begleiteter Pilot mit klarer Auswertung für die Entscheidung der Einrichtung",
     riskGuardrails: deGuardrails
   },
   {
@@ -122,14 +122,14 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "de",
     slug: "/forschung" as Route,
-    title: "Forschung und Pilotmetriken für prüfbare KI-Dokumentation",
-    description: "Quinn zeigt transparent, welche Pilotmetriken gemessen werden: Zeit pro Fall, Editierquote, Vollständigkeit, Prüfaufwand und Akzeptanz.",
+    title: "Auswertung eines Quinn-Piloten in der Pflege",
+    description: "Pflegeeinrichtungen sehen, wie Zeit pro Fall, Nacharbeit, Vollständigkeit, Prüfaufwand und Akzeptanz im eigenen Ablauf ausgewertet werden.",
     primaryKeyword: "Pilotmetriken KI Pflegedokumentation",
     secondaryKeywords: ["Prüfbare KI-Dokumentation Pflege", "Pflegedokumentation Evaluation", "KI Pflege Pilot"],
-    primaryCta: "Evaluationsdesign besprechen",
+    primaryCta: "Auswertung besprechen",
     secondaryCta: "Pilotprogramm ansehen",
     status: "live",
-    positioning: "Evidence-Seite mit Messlogik statt behaupteter Ergebnisse",
+    positioning: "Entscheidungskriterien und nachvollziehbare Auswertung aus Sicht der Einrichtung",
     riskGuardrails: deGuardrails
   },
   {
@@ -138,11 +138,11 @@ export const publicSitePages: PublicPage[] = [
     title: "Quinn Updates",
     description: "Produkt- und Website-Updates zu Quinns prüfbarer Dokumentationsassistenz für Pflegeeinrichtungen.",
     primaryKeyword: "Quinn Updates",
-    secondaryKeywords: ["Quinn Produktupdates", "KI Pflegedokumentation Launch", "Prüfbare Dokumentation"],
+    secondaryKeywords: ["Quinn Produktupdates", "Pflegedokumentation verbessern", "Prüfbare Dokumentation"],
     primaryCta: "Demo anfragen",
     secondaryCta: "Forschung ansehen",
     status: "live",
-    positioning: "sichtbarer Build-Verlauf für frühe Kunden und Investoren",
+    positioning: "verständliche Produktverbesserungen aus Sicht von Pflegeeinrichtungen",
     riskGuardrails: deGuardrails
   },
   {
@@ -187,14 +187,14 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "en",
     slug: "/en/pilot-program" as Route,
-    title: "Pilot partners for review-first AI care documentation",
-    description: "Quinn is validating care intake documentation, edit effort, completeness and review workload with early care partners.",
+    title: "Pilot program for review-first AI care documentation",
+    description: "Care organisations test Quinn in one defined workflow and evaluate time, rework, completeness and review workload.",
     primaryKeyword: "care home documentation AI",
     secondaryKeywords: ["AI care documentation", "nursing documentation burden", "care workflow AI"],
     primaryCta: "Request a pilot call",
     secondaryCta: "Request a demo",
     status: "live",
-    positioning: "pilot-ready international story without overstated customer proof",
+    positioning: "guided pilot with a clear evaluation for the organisation's decision",
     riskGuardrails: enGuardrails
   },
   {
@@ -213,14 +213,14 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "en",
     slug: "/en/research" as Route,
-    title: "Research and pilot metrics for review-first AI care documentation",
-    description: "Quinn explains the pilot metrics we measure: minutes per case, edit rate, completeness, review effort and team acceptance.",
+    title: "Evaluating a Quinn pilot in care workflows",
+    description: "Care organisations see how time per case, rework, completeness, review workload and team acceptance are evaluated in their workflow.",
     primaryKeyword: "AI care documentation pilot metrics",
     secondaryKeywords: ["review-first AI care", "care documentation evaluation", "care workflow AI"],
-    primaryCta: "Discuss evaluation design",
+    primaryCta: "Discuss the evaluation",
     secondaryCta: "View pilot program",
     status: "live",
-    positioning: "evidence page with measurement logic instead of claimed results",
+    positioning: "decision criteria and traceable evaluation from the organisation's perspective",
     riskGuardrails: enGuardrails
   },
   {
@@ -229,11 +229,11 @@ export const publicSitePages: PublicPage[] = [
     title: "Quinn updates",
     description: "Product and website updates for Quinn's review-first documentation layer for care providers.",
     primaryKeyword: "Quinn updates",
-    secondaryKeywords: ["AI care documentation launch", "Quinn product updates", "review-first documentation"],
+    secondaryKeywords: ["care documentation improvements", "Quinn product updates", "review-first documentation"],
     primaryCta: "Request a demo",
     secondaryCta: "View research",
     status: "live",
-    positioning: "visible build history for early customers and investors",
+    positioning: "clear product improvements from the care organisation's perspective",
     riskGuardrails: enGuardrails
   }
 ];

@@ -8,33 +8,33 @@ import { Button } from "@/components/ui/button";
 import { buildSeoAlternates, buildSoftwareApplicationJsonLd, pilotMetricsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
-  title: "Research & pilot metrics | Quinn",
+  title: "Pilot evaluation | Quinn",
   description:
-    "Quinn research: evaluation design, pilot metrics and seed-ready evidence for review-first AI care documentation.",
+    "How a care organisation evaluates Quinn in a pilot: time per case, editing effort, completeness, review workload and team acceptance.",
   alternates: buildSeoAlternates("/en/research")
 };
 
 const principles = [
-  "Review-first: AI outputs remain drafts and must be professionally reviewed.",
+  "AI outputs remain drafts and are professionally reviewed before use.",
   "Quinn complements existing care systems instead of replacing them.",
-  "Privacy, traceability and human responsibility come before automation.",
-  "No claimed results: time savings, quality and acceptance are measured in pilots."
+  "The processing path, roles and responsibilities are clarified before use.",
+  "The organisation receives a traceable evaluation instead of generic value claims."
 ];
 
 const metrics = [
   { label: pilotMetricsByLocale.en.minutesPerCase, description: "Time from conversation, audio or notes to a reviewable draft." },
-  { label: pilotMetricsByLocale.en.editRate, description: "How much needs to be corrected, completed or rejected before a draft fits?" },
+  { label: pilotMetricsByLocale.en.editRate, description: "How much needs to be completed or corrected before the draft is professionally suitable?" },
   { label: pilotMetricsByLocale.en.completeness, description: "How reliably do open facts, risks, wishes and gaps become visible?" },
-  { label: pilotMetricsByLocale.en.reviewEffort, description: "How does review effort change for care leadership, quality teams or professionals?" },
-  { label: pilotMetricsByLocale.en.teamAcceptance, description: "Do teams use Quinn repeatedly and experience the workflow as relief?" }
+  { label: pilotMetricsByLocale.en.reviewEffort, description: "How does the effort for review and follow-up change for care leadership, quality teams and professionals?" },
+  { label: pilotMetricsByLocale.en.teamAcceptance, description: "Is the workflow understandable and does the team use Quinn repeatedly?" }
 ];
 
-const thresholds = [
-  "Demand: qualified conversations with care providers, care leadership, quality teams or operators.",
-  "Usage: repeated usage in one bounded intake, SIS-style or review workflow.",
-  "Quality: drafts mostly need light edits rather than complete rewriting.",
-  "ROI signal: measurable reduction in minutes per case or review effort, without a generic promise.",
-  "Seed-ready evidence: paid pilots, clear buyer learnings, processing path and repeatable pilot structure."
+const decisionCriteria = [
+  "Everyday usability: the team can use Quinn reliably in one defined workflow.",
+  "Less rework: drafts mainly need targeted additions instead of complete rewriting.",
+  "Documentation quality: open facts and potential gaps are visible before approval.",
+  "Review workload: professionals, care leadership and quality teams can trace changes and open points.",
+  "Adoption readiness: roles, processing path, training and handoff to the existing system are clear for the organisation."
 ];
 
 export default function ResearchPage() {
@@ -45,17 +45,17 @@ export default function ResearchPage() {
       <script type="application/ld+json" data-label="JSON-LD" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }} />
       <SiteHeader locale="en" />
       <section className="quinn-container py-20 sm:py-28">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Research</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Evaluation</p>
         <h1 className="mt-6 max-w-5xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
-          Evaluation design for review-first AI care documentation.
+          What your organisation can decide after the pilot.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-          Quinn research means clear boundaries, pilot metrics and traceable evidence. We do not claim finished results; we measure whether Quinn creates demand, usage, draft quality and relief in care workflows.
+          Quinn is assessed in your documentation workflow, not in a standalone demo. Together, we examine whether drafts are understandable, require less rework and fit safely into existing review and handoff processes.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg" className="px-7">
             <Link href="/en/book-demo">
-              Discuss evaluation design
+              Discuss the evaluation
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -78,10 +78,10 @@ export default function ResearchPage() {
 
       <section className="quinn-container py-16 sm:py-24">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">What we measure</p>
-          <h2 className="mt-5 quinn-h2">Pilot metrics instead of hype numbers.</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">What your organisation evaluates</p>
+          <h2 className="mt-5 quinn-h2">Practical criteria for a well-founded decision.</h2>
           <p className="mt-5 text-base leading-7 text-secondary-foreground">
-            These metrics show whether Quinn is more than a good demo: minutes per case, edit rate, completeness, review effort and team acceptance have to fit together.
+            The evaluation combines time, quality and team effort. This shows not only whether Quinn is faster, but whether documentation becomes clearer and easier to review in daily work.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -98,14 +98,14 @@ export default function ResearchPage() {
       <section className="bg-[#102F33] py-16 text-white sm:py-24">
         <div className="quinn-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">seed-ready evidence</p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">What needs to be credible before a seed round.</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">For your decision</p>
+            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">What should be clear at the end of a pilot.</h2>
             <p className="mt-5 text-base leading-7 text-white/75">
-              The measurement logic separates hypothesis from evidence: Quinn should not sound louder, but get to verifiable pilot data faster.
+              You receive a traceable basis for deciding whether and where Quinn fits your organisation, roles and existing system.
             </p>
           </div>
           <div className="space-y-3">
-            {thresholds.map((item) => (
+            {decisionCriteria.map((item) => (
               <div key={item} className="flex gap-3 rounded-2xl bg-white/10 p-4 text-sm leading-6 text-white/85">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#E7F1EE]" />
                 {item}

@@ -6,40 +6,40 @@ import { buildSeoAlternates } from "@/content/public-site";
 
 export const metadata: Metadata = {
   title: "Updates | Quinn",
-  description: "Quinn product updates: Sprint 3, Pricing, Research, Schema, Hreflang and Sitemap for the public website.",
+  description: "Quinn product updates: practical improvements for documentation, pilot delivery, professional review and handoff to existing systems.",
   alternates: buildSeoAlternates("/en/updates")
 };
 
 const updateBlocks = [
   {
-    label: "Sprint 3 · Pricing",
-    title: "Pricing sharpened around pilot, facility and operator logic",
+    label: "Pilot program",
+    title: "A clearer view of process, roles and value",
     text:
-      "The pricing page now explains Pilot facility, Facility / site and Operators & groups. Instead of a public standard tariff, Quinn routes through a pricing conversation, pilot budget and measurable pilot metrics."
+      "Care organisations can now see how a 4–6 week pilot works, which teams are involved and which results they receive for their own decision."
   },
   {
-    label: "Sprint 3 · Research",
-    title: "Research shows pilot metrics and seed-ready evidence",
+    label: "Evaluation",
+    title: "Measurable relief instead of generic promises",
     text:
-      "The research page makes visible what Quinn needs to measure in pilots: minutes per case, edit rate, completeness, review effort and team acceptance — without claimed results."
+      "Quinn reviews time per case, editing effort, completeness and review workload with the organisation. This shows where less rework is achieved and where the workflow still needs adjustment."
   },
   {
-    label: "Sprint 3 · SEO Technicals",
-    title: "Schema, Hreflang, Sitemap and Robots added",
+    label: "Public information",
+    title: "Faster access to relevant information",
     text:
-      "The public core pages now have stronger technical SEO signals: canonical alternates, Hreflang pairs, JSON-LD for FAQ/software context, Sitemap and Robots reference."
+      "Product, use cases, pilot program, pricing and demo are organised more clearly. Care organisations can find value, boundaries and next steps without technical or internal project language."
   },
   {
-    label: "Sprint 2 · Wedge pages",
-    title: "SIS, voice documentation and pilot program deepened",
+    label: "Documentation workflow",
+    title: "From capture to professional approval",
     text:
-      "The most important SEO and conversion pages now explain Quinn more concretely: intake conversation, reviewable draft, gap cues, professional approval and transfer into the existing system."
+      "The pages explain the Quinn workflow more concretely: capture a conversation or note, receive a reviewable draft, clarify open points and transfer the approved text to the existing system."
   },
   {
-    label: "Sprint 1 · Public site",
-    title: "Navigation, brand and page structure sharpened",
+    label: "Language & orientation",
+    title: "Quinn is consistent in German and English",
     text:
-      "Header, footer and public pages are more clearly focused on Quinn as the visible brand. Product, solutions, resources, company and demo CTA are separated more clearly."
+      "The most important information and paths are available in both languages. Navigation and page structure remain consistent and focused on care and healthcare teams."
   }
 ];
 
@@ -50,21 +50,21 @@ export default function UpdatesPage() {
       <section className="quinn-container py-20 sm:py-28">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Updates</p>
         <h1 className="mt-6 max-w-5xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
-          Product development, calm and traceable.
+          What is improving for care organisations using Quinn.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-          We collect important changes to Quinn here: no hype posts, just relevant improvements for the website, pilot readiness, research and launch preparation.
+          We share relevant product changes from the organisation&apos;s perspective: clear, practical and focused on documentation work, professional review and team adoption.
         </p>
       </section>
       <section className="border-y border-[#E8E8EC] bg-[#FBFAF6] py-16">
         <div className="quinn-container">
           <div className="rounded-[2rem] border border-[#DDE8E4] bg-white p-6 shadow-subtle sm:p-8 lg:p-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Current update block</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Current</p>
             <h2 className="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Sprint 3 makes Quinn stronger pre-send: pricing, research and technical SEO basis.
+              More clarity on how Quinn can be assessed in everyday care work.
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-secondary-foreground">
-              The current block sharpens the fundraising and pilot case: clear pricing logic, a traceable evidence story and better discoverability for core pages.
+              The pilot program and evaluation now explain which workflow is tested, where relief may become visible and which boundaries need to be resolved before wider use.
             </p>
           </div>
           <div className="mt-6 grid gap-4 lg:grid-cols-2">

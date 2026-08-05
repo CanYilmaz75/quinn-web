@@ -8,61 +8,61 @@ import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site"
 export const metadata: Metadata = {
   alternates: buildSeoAlternates("/pilotprogramm"),
   title: "Pilotprogramm für KI-Dokumentation in der Pflege | Quinn",
-  description: "Pilotpartner für prüfbare KI-Dokumentation in der Pflege gesucht: 4–6 Wochen Pilotstruktur mit klaren Metriken."
+  description: "Quinn 4–6 Wochen in einem klaren Pflegeworkflow testen und Zeit, Nacharbeit, Vollständigkeit sowie Prüfaufwand nachvollziehbar auswerten."
 };
 
 const metrics = [
-  { label: pilotMetricsByLocale.de.minutesPerCase, description: "Zeit vom Rohinput bis zum prüfbaren Entwurf je Aufnahme-, SIS- oder Prüffall." },
-  { label: pilotMetricsByLocale.de.editRate, description: "Wie viel wird ergänzt, korrigiert oder verworfen, bevor ein Entwurf fachlich passt?" },
-  { label: pilotMetricsByLocale.de.reviewEffort, description: "PDL/QM-Prüfaufwand vor und nach dem Quinn-Workflow." },
-  { label: pilotMetricsByLocale.de.teamAcceptance, description: "Akzeptanz im Team: Wird Quinn wiederholt genutzt und als Entlastung wahrgenommen?" }
+  { label: pilotMetricsByLocale.de.minutesPerCase, description: "Zeit vom Rohinput bis zum prüfbaren Entwurf je ausgewähltem Dokumentationsfall." },
+  { label: pilotMetricsByLocale.de.editRate, description: "Wie viel wird ergänzt oder korrigiert, bevor ein Entwurf fachlich passt?" },
+  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Prüf- und Rückfrageaufwand für Fachkraft, PDL oder QM?" },
+  { label: pilotMetricsByLocale.de.teamAcceptance, description: "Ist der Ablauf verständlich und wird Quinn vom Team wiederholt genutzt?" }
 ];
 
 export default function PilotprogrammPage() {
   return (
     <SeoLandingPage
       eyebrow="Pilotprogramm"
-      title="Pilotpartner für prüfbare KI-Dokumentation in der Pflege gesucht"
-      description="Quinn befindet sich in der Pilotphase. Gemeinsam mit Pflegeeinrichtungen validieren wir Nachfrage, Nutzung, Entwurfsqualität, Prüfaufwand und Zahlungsbereitschaft — transparent und ohne überzogene Automatisierungsversprechen."
+      title="Quinn in einem klaren Pflegeworkflow testen"
+      description="In einem 4–6-wöchigen Pilot prüfen Sie, ob Quinn Ihren Dokumentationsalltag spürbar entlastet: mit weniger Nacharbeit, besser sichtbaren offenen Punkten und einem klaren Weg zur fachlichen Freigabe."
       primaryCta="Unverbindliches Pilotgespräch anfragen"
       secondaryCta="SIS-Aufnahme ansehen"
       secondaryHref="/anwendungen/sis-aufnahme"
       points={[
-        "Fiktiven oder anonymisierten Fall in der Demo durchspielen.",
-        "Einen klar abgegrenzten Aufnahme- oder SIS-nahen Workflow auswählen.",
-        "Messlogik für Minuten pro Fall, Editierquote, Vollständigkeit und Akzeptanz vor Start vereinbaren."
+        "Mit einem fiktiven oder anonymisierten Fall starten.",
+        "Einen klar abgegrenzten Aufnahme-, SIS- oder Prüfablauf auswählen.",
+        "Vorab festlegen, woran Ihre Einrichtung Entlastung, Qualität und Alltagstauglichkeit erkennt."
       ]}
-      problemTitle="Für wen geeignet"
-      problemDescription="Das Pilotprogramm richtet sich an Einrichtungen, die Dokumentationsentlastung prüfen wollen, ohne Fachsystem, Verantwortung oder Datenschutzpfad zu überspringen."
+      problemTitle="Für wen der Pilot geeignet ist"
+      problemDescription="Das Pilotprogramm richtet sich an Einrichtungen, die Dokumentationsentlastung in einem begrenzten Ablauf prüfen möchten, ohne Fachsystem oder fachliche Verantwortung zu ersetzen."
       problemItems={[
         "Stationäre Pflegeeinrichtungen mit wiederkehrenden Aufnahmegesprächen und SIS-nahem Dokumentationsbedarf.",
-        "PDL/QM-Teams, die Prüfaufwand, Dokumentationslücken und Sprachqualität systematischer messen wollen.",
-        "Heimleitungen oder Träger, die KI vorsichtig in einem begrenzten Workflow testen möchten.",
-        "Teams, die mit fiktiven oder anonymisierten Fällen starten und Echtdaten erst nach geklärtem Datenpfad nutzen wollen."
+        "PDL- und QM-Teams, die Prüfaufwand, Rückfragen und Dokumentationslücken reduzieren möchten.",
+        "Heimleitungen oder Träger, die den Nutzen von Quinn vor einer breiteren Einführung nachvollziehbar bewerten wollen.",
+        "Teams, die zunächst mit fiktiven oder anonymisierten Fällen beginnen möchten."
       ]}
-      workflowTitle="4–6 Wochen Pilotstruktur"
-      workflowDescription="Der Pilot bleibt bewusst klein genug, um schnell zu lernen, aber konkret genug, um echte Nutzensignale zu erzeugen."
+      workflowTitle="4–6 Wochen mit klarer Begleitung"
+      workflowDescription="Der Pilot bleibt überschaubar und liefert Ihrer Einrichtung eine konkrete Grundlage für die Entscheidung über den nächsten Schritt."
       workflow={[
-        { title: "Woche 0: Scope", description: "Workflow, Rollen, Datenpfad und Erfolgskriterien festlegen." },
-        { title: "Woche 1: Demo & Setup", description: "Fiktive Fälle testen, Team einweisen, Prüfregeln klären." },
-        { title: "Woche 2–5: Nutzung", description: "Aufnahme-, SIS- oder Prüffälle wiederholt mit Quinn bearbeiten." },
-        { title: "Woche 6: Auswertung", description: "Metriken, Feedback und Entscheidung für nächsten Pilot- oder Rollout-Schritt bewerten." }
+        { title: "Woche 0: Ablauf festlegen", description: "Dokumentationsfall, Rollen, Datenpfad und Entscheidungskriterien gemeinsam klären." },
+        { title: "Woche 1: Einführung", description: "Fiktive Fälle testen, Team einweisen und fachliche Prüfregeln abstimmen." },
+        { title: "Woche 2–5: Im Alltag testen", description: "Ausgewählte Aufnahme-, SIS- oder Prüffälle wiederholt mit Quinn bearbeiten." },
+        { title: "Woche 6: Gemeinsam auswerten", description: "Zeit, Nacharbeit, Vollständigkeit, Prüfaufwand und Teamfeedback besprechen." }
       ]}
-      proofTitle="Was wir nicht versprechen"
-      proofDescription="Gerade in der Pflege schützt ehrliche Kommunikation Vertrauen. Quinn behauptet keine fertige Marktvalidierung, sondern zeigt klar, was im Pilot bewiesen werden muss."
+      proofTitle="Klare Grenzen im Pilot"
+      proofDescription="Quinn unterstützt bei der Dokumentation. Die Einrichtung behält die fachliche Kontrolle und entscheidet auf Grundlage der eigenen Auswertung über eine weitere Nutzung."
       proofPoints={[
-        "Keine pauschale ROI- oder Zeitersparnis-Garantie.",
+        "Keine pauschale Garantie für Zeitersparnis oder Wirtschaftlichkeit.",
         "Keine automatische fachliche Freigabe durch Quinn.",
         "Keine Umstellung oder Ablösung des bestehenden Fachsystems.",
         "Keine Echtdaten ohne geklärten Datenschutz-, Rollen- und Verarbeitungspfad."
       ]}
-      metricsTitle="Pilotmetriken"
-      metricsDescription="Diese Metriken zeigen, ob Quinn nicht nur gut klingt, sondern im Pflegealltag Nachfrage und Nutzensignale erzeugt."
+      metricsTitle="Was Ihre Einrichtung auswerten kann"
+      metricsDescription="Die Auswertung zeigt, ob Quinn im gewählten Ablauf zu weniger Nacharbeit, besserer Vollständigkeit und einem handhabbaren Prüfaufwand beiträgt."
       metrics={metrics}
       faqTitle="Häufige Fragen"
       faqs={publicFaqsByLocale.de}
-      footerTitle="Lassen Sie uns einen Pflegefall gemeinsam prüfen."
-      footerDescription="Ein 15-Minuten-Gespräch reicht, um den passenden Workflow, Datenpfad und Pilotumfang einzugrenzen."
+      footerTitle="Lassen Sie uns einen Dokumentationsablauf gemeinsam prüfen."
+      footerDescription="Ein 15-Minuten-Gespräch reicht, um den passenden Ablauf, Datenpfad und Pilotumfang einzugrenzen."
     />
   );
 }

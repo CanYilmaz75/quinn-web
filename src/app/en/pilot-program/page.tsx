@@ -7,15 +7,15 @@ import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site"
 
 export const metadata: Metadata = {
   alternates: buildSeoAlternates("/en/pilot-program"),
-  title: "Pilot partners for AI care documentation | Quinn",
-  description: "Pilot partners for review-first AI care documentation: 4–6 week structure with usage, quality and review-effort metrics."
+  title: "Pilot program for AI care documentation | Quinn",
+  description: "Test Quinn for 4–6 weeks in one defined care workflow and evaluate time, rework, completeness and review workload."
 };
 
 const metrics = [
-  { label: pilotMetricsByLocale.en.minutesPerCase, description: "Time from raw input to a reviewable draft for each selected workflow." },
-  { label: pilotMetricsByLocale.en.editRate, description: "How much is changed, completed or rejected before approval?" },
-  { label: pilotMetricsByLocale.en.reviewEffort, description: "Care/QM review effort before and after the Quinn workflow." },
-  { label: pilotMetricsByLocale.en.teamAcceptance, description: "Whether the team uses Quinn repeatedly and perceives relief." }
+  { label: pilotMetricsByLocale.en.minutesPerCase, description: "Time from raw input to a reviewable draft for each selected documentation case." },
+  { label: pilotMetricsByLocale.en.editRate, description: "How much is completed or corrected before a draft is professionally suitable?" },
+  { label: pilotMetricsByLocale.en.reviewEffort, description: "How does review and follow-up effort change for professionals, care leadership and quality teams?" },
+  { label: pilotMetricsByLocale.en.teamAcceptance, description: "Is the workflow understandable and does the team use Quinn repeatedly?" }
 ];
 
 export default function PilotProgramPage() {
@@ -23,47 +23,47 @@ export default function PilotProgramPage() {
     <SeoLandingPage
       locale="en"
       eyebrow="Pilot program"
-      title="Pilot partners for review-first AI care documentation"
-      description="Quinn is in a pilot phase. Together with care providers, we validate demand, usage, draft quality, review effort and willingness to pay — transparently and without overstated automation claims."
+      title="Test Quinn in one defined care workflow"
+      description="During a 4–6 week pilot, your organisation can assess whether Quinn makes documentation work easier: with less rework, clearer open points and a controlled path to professional approval."
       primaryCta="Request a pilot call"
       secondaryCta="View SIS intake"
       secondaryHref="/en/use-cases/sis-intake"
       points={[
-        "Walk through a fictional or anonymised case in a demo.",
-        "Select a clearly bounded intake or SIS-style workflow.",
-        "Define success metrics for time, edit effort, completeness and team acceptance before starting."
+        "Start with a fictional or anonymised case.",
+        "Select one clearly bounded intake, SIS-style or review workflow.",
+        "Define how your organisation will recognise relief, quality and everyday usability before starting."
       ]}
       problemTitle="Who the pilot is for"
-      problemDescription="The pilot is for care providers that want to evaluate documentation relief without skipping their existing system, professional responsibility or data-processing path."
+      problemDescription="The pilot is for care organisations that want to assess documentation relief in a bounded workflow without replacing the existing system or professional responsibility."
       problemItems={[
         "Care homes with recurring intake conversations and SIS-style documentation needs.",
-        "Care leadership and quality teams that want to measure review effort and documentation gaps.",
-        "Operators that want to test AI carefully inside a bounded workflow.",
+        "Care leadership and quality teams that want to reduce review effort, follow-up questions and documentation gaps.",
+        "Operators that want a clear basis for deciding whether to introduce Quinn more widely.",
         "Teams that want to start with fictional or anonymised cases before using real data."
       ]}
-      workflowTitle="4–6 week pilot structure"
-      workflowDescription="The pilot is small enough to learn quickly and concrete enough to produce real usage signals."
+      workflowTitle="4–6 weeks with clear guidance"
+      workflowDescription="The pilot remains manageable and gives your organisation a practical basis for deciding on the next step."
       workflow={[
-        { title: "Week 0: Scope", description: "Define workflow, roles, processing path and success criteria." },
-        { title: "Week 1: Demo & setup", description: "Test fictional cases, onboard the team and agree review rules." },
-        { title: "Weeks 2–5: Usage", description: "Use Quinn repeatedly for intake, SIS-style or review workflows." },
-        { title: "Week 6: Evaluation", description: "Review metrics, feedback and the decision for a next pilot or rollout step." }
+        { title: "Week 0: Define the workflow", description: "Agree the documentation case, roles, processing path and decision criteria." },
+        { title: "Week 1: Introduction", description: "Test fictional cases, onboard the team and agree professional review rules." },
+        { title: "Weeks 2–5: Test in daily work", description: "Use Quinn repeatedly for selected intake, SIS-style or review cases." },
+        { title: "Week 6: Evaluate together", description: "Review time, rework, completeness, review workload and team feedback." }
       ]}
-      proofTitle="What we do not promise"
-      proofDescription="Care markets require credible communication. Quinn does not claim completed market validation; the pilot shows what still needs proof."
+      proofTitle="Clear boundaries during the pilot"
+      proofDescription="Quinn supports documentation work. Your organisation retains professional control and decides on wider use based on its own evaluation."
       proofPoints={[
-        "No generic ROI or time-saving guarantee.",
+        "No generic guarantee of time savings or financial impact.",
         "No autonomous professional approval by Quinn.",
         "No replacement of the existing system.",
         "No real resident data without a clarified privacy, roles and processing path."
       ]}
-      metricsTitle="Pilot metrics"
-      metricsDescription="These metrics show whether Quinn produces real demand and usefulness signals in care workflows."
+      metricsTitle="What your organisation can evaluate"
+      metricsDescription="The evaluation shows whether Quinn contributes to less rework, better completeness and a manageable review workload in the selected workflow."
       metrics={metrics}
       faqTitle="Frequently asked questions"
       faqs={publicFaqsByLocale.en}
-      footerTitle="Let's review one care workflow together."
-      footerDescription="A short call is enough to identify the right workflow, data path and pilot scope."
+      footerTitle="Let&apos;s review one documentation workflow together."
+      footerDescription="A 15-minute call is enough to identify the right workflow, processing path and pilot scope."
     />
   );
 }

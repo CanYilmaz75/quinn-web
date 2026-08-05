@@ -6,40 +6,40 @@ import { buildSeoAlternates } from "@/content/public-site";
 
 export const metadata: Metadata = {
   title: "Updates | Quinn",
-  description: "Produktupdates von Quinn: Sprint 3, Pricing, Forschung, Schema, Hreflang und Sitemap für die öffentliche Website.",
+  description: "Produktupdates von Quinn: verständliche Verbesserungen für Dokumentation, Pilotablauf, fachliche Prüfung und Übergabe ins bestehende System.",
   alternates: buildSeoAlternates("/updates")
 };
 
 const updateBlocks = [
   {
-    label: "Sprint 3 · Pricing",
-    title: "Preise nach Pilot-, Einrichtungs- und Trägerlogik geschärft",
+    label: "Pilotprogramm",
+    title: "Ablauf, Rollen und Nutzen klarer erklärt",
     text:
-      "Preise laufen vorerst über Beratung: Die Pricingseite erklärt jetzt Pilot Einrichtung, Einrichtung / Standort und Träger & Verbünde. Statt öffentlichem Standardtarif führt Quinn über Preisgespräch, Pilotbudget und messbare Pilotmetriken."
+      "Pflegeeinrichtungen sehen jetzt auf einen Blick, wie ein 4–6-wöchiger Pilot abläuft, welche Teams beteiligt sind und welche Ergebnisse sie für ihre eigene Entscheidung erhalten."
   },
   {
-    label: "Sprint 3 · Forschung",
-    title: "Forschung zeigt Pilotmetriken und Seed-ready Evidenz",
+    label: "Auswertung",
+    title: "Messbare Entlastung statt pauschaler Versprechen",
     text:
-      "Die Forschungseite macht sichtbar, was Quinn im Pilot messen muss: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Prüfaufwand und Akzeptanz im Team — ohne behauptete Ergebnisse."
+      "Quinn betrachtet gemeinsam mit der Einrichtung Zeit pro Fall, Bearbeitungsaufwand, Vollständigkeit und Prüfaufwand. So wird sichtbar, wo weniger Nacharbeit entsteht und wo der Ablauf noch angepasst werden muss."
   },
   {
-    label: "Sprint 3 · SEO Technicals",
-    title: "Schema, Hreflang, Sitemap und Robots ergänzt",
+    label: "Öffentliche Seiten",
+    title: "Schneller zu den relevanten Informationen",
     text:
-      "Die öffentlichen Kernseiten erhalten bessere technische SEO-Signale: kanonische Alternates, Hreflang-Paare, JSON-LD für FAQ/Software-Kontext, Sitemap und Robots-Verweis."
+      "Produkt, Einsatzbereiche, Pilotprogramm, Preise und Demo sind klarer gegliedert. Einrichtungen finden Nutzen, Grenzen und nächste Schritte ohne technische oder interne Projektsprache."
   },
   {
-    label: "Sprint 2 · Wedge-Seiten",
-    title: "SIS, Sprachdokumentation und Pilotprogramm vertieft",
+    label: "Dokumentationsablauf",
+    title: "Von der Erfassung bis zur fachlichen Freigabe",
     text:
-      "Die wichtigsten SEO-/Conversion-Seiten erklären Quinn jetzt konkreter: Aufnahmegespräch, prüfbarer Entwurf, Lückenhinweise, fachliche Freigabe und Transfer ins bestehende Fachsystem."
+      "Die Seiten erklären den Quinn-Ablauf konkreter: Gespräch oder Notiz erfassen, prüfbaren Entwurf erhalten, offene Punkte klären und den freigegebenen Text ins bestehende Fachsystem übertragen."
   },
   {
-    label: "Sprint 1 · Public Site",
-    title: "Navigation, Marke und Seitenstruktur geschärft",
+    label: "Sprache & Orientierung",
+    title: "Quinn ist auf Deutsch und Englisch nachvollziehbar",
     text:
-      "Englische Landingpage und Sprachwechsel, Newsletter-Erfassung an drei relevanten Stellen und Produktstruktur sind dokumentiert. Der Dokumentationsflow bleibt prüfbar: Header, Footer und öffentliche Seiten sind stärker auf Quinn als sichtbare Marke ausgerichtet."
+      "Die wichtigsten Inhalte und Wege stehen in beiden Sprachen zur Verfügung. Navigation und Seitenstruktur bleiben dabei konsistent und auf Pflege- und Gesundheitsteams ausgerichtet."
   }
 ];
 
@@ -50,21 +50,21 @@ export default function UpdatesPage() {
       <section className="quinn-container py-20 sm:py-28">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Updates</p>
         <h1 className="mt-6 max-w-5xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
-          Produktentwicklung, ruhig und nachvollziehbar.
+          Was sich bei Quinn für Pflegeeinrichtungen verbessert.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-          Hier sammeln wir wichtige Änderungen an Quinn: keine Hype-Meldungen, sondern relevante Verbesserungen für Website, Pilotfähigkeit, Research und Launch-Vorbereitung.
+          Hier zeigen wir relevante Produktänderungen aus Sicht der Einrichtungen: verständlich, konkret und mit Blick auf Dokumentationsalltag, fachliche Prüfung und Einführung im Team.
         </p>
       </section>
       <section className="border-y border-[#E8E8EC] bg-[#FBFAF6] py-16">
         <div className="quinn-container">
           <div className="rounded-[2rem] border border-[#DDE8E4] bg-white p-6 shadow-subtle sm:p-8 lg:p-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Aktueller Update-Block</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Aktuell</p>
             <h2 className="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              Sprint 3 macht Quinn pre-send stärker: Pricing, Forschung und technische SEO-Basis.
+              Mehr Klarheit darüber, wie Quinn im Pflegealltag geprüft werden kann.
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-secondary-foreground">
-              Der aktuelle Block schärft den Fundraising- und Pilot-Case: klare Preislogik, nachvollziehbare Evidence-Story und bessere Auffindbarkeit für Kernseiten.
+              Pilotprogramm und Auswertung zeigen jetzt aus Einrichtungssicht, welcher Ablauf getestet wird, welche Entlastung sichtbar werden kann und welche Grenzen vor einer breiteren Nutzung geklärt sein müssen.
             </p>
           </div>
           <div className="mt-6 grid gap-4 lg:grid-cols-2">

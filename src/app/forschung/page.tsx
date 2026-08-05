@@ -8,33 +8,33 @@ import { Button } from "@/components/ui/button";
 import { buildSeoAlternates, buildSoftwareApplicationJsonLd, pilotMetricsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
-  title: "Forschung & Pilotmetriken | Quinn",
+  title: "Auswertung im Pilot | Quinn",
   description:
-    "Quinn Forschung: Evaluationsdesign, Pilotmetriken und belastbare Evidenz für prüfbare KI-Dokumentation in der Pflege.",
+    "So bewertet eine Pflegeeinrichtung Quinn im Pilot: Zeit pro Fall, Bearbeitungsaufwand, Vollständigkeit, Prüfaufwand und Akzeptanz im Team.",
   alternates: buildSeoAlternates("/forschung")
 };
 
 const principles = [
-  "Prüfprinzip: KI-Ergebnisse bleiben Entwürfe und müssen fachlich geprüft werden.",
+  "KI-Ergebnisse bleiben Entwürfe und werden vor der Verwendung fachlich geprüft.",
   "Quinn ergänzt bestehende Fachsysteme, statt sie zu ersetzen.",
-  "Datenschutz, Nachvollziehbarkeit und menschliche Verantwortung stehen vor Automatisierung.",
-  "Keine behaupteten Ergebnisse: Zeitersparnis, Qualität und Akzeptanz werden im Pilot gemessen."
+  "Datenschutzpfad, Rollen und Verantwortlichkeiten werden vor dem Einsatz geklärt.",
+  "Die Einrichtung erhält eine nachvollziehbare Auswertung statt pauschaler Nutzenversprechen."
 ];
 
 const metrics = [
-  { label: pilotMetricsByLocale.de.minutesPerCase, description: "Zeit vom Gespräch, Audio oder Notiz bis zum prüfbaren Entwurf." },
-  { label: pilotMetricsByLocale.de.editRate, description: "Wie viel muss korrigiert, ergänzt oder verworfen werden, bevor ein Entwurf passt?" },
+  { label: pilotMetricsByLocale.de.minutesPerCase, description: "Zeit vom Gespräch, Audio oder der Notiz bis zum prüfbaren Entwurf." },
+  { label: pilotMetricsByLocale.de.editRate, description: "Wie viel muss ergänzt oder korrigiert werden, bevor der Entwurf fachlich passt?" },
   { label: pilotMetricsByLocale.de.completeness, description: "Wie zuverlässig werden offene Angaben, Risiken, Wünsche und Lücken sichtbar?" },
-  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Prüfaufwand für PDL, QM oder Fachkraft?" },
-  { label: pilotMetricsByLocale.de.teamAcceptance, description: "Nutzen Teams Quinn wiederholt und empfinden sie den Ablauf als Entlastung?" }
+  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Aufwand für Prüfung und Rückfragen durch PDL, QM oder Fachkraft?" },
+  { label: pilotMetricsByLocale.de.teamAcceptance, description: "Ist der Ablauf verständlich und wird Quinn vom Team wiederholt genutzt?" }
 ];
 
-const thresholds = [
-  "Demand: qualifizierte Gespräche mit Pflegeeinrichtungen, PDL/QM oder Trägern.",
-  "Usage: wiederholte Nutzung in einem abgegrenzten Aufnahme-, SIS- oder Prüfablauf.",
-  "Quality: Entwürfe brauchen überwiegend leichte statt vollständige Nacharbeit.",
-  "ROI-Signal: messbare Reduktion von Minuten pro Fall oder Prüfaufwand, ohne pauschale Zusage.",
-  "Seed-ready Evidenz: bezahlte Piloten, klare Buyer-Learnings, Datenpfad und wiederholbare Pilotstruktur."
+const decisionCriteria = [
+  "Alltagstauglichkeit: Das Team kann Quinn in einem klaren Arbeitsablauf zuverlässig nutzen.",
+  "Weniger Nacharbeit: Entwürfe brauchen überwiegend gezielte Ergänzungen statt vollständiger Neuerstellung.",
+  "Dokumentationsqualität: Offene Angaben und mögliche Lücken werden vor der Freigabe sichtbar.",
+  "Prüfaufwand: Fachkräfte, PDL und QM können Änderungen und offene Punkte nachvollziehen.",
+  "Einführbarkeit: Rollen, Datenpfad, Schulung und Übergabe ins bestehende Fachsystem sind für die Einrichtung geklärt."
 ];
 
 export default function ResearchPage() {
@@ -45,17 +45,17 @@ export default function ResearchPage() {
       <script type="application/ld+json" data-label="JSON-LD" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }} />
       <SiteHeader />
       <section className="quinn-container py-20 sm:py-28">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Forschung</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Auswertung</p>
         <h1 className="mt-6 max-w-5xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
-          Evaluationsdesign für prüfbare KI-Dokumentation in der Pflege.
+          Woran Sie nach dem Pilot erkennen, ob Quinn zu Ihrer Einrichtung passt.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-          Quinn Forschung heißt: klare Grenzen, Pilotmetriken und nachvollziehbare Evidenz. Wir behaupten keine fertigen Ergebnisse, sondern messen, ob Quinn Nachfrage, Nutzung, Entwurfsqualität und Entlastung im Pflegealltag erzeugt.
+          Quinn wird nicht an einer Demo gemessen, sondern an Ihrem Dokumentationsalltag. Gemeinsam betrachten wir, ob Entwürfe verständlich sind, weniger Nacharbeit benötigen und sich sicher in bestehende Prüf- und Übergabewege einfügen.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg" className="px-7">
             <Link href="/demo-buchen">
-              Evaluationsdesign besprechen
+              Auswertung besprechen
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -78,10 +78,10 @@ export default function ResearchPage() {
 
       <section className="quinn-container py-16 sm:py-24">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Was wir messen</p>
-          <h2 className="mt-5 quinn-h2">Pilotmetriken statt Hype-Zahlen.</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Was Ihre Einrichtung auswertet</p>
+          <h2 className="mt-5 quinn-h2">Konkrete Kriterien für eine belastbare Entscheidung.</h2>
           <p className="mt-5 text-base leading-7 text-secondary-foreground">
-            Diese Metriken zeigen, ob Quinn mehr ist als eine gute Demo: Zeit pro Fall, Editierquote, Vollständigkeit, PDL/QM-Prüfaufwand und Akzeptanz im Team müssen zusammenpassen.
+            Die Auswertung verbindet Zeit, Qualität und Teamaufwand. Dadurch erkennen Sie nicht nur, ob Quinn schneller arbeitet, sondern ob die Dokumentation im Alltag verständlicher und besser prüfbar wird.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -98,14 +98,14 @@ export default function ResearchPage() {
       <section className="bg-[#102F33] py-16 text-white sm:py-24">
         <div className="quinn-container grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">Seed-ready Evidenz</p>
-            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">Was vor einer Seed-Runde wirklich belastbar sein muss.</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">Für Ihre Entscheidung</p>
+            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">Was am Ende eines Piloten klar sein sollte.</h2>
             <p className="mt-5 text-base leading-7 text-white/75">
-              Die Messlogik trennt Hypothese von Beleg: Quinn soll nicht lauter klingen, sondern schneller zu überprüfbaren Pilotdaten kommen.
+              Sie erhalten eine nachvollziehbare Grundlage für die Entscheidung, ob und in welchem Umfang Quinn zu Ihrer Einrichtung, Ihren Rollen und Ihrem Fachsystem passt.
             </p>
           </div>
           <div className="space-y-3">
-            {thresholds.map((item) => (
+            {decisionCriteria.map((item) => (
               <div key={item} className="flex gap-3 rounded-2xl bg-white/10 p-4 text-sm leading-6 text-white/85">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#E7F1EE]" />
                 {item}

@@ -38,7 +38,7 @@ export default function HomeCarePage() {
       proofPoints={[
         "Human approval remains mandatory.",
         "Workflow and privacy requirements are reviewed before pilots.",
-        "Evidence comes from measured pilot usage, not broad claims."
+        "Your organisation sees the value through measured use in its own pilot, not broad claims."
       ]}
       footerTitle="Test one home care workflow first."
       footerDescription="We can walk through a realistic case and decide whether a pilot around notes or handover documentation is useful."
