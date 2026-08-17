@@ -1,5 +1,4 @@
 import type { Route } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import { ConsentSettingsButton } from "@/components/consent/consent-settings-button";
@@ -106,11 +105,10 @@ export function SiteFooter({ locale = "de" }: { locale?: SiteLocale }) {
           <div className="max-w-md">
             <Link
               href={locale === "en" ? ("/en" as Route) : ("/" as Route)}
-              className="inline-flex items-center gap-3"
+              className="inline-flex items-center"
               aria-label={locale === "en" ? "Quinn homepage" : "Quinn Startseite"}
             >
-              <Image src="/quinn-logo.svg" alt="Quinn Logo" width={40} height={40} className="h-10 w-10 rounded-xl" />
-              <span className="text-lg font-semibold tracking-[-0.03em] text-[#0A0A0F]">Quinn</span>
+              <span className="text-xl font-semibold tracking-[-0.04em] text-[#0A0A0F]">Quinn</span>
             </Link>
             <p className="mt-5 text-sm leading-6 text-secondary-foreground">{description}</p>
           </div>

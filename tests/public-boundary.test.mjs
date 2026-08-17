@@ -190,12 +190,19 @@ test("P1 trust and conversion surfaces are founder-led, concrete and low-frictio
   assert.match(demoForms, /trackPublicConversion\("demo_form_submitted"/);
 });
 
-test("footer uses the canonical Quinn logo and gives newsletter its own calm row", () => {
+test("public branding uses only the Quinn text mark and gives newsletter its own calm row", () => {
   const footer = read("src/components/layout/site-footer.tsx");
+  const header = read("src/components/layout/site-header.tsx");
+  const homepage = read("src/app/page.tsx");
+  const englishHomepage = read("src/app/en/page.tsx");
+  const hlthPage = read("src/app/hlth/page.tsx");
+  const structuredData = read("src/components/marketing/public-structured-data.tsx");
   const newsletter = read("src/components/newsletter/newsletter-signup.tsx");
 
-  assert.match(footer, /import Image from "next\/image"/);
-  assert.match(footer, /src="\/quinn-logo\.svg"/);
+  const brandSurfaces = [footer, header, homepage, englishHomepage, hlthPage, structuredData].join("\n");
+  assert.doesNotMatch(brandSurfaces, /quinn-logo|Quinn Logo|import Image from "next\/image"/);
+  assert.match(footer, />Quinn<\/span>/);
+  assert.match(header, />Quinn<\/span>/);
   assert.doesNotMatch(footer, /QuinnWordmark/);
   assert.match(footer, /<NewsletterSignup locale=\{locale\} \/>[\s\S]*activeColumns\.map/);
   assert.match(newsletter, /lg:grid-cols-\[minmax\(0,1fr\)_minmax\(24rem,0\.9fr\)\]/);

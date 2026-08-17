@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, CalendarDays, CheckCircle2, ClipboardList, Coffee, MapPin, MessageSquareText, Sparkles, UsersRound, Workflow } from "lucide-react";
 
@@ -69,12 +68,9 @@ function AmsterdamCard() {
     <div className="rounded-[2rem] border border-[#DDE8E4] bg-white p-4 shadow-subtle">
       <div className="rounded-[1.5rem] border border-[#E8E8EC] bg-[#FBFAF6] p-5">
         <div className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-[#DDE8E4] bg-white">
-              <Image src="/quinn-logo.svg" alt="Quinn" width={48} height={48} className="h-12 w-12" priority />
-            </div>
+          <div className="flex items-center gap-4">
+            <p className="text-lg font-semibold tracking-[-0.04em] text-[#0A0A0F]">Quinn</p>
             <div>
-              <p className="text-sm font-semibold text-foreground">Quinn</p>
               <p className="text-xs text-secondary-foreground">HLTH Europe · Amsterdam</p>
             </div>
           </div>

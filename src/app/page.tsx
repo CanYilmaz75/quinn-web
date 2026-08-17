@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { buildSeoAlternates } from "@/content/public-site";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -140,10 +139,8 @@ function ProductMockup() {
       </div>
       <div className="overflow-hidden rounded-[1.5rem] border border-[#E8E8EC] bg-[#E7F1EE]">
         <div className="flex items-center justify-between border-b border-[#E8E8EC] bg-white px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-[#DDE8E4] bg-white">
-              <Image src="/quinn-logo.svg" alt="Quinn" width={44} height={44} className="h-11 w-11" />
-            </div>
+          <div className="flex items-center gap-4">
+            <p className="text-lg font-semibold tracking-[-0.04em] text-[#0A0A0F]">Quinn</p>
             <div>
               <p className="text-sm font-semibold text-foreground">Pflegeberatung / SIS</p>
               <p className="text-xs text-secondary-foreground">Audio wird strukturiert</p>

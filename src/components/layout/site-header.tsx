@@ -1,6 +1,5 @@
 import type { Route } from "next";
 import type { ComponentType } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, BriefcaseMedical, ChevronDown, FileText, HeartHandshake, Menu, Mic, Newspaper, ShieldCheck, Stethoscope, Users, UserRoundCheck, X } from "lucide-react";
 
@@ -167,9 +166,8 @@ export function SiteHeader({ locale = "de" }: { locale?: SiteHeaderLocale }) {
     <div className="sticky top-0 z-30 border-b border-border bg-quinn-warm">
       <div className="quinn-container">
         <header className="flex min-h-16 items-center justify-between gap-4">
-          <Link href={locale === "en" ? ("/en" as Route) : ("/" as Route)} className="flex items-center gap-3" aria-label={labels.home}>
-            <Image src="/quinn-logo.svg" alt="Quinn Logo" width={40} height={40} className="h-10 w-10 rounded-xl" priority />
-            <span className="text-lg font-semibold tracking-[-0.03em] text-[#0A0A0F]">Quinn</span>
+          <Link href={locale === "en" ? ("/en" as Route) : ("/" as Route)} className="inline-flex items-center" aria-label={labels.home}>
+            <span className="text-xl font-semibold tracking-[-0.04em] text-[#0A0A0F]">Quinn</span>
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label={labels.nav}>

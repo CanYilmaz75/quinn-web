@@ -6,7 +6,7 @@ const organizationJsonLd = {
   "@id": `${siteUrl}/#organization`,
   name: "Quinn Health",
   url: siteUrl,
-  logo: `${siteUrl}/quinn-logo.svg`,
+
   email: "can@quinnhealth.de",
   telephone: "+49 176 81748167",
   founder: {
