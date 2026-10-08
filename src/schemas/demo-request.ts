@@ -11,6 +11,7 @@ export const demoRequestSchema = z.object({
   teamSize: z.enum(["1-5", "6-20", "21-50", "50+"]).optional(),
   country: trimmedRequiredString.max(80).optional(),
   interest: z.string().trim().min(5).max(2000),
+  segment: z.enum(["care", "medicine", "general"]).optional(),
   consent: z.literal(true),
   locale: z.enum(["de", "en"]).default("de"),
   source: z.enum(["demo-buchen", "book-demo", "pricing", "public-site", "other"]).default("demo-buchen"),

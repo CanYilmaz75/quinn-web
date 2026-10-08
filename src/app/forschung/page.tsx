@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button";
 import { buildSeoAlternates, buildSoftwareApplicationJsonLd, pilotMetricsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
-  title: "Auswertung im Pilot | Quinn",
+  title: "Pilotauswertung für Pflege und Medizin | Quinn",
   description:
-    "So bewertet eine Pflegeeinrichtung Quinn im Pilot: Zeit pro Fall, Bearbeitungsaufwand, Vollständigkeit, Prüfaufwand und Akzeptanz im Team.",
+    "So bewerten Teams aus Pflege und Medizin Quinn im Pilot: Zeit pro Fall, Bearbeitungsaufwand, Vollständigkeit, Prüfaufwand und Akzeptanz im Team.",
   alternates: buildSeoAlternates("/forschung")
 };
 
@@ -18,14 +18,14 @@ const principles = [
   "KI-Ergebnisse bleiben Entwürfe und werden vor der Verwendung fachlich geprüft.",
   "Quinn ergänzt bestehende Fachsysteme, statt sie zu ersetzen.",
   "Datenschutzpfad, Rollen und Verantwortlichkeiten werden vor dem Einsatz geklärt.",
-  "Die Einrichtung erhält eine nachvollziehbare Auswertung statt pauschaler Nutzenversprechen."
+  "Das Team erhält eine nachvollziehbare Auswertung statt pauschaler Nutzenversprechen."
 ];
 
 const metrics = [
   { label: pilotMetricsByLocale.de.minutesPerCase, description: "Zeit vom Gespräch, Audio oder der Notiz bis zum prüfbaren Entwurf." },
   { label: pilotMetricsByLocale.de.editRate, description: "Wie viel muss ergänzt oder korrigiert werden, bevor der Entwurf fachlich passt?" },
   { label: pilotMetricsByLocale.de.completeness, description: "Wie zuverlässig werden offene Angaben, Risiken, Wünsche und Lücken sichtbar?" },
-  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Aufwand für Prüfung und Rückfragen durch PDL, QM oder Fachkraft?" },
+  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Aufwand für Prüfung und Rückfragen durch Pflegefachkräfte, PDL/QM oder ärztliche Teams?" },
   { label: pilotMetricsByLocale.de.teamAcceptance, description: "Ist der Ablauf verständlich und wird Quinn vom Team wiederholt genutzt?" }
 ];
 
@@ -33,8 +33,8 @@ const decisionCriteria = [
   "Alltagstauglichkeit: Das Team kann Quinn in einem klaren Arbeitsablauf zuverlässig nutzen.",
   "Weniger Nacharbeit: Entwürfe brauchen überwiegend gezielte Ergänzungen statt vollständiger Neuerstellung.",
   "Dokumentationsqualität: Offene Angaben und mögliche Lücken werden vor der Freigabe sichtbar.",
-  "Prüfaufwand: Fachkräfte, PDL und QM können Änderungen und offene Punkte nachvollziehen.",
-  "Einführbarkeit: Rollen, Datenpfad, Schulung und Übergabe ins bestehende Fachsystem sind für die Einrichtung geklärt."
+  "Prüfaufwand: Pflegefachkräfte, PDL/QM und ärztliche Teams können Änderungen und offene Punkte nachvollziehen.",
+  "Einführbarkeit: Rollen, Datenpfad, Schulung und Übergabe ins bestehende Fachsystem sind für das Team geklärt."
 ];
 
 export default function ResearchPage() {
@@ -47,10 +47,10 @@ export default function ResearchPage() {
       <section className="quinn-container py-20 sm:py-28">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Auswertung</p>
         <h1 className="mt-6 max-w-5xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
-          Woran Sie nach dem Pilot erkennen, ob Quinn zu Ihrer Einrichtung passt.
+          Woran Sie nach dem Pilot erkennen, ob Quinn zu Ihrem Team passt.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-          Quinn wird nicht an einer Demo gemessen, sondern an Ihrem Dokumentationsalltag. Gemeinsam betrachten wir, ob Entwürfe verständlich sind, weniger Nacharbeit benötigen und sich sicher in bestehende Prüf- und Übergabewege einfügen.
+          Für Pflege und Medizin zählt der eigene Dokumentationsalltag. Pflegeentwürfe prüft die verantwortliche Fachkraft; medizinische Dokumente benötigen die Freigabe einer verifizierten ärztlichen Person. Gemeinsam betrachten wir, ob Entwürfe verständlich sind, weniger Nacharbeit benötigen und sich in bestehende Prüf- und Übergabewege einfügen.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg" className="px-7">
@@ -78,7 +78,7 @@ export default function ResearchPage() {
 
       <section className="quinn-container py-16 sm:py-24">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Was Ihre Einrichtung auswertet</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Was Ihr Team auswertet</p>
           <h2 className="mt-5 quinn-h2">Konkrete Kriterien für eine belastbare Entscheidung.</h2>
           <p className="mt-5 text-base leading-7 text-secondary-foreground">
             Die Auswertung verbindet Zeit, Qualität und Teamaufwand. Dadurch erkennen Sie nicht nur, ob Quinn schneller arbeitet, sondern ob die Dokumentation im Alltag verständlicher und besser prüfbar wird.
@@ -101,7 +101,7 @@ export default function ResearchPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#E7F1EE]">Für Ihre Entscheidung</p>
             <h2 className="mt-5 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">Was am Ende eines Piloten klar sein sollte.</h2>
             <p className="mt-5 text-base leading-7 text-white/75">
-              Sie erhalten eine nachvollziehbare Grundlage für die Entscheidung, ob und in welchem Umfang Quinn zu Ihrer Einrichtung, Ihren Rollen und Ihrem Fachsystem passt.
+              Sie erhalten eine nachvollziehbare Grundlage für die Entscheidung, ob und in welchem Umfang Quinn zu Ihrem Team, Ihren Rollen und Ihrem Fachsystem passt.
             </p>
           </div>
           <div className="space-y-3">

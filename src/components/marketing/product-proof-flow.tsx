@@ -1,142 +1,117 @@
-import { ArrowRight, CheckCircle2, CircleHelp, FileText, MessageSquareText } from "lucide-react";
+import { SegmentDemoLink, type DocumentationSegment, type SiteLocale } from "./pillar-links";
 
-const content = {
+// Editorial, synthetic examples: not generated patient records or product screenshots.
+const examples = {
   de: {
-    sectionId: "demo-faelle",
-    eyebrow: "Konkreter Produktfluss · fiktiver Pflegefall",
-    title: "Aus drei Aussagen wird ein prüfbarer Entwurf — nicht automatisch eine fertige Akte.",
-    intro:
-      "Das Beispiel zeigt den Weg von Gesprächsnotizen bis zur fachlich geprüften Übergabe. Es enthält keine echten Bewohnerdaten.",
-    inputLabel: "1 · Im Gespräch erfasst",
-    inputTitle: "Originale Aussagen",
-    statements: [
-      "„Beim Aufstehen bin ich morgens unsicher.“",
-      "„Im Bad gab es gestern eine neue Stolpersituation.“",
-      "„Der Rollator wird im Zimmer genutzt.“"
-    ],
-    draftLabel: "2 · Quinn bereitet vor",
-    draftTitle: "Mobilität und Wohnumfeld",
-    draft:
-      "Die Bewohnerin berichtet über Unsicherheit beim morgendlichen Transfer. Als Ressource steht ein Rollator zur Verfügung. Eine neue Stolpersituation im Bad wurde durch die Tochter angesprochen.",
-    openLabel: "3 · Quinn macht eine Lücke sichtbar",
-    openTitle: "Offener Punkt",
-    openText: "Wird der Rollator auch im Bad genutzt und besteht dort Unterstützungsbedarf?",
-    reviewLabel: "4 · Die Fachkraft entscheidet",
-    reviewTitle: "Geprüfte Ergänzung",
-    reviewText:
-      "Rollator wird im Zimmer genutzt. Nutzung und Unterstützungsbedarf im Bad werden mit der Bewohnerin geklärt.",
-    approved: "Freigegeben durch Fachkraft",
-    handoff: "Abschnitt kopieren und ins bestehende Pflegesystem übernehmen"
+    care: {
+      category: "Pflege", title: "Den Alltag hören.\nFür die SIS festhalten.",
+      subtitle: "Aus den Worten der Bewohnerin wird ein geordneter Abschnitt. Was fehlt, bleibt eine Frage.",
+      speaker: "Aus dem Aufnahmegespräch", document: "SIS · Mobilität und Beweglichkeit",
+      input: "Morgens, wenn ich aus dem Bett komme, bin ich noch wackelig. Da ist es mir lieber, wenn jemand bei mir bleibt. Im Zimmer nehme ich meinen Rollator.",
+      draft: [
+        ["Eigene Sicht", "Die Bewohnerin beschreibt Unsicherheit beim morgendlichen Aufstehen und wünscht sich, dass jemand bei ihr bleibt."],
+        ["Hilfsmittel", "Nach eigener Aussage nutzt sie im Zimmer einen Rollator."]
+      ],
+      open: "Reicht das Dabeibleiben aus oder braucht sie Hilfe beim Aufstehen?",
+      review: "Die Pflegefachkraft klärt den Unterstützungsbedarf und ergänzt ihre Einschätzung.",
+      handoff: "Anschließend den geprüften Abschnitt ins bestehende Pflegesystem kopieren."
+    },
+    medicine: {
+      category: "Medizin", title: "Beim Gespräch bleiben.\nDie Anamnese vorbereiten.",
+      subtitle: "Beschwerden und Medikamentenangaben stehen getrennt im Entwurf. Fehlende Angaben werden nicht ergänzt.",
+      speaker: "Aus dem Praxisgespräch", document: "Anamnese · Gesprächsausschnitt",
+      input: "Den Husten habe ich seit drei Tagen, vor allem abends. Und morgens nehme ich meine Blutdrucktablette. Wie die heißt, weiß ich gerade nicht – den Plan habe ich zu Hause.",
+      draft: [
+        ["Aktuelle Beschwerden", "Patient berichtet über Husten seit drei Tagen, vor allem abends."],
+        ["Medikation laut Patient", "Morgendliche Einnahme einer Blutdrucktablette. Präparat und Dosierung nicht bekannt; Medikationsplan liegt nicht vor."]
+      ],
+      open: "Welches Präparat und welche Dosierung stehen im Medikationsplan?",
+      review: "Medikation abgleichen, den Entwurf ärztlich prüfen und die konkrete Version freigeben.",
+      handoff: "Nach ärztlicher Freigabe als Text oder PDF selbst ins Praxissystem übernehmen. Keine automatische PVS-Schnittstelle."
+    }
   },
   en: {
-    sectionId: "demo-cases",
-    eyebrow: "Concrete product flow · fictional care case",
-    title: "Three statements become a reviewable draft — not an automatically completed record.",
-    intro:
-      "This example shows the path from conversation notes to professionally reviewed handoff. It contains no real resident data.",
-    inputLabel: "1 · Captured in the conversation",
-    inputTitle: "Original statements",
-    statements: [
-      "“I feel unsure when getting up in the morning.”",
-      "“There was a new tripping situation in the bathroom yesterday.”",
-      "“The walker is used in the room.”"
-    ],
-    draftLabel: "2 · Quinn prepares",
-    draftTitle: "Mobility and living environment",
-    draft:
-      "The resident reports feeling unsure during morning transfer. A walker is available as a resource. Her daughter mentioned a new tripping situation in the bathroom.",
-    openLabel: "3 · Quinn makes a gap visible",
-    openTitle: "Open point",
-    openText: "Is the walker also used in the bathroom, and is support needed there?",
-    reviewLabel: "4 · The professional decides",
-    reviewTitle: "Reviewed addition",
-    reviewText:
-      "The walker is used in the room. Bathroom use and support needs will be clarified with the resident.",
-    approved: "Approved by care professional",
-    handoff: "Copy the section into the existing care system"
+    care: {
+      category: "Nursing care", title: "Listen to daily life.\nPrepare the care record.",
+      subtitle: "The resident’s own words become a structured section. Missing information stays a question.",
+      speaker: "From the intake conversation", document: "SIS · Mobility",
+      input: "I’m a bit unsteady when I get out of bed in the morning. I’d rather have someone stay with me. I use my walker in my room.",
+      draft: [
+        ["Resident’s perspective", "The resident describes feeling unsteady when getting up in the morning and would like someone to stay with her."],
+        ["Mobility aid", "She reports using a walker in her room."]
+      ],
+      open: "Is someone staying with her enough, or does she need help getting up?",
+      review: "The care professional clarifies what support is needed and adds their assessment.",
+      handoff: "Then copy the reviewed section into the existing care system."
+    },
+    medicine: {
+      category: "Medicine", title: "Stay with the conversation.\nPrepare the medical history.",
+      subtitle: "Symptoms and reported medication appear separately in the draft. Missing details are not filled in.",
+      speaker: "From the practice conversation", document: "Medical history · Conversation excerpt",
+      input: "I’ve had this cough for three days, mostly in the evening. I take my blood pressure tablet in the morning. I can’t remember the name – my medication list is at home.",
+      draft: [
+        ["Current symptoms", "Patient reports a cough for three days, mostly in the evening."],
+        ["Reported medication", "Takes a blood pressure tablet in the morning. Name and dose unknown; medication list not available."]
+      ],
+      open: "Which medication and dose are recorded on the medication list?",
+      review: "Reconcile the medication and have a verified physician review and approve this version.",
+      handoff: "After physician approval, manually transfer the text or PDF into the practice system. No automatic practice-system interface."
+    }
   }
 } as const;
 
-export function ProductProofFlow({ locale = "de" }: { locale?: "de" | "en" }) {
-  const t = content[locale];
-
+export function ProductProofFlow({ locale = "de", segment }: { locale?: SiteLocale; segment?: DocumentationSegment }) {
+  const segments: DocumentationSegment[] = segment ? [segment] : ["care", "medicine"];
+  const de = locale === "de";
   return (
-    <section id={t.sectionId} className="bg-white py-16 sm:py-24">
+    <section id={de ? "demo-faelle" : "demo-cases"} className="bg-white py-16 sm:py-24">
       <div className="quinn-container">
-        <div className="max-w-4xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">{t.eyebrow}</p>
-          <h2 className="mt-5 text-[34px] font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-[52px]">{t.title}</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">{t.intro}</p>
+        <div className="max-w-3xl">
+          <p className="text-sm font-medium text-[#1E6B72]">{de ? "So kann Dokumentation aussehen" : "What the documentation can look like"}</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.035em] sm:text-5xl">{de ? "Vom Gespräch zum Dokumentationsentwurf" : "From conversation to documentation draft"}</h2>
+          <p className="mt-5 text-sm leading-6 text-secondary-foreground">{de ? "Fiktive, synthetische Beispiele mit erfundenen Angaben – keine Live-Demo und keine vollständige Akte." : "Fictional, synthetic examples with invented details — not a live demo or a complete record."}</p>
         </div>
-
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          <article className="rounded-[1.75rem] border border-[#E8E8EC] bg-[#FBFAF6] p-6 sm:p-8">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white">
-                <MessageSquareText className="h-5 w-5 text-[#1E6B72]" />
+        <div className="mt-12 divide-y divide-border">
+          {segments.map((key) => {
+            const example = examples[locale][key];
+            return <article key={key} data-proof-segment={key} className="py-10 first:pt-0 sm:py-16">
+              <div className="mb-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                <span className="font-semibold text-[#1E6B72]">{example.category}</span>
+                <span className="text-muted-foreground">{de ? "Fiktives Beispiel" : "Fictional example"}</span>
               </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{t.inputLabel}</p>
-                <h3 className="mt-1 text-xl font-semibold text-foreground">{t.inputTitle}</h3>
-              </div>
-            </div>
-            <div className="mt-6 space-y-3">
-              {t.statements.map((statement) => (
-                <p key={statement} className="rounded-2xl border border-[#E8E8EC] bg-white p-4 text-sm leading-7 text-secondary-foreground">
-                  {statement}
-                </p>
-              ))}
-            </div>
-          </article>
-
-          <article className="rounded-[1.75rem] border border-[#DDE8E4] bg-[#E7F1EE] p-6 sm:p-8">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white">
-                <FileText className="h-5 w-5 text-[#1E6B72]" />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{t.draftLabel}</p>
-                <h3 className="mt-1 text-xl font-semibold text-foreground">{t.draftTitle}</h3>
-              </div>
-            </div>
-            <p className="mt-6 rounded-2xl bg-white p-5 text-sm leading-7 text-secondary-foreground">{t.draft}</p>
-          </article>
-
-          <article className="rounded-[1.75rem] border border-[#E8E8EC] bg-white p-6 sm:p-8">
-            <div className="flex items-start gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#F6F0E3]">
-                <CircleHelp className="h-5 w-5 text-[#1E6B72]" />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{t.openLabel}</p>
-                <h3 className="mt-2 text-xl font-semibold text-foreground">{t.openTitle}</h3>
-                <p className="mt-3 text-sm leading-7 text-secondary-foreground">{t.openText}</p>
-              </div>
-            </div>
-          </article>
-
-          <article className="rounded-[1.75rem] border border-[#E8E8EC] bg-white p-6 sm:p-8">
-            <div className="flex items-start gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#E7F1EE]">
-                <CheckCircle2 className="h-5 w-5 text-[#1E6B72]" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{t.reviewLabel}</p>
-                <h3 className="mt-2 text-xl font-semibold text-foreground">{t.reviewTitle}</h3>
-                <p className="mt-3 text-sm leading-7 text-secondary-foreground">{t.reviewText}</p>
-                <div className="mt-5 flex flex-col gap-3 border-t border-[#E8E8EC] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#1E6B72]">
-                    <CheckCircle2 className="h-4 w-4" />
-                    {t.approved}
-                  </span>
-                  <span className="inline-flex items-center gap-2 text-sm font-medium text-secondary-foreground">
-                    {t.handoff}
-                    <ArrowRight className="h-4 w-4 shrink-0" />
-                  </span>
+              <div className="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+                <div>
+                  <h3 className="whitespace-pre-line text-[28px] font-semibold leading-tight tracking-[-0.035em] sm:text-4xl">{example.title}</h3>
+                  <p className="mt-4 max-w-md text-base leading-7 text-secondary-foreground">{example.subtitle}</p>
+                  <figure className="mt-8 sm:mt-10">
+                    <figcaption className="mb-4 text-xs font-medium text-muted-foreground">{example.speaker}</figcaption>
+                    <blockquote className="border-l-2 border-[#B7CEC7] pl-5 text-lg leading-8 text-foreground sm:text-xl sm:leading-9">{de ? "„" : "“"}{example.input}{de ? "“" : "”"}</blockquote>
+                  </figure>
+                  <div className="mt-8 hidden lg:block"><SegmentDemoLink locale={locale} segment={key} source={segment ? "seo-landing" : "homepage"} /></div>
+                </div>
+                <div>
+                  <div data-proof-document className="overflow-hidden rounded-xl border border-[#DCE4DF] bg-white shadow-[0_8px_32px_-20px_rgba(16,47,51,0.22)]">
+                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5EBE7] px-5 py-4 sm:px-7">
+                      <p className="text-sm font-semibold text-foreground">{example.document}</p>
+                      <span className="text-xs text-muted-foreground">{de ? "Entwurf · ungeprüft" : "Draft · unreviewed"}</span>
+                    </div>
+                    <dl className="space-y-6 px-5 py-7 sm:px-7 sm:py-8">
+                      {example.draft.map(([label, text]) => <div key={label}><dt className="text-xs font-semibold text-[#496158]">{label}</dt><dd className="mt-2 text-[15px] leading-7 text-foreground">{text}</dd></div>)}
+                    </dl>
+                    <div className="border-t border-[#EEE8DA] bg-[#FCFAF5] px-5 py-5 sm:px-7">
+                      <p className="text-xs font-semibold text-[#7B6335]">{de ? "Noch zu klären" : "To clarify"}</p>
+                      <p className="mt-2 text-[15px] leading-7 text-foreground">{example.open}</p>
+                    </div>
+                  </div>
+                  <div className="mt-5 text-sm leading-6 text-secondary-foreground">
+                    <p><span className="font-medium text-foreground">{de ? "Vor der Übernahme: " : "Before transfer: "}</span>{example.review}</p>
+                    <p className="mt-2">{example.handoff}</p>
+                  </div>
+                  <div className="mt-6 lg:hidden"><SegmentDemoLink locale={locale} segment={key} source={segment ? "seo-landing" : "homepage"} /></div>
                 </div>
               </div>
-            </div>
-          </article>
+            </article>;
+          })}
         </div>
       </div>
     </section>

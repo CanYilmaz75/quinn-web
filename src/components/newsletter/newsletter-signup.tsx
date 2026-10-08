@@ -20,7 +20,7 @@ const SIGNED_UP_KEY = "quinn_newsletter_signed_up_v1";
 const CONSENT_KEY = "quinn_cookie_consent_v1";
 const POPUP_DELAY_MS = 50_000;
 const SCROLL_THRESHOLD = 0.55;
-const POPUP_EXCLUDED_PATHS = new Set(["/demo-buchen", "/en/book-demo", "/preise", "/en/pricing"]);
+const POPUP_EXCLUDED_PATHS = new Set(["/demo-buchen", "/en/book-demo", "/preise", "/en/pricing", "/anwendungen/sis-aufnahme", "/en/use-cases/sis-intake"]);
 
 const copy = {
   de: {
@@ -33,7 +33,7 @@ const copy = {
     error: "Die Anmeldung konnte gerade nicht gespeichert werden. Bitte versuchen Sie es erneut.",
     footerAria: "Newsletter Anmeldung",
     footerTitle: "Quinn Newsletter",
-    footerText: "Für Updates zu Produkt, Pflegedokumentation und frühen Einladungen.",
+    footerText: "Für Produktupdates und Einblicke in Dokumentation für Pflege und Medizin.",
     popupAria: "Quinn Newsletter Anmeldung",
     popupTitle: "Quinn Newsletter",
     popupText: "Neue Einblicke zu Dokumentationsflows, Produktupdates und frühen Terminen direkt erhalten.",
@@ -49,7 +49,7 @@ const copy = {
     error: "The signup could not be saved right now. Please try again.",
     footerAria: "Newsletter signup",
     footerTitle: "Quinn Newsletter",
-    footerText: "Product updates, documentation workflow insights and early invitations.",
+    footerText: "Product updates and documentation insights for nursing care and medicine.",
     popupAria: "Quinn Newsletter signup",
     popupTitle: "Quinn Newsletter",
     popupText: "Get new documentation-flow insights, product updates and early sessions directly.",
@@ -253,7 +253,7 @@ export function NewsletterSignup({ variant = "footer", locale }: NewsletterSignu
     setIsVisible(false);
   }
 
-  if (!isVisible) {
+  if (!isVisible || (variant === "popup" && POPUP_EXCLUDED_PATHS.has(pathname))) {
     return null;
   }
 

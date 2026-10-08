@@ -27,7 +27,19 @@ NEXT_PUBLIC_APP_URL=https://app.quinnhealth.de
 QUINN_APP_URL=https://app.quinnhealth.de
 ```
 
-`NEXT_PUBLIC_APP_URL` steuert öffentliche Login-Links. `QUINN_APP_URL` wird ausschließlich serverseitig genutzt, um validierte Demo- und Newsletter-Anfragen an die schmalen öffentlichen Endpunkte der App weiterzuleiten. Im Browser befinden sich keine Supabase-Service-Role- oder AI-Schlüssel.
+Login und Marketing-Proxy sind bewusst auf `https://app.quinnhealth.de` festgelegt; die oben genannten historischen Variablen überschreiben diese Grenze nicht. Im Browser befinden sich keine Supabase-Service-Role- oder AI-Schlüssel.
+
+## Staging → Produktion
+
+Die öffentlichen DE/EN-Oberflächen aus `quinn-web-staging` werden selektiv übernommen. Produktion läuft im Vercel-Projekt `quinn-pws`, Git-Branch `quinn-web/main`, unter `https://quinnhealth.de`.
+
+- Pflege und Medizin sind gleichwertige Einstiege; Produktübersicht und Prüfung/Qualität haben eigene Sprachpaare.
+- Demo-Bereich bleibt editierbar. Da die App noch kein separates Segmentfeld persistiert, wird eine gewählte Zielgruppe zusätzlich im vorhandenen `interest`-Feld gespeichert; allgemeine Anfragen bleiben ohne Vorwahl.
+- Echte Demo-/Newsletter-Anfragen gehen über den bestehenden App-Proxy. Keine Staging-Receipts, Blob-Storage oder synthetische E-Mail-Beschränkung in Produktion.
+- Canonicals, vollständige Sitemap, Robots, Login und consent-gated Vercel Analytics bleiben Produktionsfunktionen. Staging bleibt separat geschützt und nicht indexierbar.
+- Vorherige Produktions-SHAs bleiben als Git-Rollback verfügbar. Nach Push Deployment-SHA, Live-Routen, Form-Persistenz und QA-Cleanup verifizieren.
+
+Verfügbare Sicherheitspatches wurden aktualisiert. Der ungepatchte `braces`-Befund betrifft derzeit die Entwicklungs-/Build-Abhängigkeiten; `npm audit --omit=dev --audit-level=high` ist separat von der vollständigen CI-Audit-Schranke zu prüfen. Die vollständige Schranke darf nicht stillschweigend abgeschwächt werden.
 
 ## Qualitätsprüfungen
 

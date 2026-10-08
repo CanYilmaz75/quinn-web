@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { parseDemoSegment, type DemoSegment } from "@/app/demo-buchen/demo-segment";
 import Link from "next/link";
 import { ArrowRight, Check, ChevronDown } from "lucide-react";
 
@@ -15,15 +16,17 @@ type DemoForm = {
   organisation: string;
   interest: string;
   consent: boolean;
+  segment: DemoSegment;
 };
 
-function createInitialForm(initialInterest = ""): DemoForm {
+function createInitialForm(initialInterest = "", initialSegment: DemoSegment = ""): DemoForm {
   return {
   firstName: "",
   lastName: "",
   email: "",
   organisation: "",
   interest: initialInterest,
+  segment: initialSegment,
   consent: false
   };
 }
@@ -32,15 +35,15 @@ const workflows = [
   "Care intake and SIS",
   "Care or consultation documentation",
   "Handoff and professional review",
-  "Healthcare documentation workflow",
+  "Medical documentation workflow",
   "Pilot and pricing range",
   "Site offer and rollout",
   "Operator or group solution",
   "Another documentation-adjacent workflow"
 ];
 
-export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discuss your demo directly with the founder." }: { initialInterest?: string; heading?: string }) {
-  const [form, setForm] = useState<DemoForm>(() => createInitialForm(initialInterest));
+export function EnglishDemoBookingTool({ initialInterest = "", initialSegment = "", heading = "Discuss your demo directly with the founder." }: { initialInterest?: string; initialSegment?: DemoSegment; heading?: string }) {
+  const [form, setForm] = useState<DemoForm>(() => createInitialForm(initialInterest, initialSegment));
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
   const hasTrackedStart = useRef(false);
@@ -53,7 +56,7 @@ export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discus
   function updateForm<T extends keyof DemoForm>(field: T, value: DemoForm[T]) {
     if (!hasTrackedStart.current) {
       hasTrackedStart.current = true;
-      trackPublicConversion("demo_form_started", { locale: "en", source: "book-demo" });
+      trackPublicConversion("demo_form_started", { locale: "en", source: "book-demo", segment: form.segment || "general" });
     }
     hasTrackedValidationError.current = false;
     setForm((current) => ({ ...current, [field]: value }));
@@ -62,7 +65,7 @@ export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discus
   function trackValidationError() {
     if (hasTrackedValidationError.current) return;
     hasTrackedValidationError.current = true;
-    trackPublicConversion("demo_form_validation_error", { locale: "en", source: "book-demo" });
+    trackPublicConversion("demo_form_validation_error", { locale: "en", source: "book-demo", segment: form.segment || "general" });
   }
 
   async function submitDemo(event: React.FormEvent<HTMLFormElement>) {
@@ -74,14 +77,15 @@ export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discus
       const response = await fetch("/api/demo-requests", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ ...form, locale: "en", source: "book-demo", website: "" })
+        body: JSON.stringify({ ...form, interest: form.segment ? `[${form.segment === "care" ? "Pflege / Care" : "Medizin / Medicine"}] ${form.interest}` : form.interest, segment: form.segment || "general", locale: "en", source: "book-demo", website: "" })
       });
-      if (!response.ok) throw new Error("Demo request failed");
-      trackPublicConversion("demo_form_submitted", { locale: "en", source: "book-demo" });
+      const result = await response.json();
+      if (!response.ok || result?.ok !== true || result?.staging === true) throw new Error("Persistence not confirmed");
+      trackPublicConversion("demo_form_submitted", { locale: "en", source: "book-demo", segment: form.segment || "general" });
       setSubmitted(true);
       setStatus("idle");
     } catch {
-      trackPublicConversion("demo_form_failed", { locale: "en", source: "book-demo" });
+      trackPublicConversion("demo_form_failed", { locale: "en", source: "book-demo", segment: form.segment || "general" });
       setStatus("error");
     }
   }
@@ -96,7 +100,7 @@ export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discus
         <p className="mt-4 text-sm leading-7 text-secondary-foreground">
           Thank you, {form.firstName}. Can will review your request for {form.organisation} personally and follow up with a suitable next step.
         </p>
-        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(createInitialForm(initialInterest)); hasTrackedStart.current = false; hasTrackedValidationError.current = false; }}>
+        <Button type="button" variant="outline" className="mt-6" onClick={() => { setSubmitted(false); setStatus("idle"); setForm(createInitialForm(initialInterest, initialSegment)); hasTrackedStart.current = false; hasTrackedValidationError.current = false; }}>
           Start a new request
         </Button>
       </div>
@@ -124,6 +128,14 @@ export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discus
 
       <form className="mt-7 space-y-4" onSubmit={submitDemo} onInvalidCapture={trackValidationError}>
         <p className="text-right text-xs text-muted-foreground">* Required fields</p>
+        <label className="block space-y-2 text-sm font-medium text-secondary-foreground">
+          Area (optional)
+          <select name="segment" value={form.segment} onChange={(event) => updateForm("segment", parseDemoSegment(event.target.value))} className="h-11 w-full rounded-[10px] border border-[#D7D2CC] bg-white px-3 text-sm">
+            <option value="">General inquiry / no preference</option>
+            <option value="care">Care</option>
+            <option value="medicine">Medicine</option>
+          </select>
+        </label>
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-2 text-sm font-medium text-secondary-foreground">
             First name <span aria-hidden="true">*</span>
@@ -135,8 +147,8 @@ export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discus
           </label>
         </div>
         <label className="space-y-2 text-sm font-medium text-secondary-foreground">
-          Work email <span aria-hidden="true">*</span>
-          <Input value={form.email} onChange={(event) => updateForm("email", event.target.value)} type="email" placeholder="name@organisation.com" autoComplete="email" required />
+          Business email <span aria-hidden="true">*</span>
+          <Input value={form.email} onChange={(event) => updateForm("email", event.target.value)} type="email" placeholder="name@organisation.de" autoComplete="email" required />
         </label>
         <label className="space-y-2 text-sm font-medium text-secondary-foreground">
           Organisation <span aria-hidden="true">*</span>
@@ -159,7 +171,7 @@ export function EnglishDemoBookingTool({ initialInterest = "", heading = "Discus
           </span>
         </label>
         {status === "error" ? (
-          <p className="rounded-xl border border-[#F2C4C4] bg-[#FFF7F7] px-3 py-2 text-xs font-medium leading-5 text-[#9F1D1D]">
+          <p role="alert" className="rounded-xl border border-[#F2C4C4] bg-[#FFF7F7] px-3 py-2 text-xs font-medium leading-5 text-[#9F1D1D]">
             The request could not be saved right now. Please try again or contact us directly.
           </p>
         ) : null}

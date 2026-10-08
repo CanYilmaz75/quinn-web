@@ -14,6 +14,7 @@ const defaultDescription = "Quinn unterstützt Pflege- und Gesundheitsteams dabe
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: { icon: "data:," },
   title: "Quinn",
   description: defaultDescription,
   openGraph: {

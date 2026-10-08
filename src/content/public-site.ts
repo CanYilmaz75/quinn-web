@@ -49,9 +49,9 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "de",
     slug: "/" as Route,
-    title: "Quinn | KI-Dokumentation für Pflegegespräche",
-    description: "Prüfbare KI-Dokumentationsentwürfe für Pflegegespräche, Aufnahme, Übergabe, Anamnese, Audio und Notizen vor bestehenden Pflege-, Klinik- oder Praxissystemen.",
-    primaryKeyword: "KI Pflegedokumentation",
+    title: "Quinn | KI-Dokumentation für Pflege und Medizin",
+    description: "Prüfbare KI-Dokumentationsentwürfe für Pflege und Medizin aus Gesprächen, Audio und Notizen. Fachlich prüfen und manuell ins bestehende Fachsystem übernehmen.",
+    primaryKeyword: "KI Dokumentation Pflege und Medizin",
     secondaryKeywords: [
       "KI-basierte Sprachdokumentation in der Pflege",
       "KI Sprachdokumentation Pflege",
@@ -64,7 +64,7 @@ export const publicSitePages: PublicPage[] = [
     primaryCta: "Unverbindlich Demo anfragen",
     secondaryCta: "Pilotprogramm ansehen",
     status: "live",
-    positioning: "prüfbare Dokumentationsassistenz für Pflegegespräche als erster Einsatzbereich, erweitert auf Klinik-, Praxis- und Versorgungsabläufe vor bestehenden Systemen",
+    positioning: "prüfbare Dokumentationsassistenz für Pflege und Medizin als gleichwertige Bereiche mit eigenen fachlichen Prüfabläufen vor bestehenden Systemen",
     riskGuardrails: deGuardrails
   },
   {
@@ -96,8 +96,8 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "de",
     slug: "/pilotprogramm" as Route,
-    title: "Pilotprogramm für KI-Dokumentation in der Pflege",
-    description: "Pflegeeinrichtungen testen Quinn in einem klaren Aufnahme-, SIS- oder Prüfablauf und werten Zeit, Nacharbeit, Vollständigkeit und Prüfaufwand aus.",
+    title: "Pilotprogramm für KI-Dokumentation in Pflege und Medizin",
+    description: "Teams aus Pflege und Medizin erproben einen abgegrenzten Dokumentationsablauf und werten Zeit, Nacharbeit, Vollständigkeit und fachlichen Prüfaufwand aus.",
     primaryKeyword: "Pilot KI Pflegedokumentation",
     secondaryKeywords: ["Pflegeheim Dokumentation entlasten", "Qualitätsmanagement Pflegedokumentation", "stationäre Pflege Dokumentation KI"],
     primaryCta: "Pilotgespräch anfragen",
@@ -109,8 +109,8 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "de",
     slug: "/preise" as Route,
-    title: "Preise für prüfbare KI-Dokumentation in der Pflege",
-    description: "Beratungsgestützte Pilot-, Einrichtungs- und Trägerpakete für Quinn ohne öffentliche Nutzerpreise oder direkte Online-Buchung.",
+    title: "Preise für prüfbare KI-Dokumentation in Pflege und Medizin",
+    description: "Individuelle Angebote für Pflege und Medizin: Umfang, Team und Prüfablauf gemeinsam klären. Keine direkte Online-Buchung.",
     primaryKeyword: "KI Pflegedokumentation Preise",
     secondaryKeywords: ["Pilot KI Pflegedokumentation", "Pflegeheim Dokumentation entlasten", "Qualitätsmanagement Pflegedokumentation"],
     primaryCta: "Preisgespräch anfragen",
@@ -122,8 +122,8 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "de",
     slug: "/forschung" as Route,
-    title: "Auswertung eines Quinn-Piloten in der Pflege",
-    description: "Pflegeeinrichtungen sehen, wie Zeit pro Fall, Nacharbeit, Vollständigkeit, Prüfaufwand und Akzeptanz im eigenen Ablauf ausgewertet werden.",
+    title: "Auswertung eines Quinn-Piloten in Pflege und Medizin",
+    description: "Teams aus Pflege und Medizin sehen, wie Zeit pro Fall, Nacharbeit, Vollständigkeit, Prüfaufwand und Akzeptanz im eigenen Ablauf ausgewertet werden.",
     primaryKeyword: "Pilotmetriken KI Pflegedokumentation",
     secondaryKeywords: ["Prüfbare KI-Dokumentation Pflege", "Pflegedokumentation Evaluation", "KI Pflege Pilot"],
     primaryCta: "Auswertung besprechen",
@@ -136,26 +136,26 @@ export const publicSitePages: PublicPage[] = [
     locale: "de",
     slug: "/updates" as Route,
     title: "Quinn Updates",
-    description: "Produkt- und Website-Updates zu Quinns prüfbarer Dokumentationsassistenz für Pflegeeinrichtungen.",
+    description: "Produktverbesserungen für Quinns prüfbare Dokumentationsassistenz in Pflege und Medizin.",
     primaryKeyword: "Quinn Updates",
     secondaryKeywords: ["Quinn Produktupdates", "Pflegedokumentation verbessern", "Prüfbare Dokumentation"],
     primaryCta: "Demo anfragen",
     secondaryCta: "Forschung ansehen",
     status: "live",
-    positioning: "verständliche Produktverbesserungen aus Sicht von Pflegeeinrichtungen",
+    positioning: "verständliche Produktverbesserungen aus Sicht von Teams in Pflege und Medizin",
     riskGuardrails: deGuardrails
   },
   {
     locale: "en",
     slug: "/en" as Route,
-    title: "Quinn | Review-first AI care documentation",
-    description: "Review-first AI documentation for care conversations, intake, handover, anamnesis, notes and audio before existing care, clinic or practice systems.",
-    primaryKeyword: "AI care documentation",
+    title: "Quinn | AI documentation for nursing and medicine",
+    description: "Reviewable AI documentation drafts for nursing and medicine from conversations, audio and notes. Professionally review and manually transfer into existing systems.",
+    primaryKeyword: "AI documentation nursing and medicine",
     secondaryKeywords: ["voice documentation for care", "AI nursing documentation", "reviewable documentation drafts", "care home documentation AI", "hospital documentation AI", "healthcare documentation AI"],
     primaryCta: "Request a demo",
     secondaryCta: "View pilot program",
     status: "live",
-    positioning: "review-first AI documentation layer for care conversations as the first wedge, extended to clinic, practice and healthcare workflows before existing systems",
+    positioning: "reviewable documentation assistance for nursing and medicine as equal areas with distinct professional review workflows before existing systems",
     riskGuardrails: enGuardrails
   },
   {
@@ -187,8 +187,8 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "en",
     slug: "/en/pilot-program" as Route,
-    title: "Pilot program for review-first AI care documentation",
-    description: "Care organisations test Quinn in one defined workflow and evaluate time, rework, completeness and review workload.",
+    title: "Pilot program for AI documentation in nursing and medicine",
+    description: "Nursing and medical teams test Quinn in one defined workflow and evaluate time, rework, completeness and professional review workload.",
     primaryKeyword: "care home documentation AI",
     secondaryKeywords: ["AI care documentation", "nursing documentation burden", "care workflow AI"],
     primaryCta: "Request a pilot call",
@@ -200,8 +200,8 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "en",
     slug: "/en/pricing" as Route,
-    title: "Pricing for review-first AI care documentation",
-    description: "Consultation-led pilot, facility and operator packages for Quinn without public user pricing or direct online booking.",
+    title: "Pricing for AI documentation in nursing and medicine",
+    description: "Individual proposals for nursing and medicine: agree scope, team and review workflow together. No direct online booking.",
     primaryKeyword: "AI care documentation pricing",
     secondaryKeywords: ["care documentation pilot", "care home documentation AI", "AI documentation layer for care teams"],
     primaryCta: "Request pricing conversation",
@@ -213,8 +213,8 @@ export const publicSitePages: PublicPage[] = [
   {
     locale: "en",
     slug: "/en/research" as Route,
-    title: "Evaluating a Quinn pilot in care workflows",
-    description: "Care organisations see how time per case, rework, completeness, review workload and team acceptance are evaluated in their workflow.",
+    title: "Evaluating a Quinn pilot in nursing and medicine",
+    description: "Nursing and medical teams see how time per case, rework, completeness, review workload and team acceptance are evaluated in their workflow.",
     primaryKeyword: "AI care documentation pilot metrics",
     secondaryKeywords: ["review-first AI care", "care documentation evaluation", "care workflow AI"],
     primaryCta: "Discuss the evaluation",
@@ -227,13 +227,13 @@ export const publicSitePages: PublicPage[] = [
     locale: "en",
     slug: "/en/updates" as Route,
     title: "Quinn updates",
-    description: "Product and website updates for Quinn's review-first documentation layer for care providers.",
+    description: "Product improvements for Quinn's reviewable documentation assistance in nursing and medicine.",
     primaryKeyword: "Quinn updates",
     secondaryKeywords: ["care documentation improvements", "Quinn product updates", "review-first documentation"],
     primaryCta: "Request a demo",
     secondaryCta: "View research",
     status: "live",
-    positioning: "clear product improvements from the care organisation's perspective",
+    positioning: "clear product improvements from the nursing and medical team's perspective",
     riskGuardrails: enGuardrails
   }
 ];
@@ -241,16 +241,16 @@ export const publicSitePages: PublicPage[] = [
 export const publicFaqsByLocale = {
   de: [
     {
-      question: "Ersetzt Quinn unsere Pflegesoftware?",
-      answer: "Nein. Quinn erstellt prüfbare Entwürfe vor dem bestehenden Fachsystem. Die Bewohnerakte und das führende Dokumentationssystem bleiben bestehen."
+      question: "Ersetzt Quinn unser Pflege-, Praxis- oder Kliniksystem?",
+      answer: "Nein. Quinn erstellt prüfbare Entwürfe. Pflege- und Patientenakten sowie das führende Fachsystem bleiben bestehen; die Übernahme erfolgt manuell."
     },
     {
       question: "Entscheidet Quinn fachlich?",
-      answer: "Nein. Quinn unterstützt beim Formulieren, Strukturieren und Prüfen. Fachliche Bewertung und Freigabe bleiben beim Pflege- oder QM-Team."
+      answer: "Nein. Quinn unterstützt beim Formulieren, Strukturieren und Prüfen. Pflegeentwürfe prüft die verantwortliche Fachkraft. Medizinische Dokumente benötigen die Freigabe einer verifizierten ärztlichen Person."
     },
     {
       question: "Wie läuft ein Pilot ab?",
-      answer: "Wir starten mit einem klar abgegrenzten Aufnahme-, SIS- oder Prüfablauf, definieren Messwerte und prüfen nach 4–6 Wochen Nutzung, Qualität und Entlastung."
+      answer: "Wir vereinbaren einen abgegrenzten Ablauf in Pflege oder Medizin, Verantwortlichkeiten, Dauer und Messwerte. Danach werten wir Nutzung, Qualität und Prüfaufwand gemeinsam aus."
     },
     {
       question: "Was unterscheidet Quinn von Sprachdokumentation?",
@@ -259,16 +259,16 @@ export const publicFaqsByLocale = {
   ],
   en: [
     {
-      question: "Does Quinn replace our care software?",
-      answer: "No. Quinn creates reviewable drafts before the existing system. The resident record and the system of record remain in place."
+      question: "Does Quinn replace our nursing, practice or hospital system?",
+      answer: "No. Quinn creates reviewable drafts. Nursing and patient records and the system of record remain in place; transfer is manual."
     },
     {
-      question: "Does Quinn make professional care decisions?",
-      answer: "No. Quinn supports drafting, structuring and review. Professional judgement and approval stay with the care or quality team."
+      question: "Does Quinn make professional decisions?",
+      answer: "No. Quinn supports drafting, structuring and review. The responsible professional reviews nursing drafts. Medical documents require approval by a verified physician."
     },
     {
       question: "How does a pilot work?",
-      answer: "We start with a bounded intake, SIS-style or review workflow, define metrics and evaluate usage, quality and relief after 4–6 weeks."
+      answer: "We agree a bounded nursing or medical workflow, responsibilities, duration and metrics. We then evaluate usage, quality and review workload together."
     },
     {
       question: "How is Quinn different from voice documentation?",
@@ -282,14 +282,14 @@ export const pilotMetricsByLocale = {
     minutesPerCase: "Minuten pro Fall",
     editRate: "Bearbeitungsaufwand",
     completeness: "Vollständigkeit",
-    reviewEffort: "Prüfaufwand für PDL/QM",
+    reviewEffort: "Fachlicher Prüfaufwand",
     teamAcceptance: "Akzeptanz im Team"
   },
   en: {
     minutesPerCase: "Minutes per case",
     editRate: "Edit rate",
     completeness: "Completeness",
-    reviewEffort: "Care/QM review effort",
+    reviewEffort: "Professional review effort",
     teamAcceptance: "Team acceptance"
   }
 } as const;
@@ -299,7 +299,15 @@ export const demoCtaByLocale = {
   en: "Request a demo"
 } as const;
 
+export const publicMetadataPages = {
+  "/produkt/uebersicht": { title: "Produktübersicht für Pflege und Medizin | Quinn", description: "Von Gespräch, Audio und Notizen zum prüfbaren Entwurf: fachliche Prüfung und manuelle Übernahme für Pflege und Medizin." },
+  "/en/product/overview": { title: "Product overview for nursing and medicine | Quinn", description: "From conversations, audio and notes to reviewable drafts: professional review and manual handoff for nursing and medicine." },
+  "/produkt/pruefung-qualitaet": { title: "Prüfung & Qualität für Pflege und Medizin | Quinn", description: "Quellen abgleichen, fehlende Angaben klären und Entwürfe bearbeiten. Pflegefachliche Prüfung und ärztliche Freigabe vor der manuellen Übernahme." },
+  "/en/product/review-quality": { title: "Review & quality for nursing and medicine | Quinn", description: "Check sources, clarify missing information and edit drafts. Professional nursing review and physician approval before manual handoff." },
+} as const;
+
 export const publicSeoPairs = [
+  ["/produkt/pruefung-qualitaet", "/en/product/review-quality"],
   ["/", "/en"],
   ["/agb", "/en/terms"],
   ["/anwendungen/sis-aufnahme", "/en/use-cases/sis-intake"],
@@ -312,6 +320,7 @@ export const publicSeoPairs = [
   ["/kunden", "/en/customers"],
   ["/loesungen/ambulante-pflege", "/en/solutions/home-care"],
   ["/loesungen/medizin", "/en/solutions/medicine"],
+  ["/loesungen/pflege", "/en/solutions/nursing-care"],
   ["/loesungen/pflegeheime", "/en/solutions/care-homes"],
   ["/loesungen/psychologen", "/en/solutions/psychologists"],
   ["/loesungen/traeger-qm", "/en/solutions/operators-quality-management"],
@@ -358,15 +367,15 @@ export function buildSoftwareApplicationJsonLd(locale: "de" | "en" = "de") {
     operatingSystem: "Web",
     description:
       locale === "de"
-        ? "KI-Assistenz für prüfbare Dokumentationsentwürfe aus Pflegegesprächen vor dem bestehenden Fachsystem."
-        : "AI assistance for reviewable documentation drafts from care conversations before information enters the existing system.",
+        ? "KI-Assistenz für prüfbare Dokumentationsentwürfe in Pflege und Medizin. Fachliche Prüfung und manuelle Übernahme ins bestehende Fachsystem."
+        : "AI assistance for reviewable documentation drafts in nursing and medicine. Professional review and manual transfer into the existing system.",
     url: siteUrl,
     provider: { "@id": `${siteUrl}/#organization` },
     inLanguage: locale === "de" ? "de-DE" : "en",
     isAccessibleForFree: false,
     featureList:
       locale === "de"
-        ? ["Gespräche und Notizen erfassen", "Prüfbare Entwürfe", "Offene Punkte", "Fachliche Freigabe", "Übergabe ins bestehende System"]
-        : ["Capture conversations and notes", "Reviewable drafts", "Open points", "Professional approval", "Handoff to the existing system"]
+        ? ["Gespräche und Notizen erfassen", "Prüfbare Entwürfe", "Offene Punkte", "Fachliche Freigabe", "Manuelle Übernahme ins bestehende System"]
+        : ["Capture conversations and notes", "Reviewable drafts", "Open points", "Professional approval", "Manual transfer into the existing system"]
   };
 }

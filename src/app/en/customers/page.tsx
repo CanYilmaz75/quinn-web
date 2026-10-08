@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   alternates: buildSeoAlternates("/en/customers"),
-  title: "Use cases | Quinn",
-  description: "Use cases for Quinn in care homes, operator organisations, home care and healthcare settings."
+  title: "Use cases in nursing and medicine | Quinn",
+  description: "Quinn for nursing and medicine: reviewable drafts, domain-specific responsibility and manual transfer into the existing system."
 };
 
 const useCases = [
@@ -32,7 +32,7 @@ export default function UseCasesPage() {
             For organisations that want to keep existing specialist systems and simplify the work before them.
           </h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-secondary-foreground">
-            This page deliberately shows use cases instead of logos or unverified references. A concrete deployment starts with one clearly scoped workflow and fictional test data.
+            For nursing and medicine, a concrete deployment starts with one clearly scoped workflow and fictional test data. The responsible professional reviews nursing drafts; medical documents require approval by a verified physician. Scope and availability are agreed before use.
           </p>
         </div>
       </section>

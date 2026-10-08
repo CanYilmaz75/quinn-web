@@ -8,15 +8,15 @@ import { Button } from "@/components/ui/button";
 import { buildSeoAlternates, buildSoftwareApplicationJsonLd, pilotMetricsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
-  title: "Pilot evaluation | Quinn",
+  title: "Pilot evaluation for nursing and medicine | Quinn",
   description:
-    "How a care organisation evaluates Quinn in a pilot: time per case, editing effort, completeness, review workload and team acceptance.",
+    "How teams in nursing and medicine evaluate Quinn in a pilot: time per case, editing effort, completeness, review workload and team acceptance.",
   alternates: buildSeoAlternates("/en/research")
 };
 
 const principles = [
   "AI outputs remain drafts and are professionally reviewed before use.",
-  "Quinn complements existing care systems instead of replacing them.",
+  "Quinn complements existing nursing, practice and hospital systems instead of replacing them.",
   "The processing path, roles and responsibilities are clarified before use.",
   "The organisation receives a traceable evaluation instead of generic value claims."
 ];
@@ -25,7 +25,7 @@ const metrics = [
   { label: pilotMetricsByLocale.en.minutesPerCase, description: "Time from conversation, audio or notes to a reviewable draft." },
   { label: pilotMetricsByLocale.en.editRate, description: "How much needs to be completed or corrected before the draft is professionally suitable?" },
   { label: pilotMetricsByLocale.en.completeness, description: "How reliably do open facts, risks, wishes and gaps become visible?" },
-  { label: pilotMetricsByLocale.en.reviewEffort, description: "How does the effort for review and follow-up change for care leadership, quality teams and professionals?" },
+  { label: pilotMetricsByLocale.en.reviewEffort, description: "How does the effort for review and follow-up change for nursing professionals, care leadership, quality teams and physicians?" },
   { label: pilotMetricsByLocale.en.teamAcceptance, description: "Is the workflow understandable and does the team use Quinn repeatedly?" }
 ];
 
@@ -33,7 +33,7 @@ const decisionCriteria = [
   "Everyday usability: the team can use Quinn reliably in one defined workflow.",
   "Less rework: drafts mainly need targeted additions instead of complete rewriting.",
   "Documentation quality: open facts and potential gaps are visible before approval.",
-  "Review workload: professionals, care leadership and quality teams can trace changes and open points.",
+  "Review workload: nursing professionals, care leadership, quality teams and physicians can trace changes and open points.",
   "Adoption readiness: roles, processing path, training and handoff to the existing system are clear for the organisation."
 ];
 
@@ -50,7 +50,7 @@ export default function ResearchPage() {
           What your organisation can decide after the pilot.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
-          Quinn is assessed in your documentation workflow, not in a standalone demo. Together, we examine whether drafts are understandable, require less rework and fit safely into existing review and handoff processes.
+          For nursing and medicine, evaluation starts with your documentation workflow. The responsible professional reviews nursing drafts; medical documents require approval by a verified physician. Together, we examine whether drafts are understandable, require less rework and fit into existing review and handoff processes.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg" className="px-7">

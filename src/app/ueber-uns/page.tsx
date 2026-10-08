@@ -12,12 +12,12 @@ import { legalDetails } from "@/lib/legal-details";
 export const metadata: Metadata = {
   alternates: buildSeoAlternates("/ueber-uns"),
   title: "Über Quinn und Gründer Can Yilmaz",
-  description: "Wer Quinn entwickelt, in welcher Phase das Produkt ist und welche Prinzipien die Dokumentationsassistenz leiten."
+  description: "Wer Quinn entwickelt, in welcher Phase das Produkt ist und welche Prinzipien die Dokumentationsassistenz für Pflege und Medizin leiten."
 };
 
 const principles = [
   ["Assistenz statt Autopilot", "Quinn erstellt prüfbare Entwürfe. Fachliche Verantwortung, Freigabe und Übergabe bleiben bei den zuständigen Menschen."],
-  ["Ergänzen statt ersetzen", "Bestehende Pflegedokumentations- und Fachsysteme bleiben führend. Quinn vereinfacht die Arbeit davor und darum herum."],
+  ["Ergänzen statt ersetzen", "Bestehende Pflege-, Praxis- und Kliniksysteme bleiben führend. Quinn vereinfacht die Arbeit davor und darum herum."],
   ["Vertrauen durch konkrete Kontrollen", "Rollen, fachliche Prüfung, Freigabe, Export und Datenschutzprüfung werden im jeweiligen Einsatz sichtbar und nachvollziehbar gemacht."]
 ];
 
@@ -58,7 +58,7 @@ export default function AboutPage() {
               Weniger Reibung in der Dokumentation, ohne Verantwortung zu verstecken.
             </h2>
             <p className="mt-6 text-lg leading-8 text-secondary-foreground">
-              Das Ziel ist kein autonomes System und keine neue Bewohnerakte. Quinn soll Informationen ruhig aufnehmen, strukturiert vorbereiten, offene Punkte sichtbar machen und die fachliche Prüfung erleichtern.
+              Das Ziel ist kein autonomes System und keine neue Bewohner- oder Patientenakte. Quinn soll Informationen ruhig aufnehmen, strukturiert vorbereiten, offene Punkte sichtbar machen und die fachliche Prüfung erleichtern.
             </p>
             <div className="mt-9 divide-y divide-[#E8E8EC] border-y border-[#E8E8EC]">
               {principles.map(([title, text], index) => (

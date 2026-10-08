@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { parseDemoSegment } from "@/app/demo-buchen/demo-segment";
 
 import { buildSeoAlternates } from "@/content/public-site";
 import { Building2, Clock3, Sparkles } from "lucide-react";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 
 const valuePoints = [
   {
-    title: "Built for everyday care and healthcare work",
+    title: "Built for everyday care and medicine work",
     description: "Quinn supports teams in turning conversations, context and documentation requirements into reviewable drafts.",
     icon: Building2
   },
@@ -32,15 +33,17 @@ const valuePoints = [
   }
 ];
 
-type DemoPageProps = { searchParams: Promise<{ intent?: string | string[] }> };
+type DemoPageProps = { searchParams: Promise<{ intent?: string | string[]; segment?: string | string[] }> };
 
 export default async function DemoBuchenPage({ searchParams }: DemoPageProps) {
-  const intent = parseDemoIntent((await searchParams).intent);
+  const params = await searchParams;
+  const intent = parseDemoIntent(params.intent);
+  const segment = params.segment === undefined && intent === "sis" ? "care" : parseDemoSegment(params.segment);
   const intentContent = getDemoIntentContent("en", intent);
 
   return (
     <main className="min-h-screen overflow-x-clip bg-white text-foreground">
-      <SiteHeader locale="en" />
+      <SiteHeader locale="en" demoContext={{ intent, segment: segment || "general" }} />
 
       <section className="mx-auto min-w-0 w-full max-w-6xl px-4 py-8 sm:px-8 sm:py-14 lg:px-10">
         <div className="grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start lg:gap-10">
@@ -66,7 +69,7 @@ export default async function DemoBuchenPage({ searchParams }: DemoPageProps) {
           </div>
 
           <div id="demo-form" className="order-2 min-w-0 lg:order-none">
-            <EnglishDemoBookingTool key={intent ?? "generic"} initialInterest={intentContent?.interest} heading={intentContent?.heading} />
+            <EnglishDemoBookingTool key={`${intent ?? "generic"}-${segment}`} initialSegment={segment} initialInterest={intentContent?.interest} heading={intentContent?.heading} />
           </div>
         </div>
       </section>

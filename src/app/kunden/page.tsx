@@ -10,8 +10,8 @@ import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   alternates: buildSeoAlternates("/kunden"),
-  title: "Einsatzbereiche | Quinn",
-  description: "Einsatzbereiche für Quinn in Pflegeheimen, Trägerorganisationen, ambulanter Pflege und medizinischen Einrichtungen."
+  title: "Einsatzbereiche in Pflege und Medizin | Quinn",
+  description: "Quinn für Pflege und Medizin: prüfbare Entwürfe, bereichsspezifische Verantwortung und manuelle Übernahme ins bestehende Fachsystem."
 };
 
 const useCases = [
@@ -32,7 +32,7 @@ export default function UseCasesPage() {
             Für Organisationen, die bestehende Fachsysteme behalten und die Arbeit davor vereinfachen wollen.
           </h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-secondary-foreground">
-            Diese Seite zeigt bewusst Einsatzbereiche statt Logos oder unbelegter Referenzen. Ein konkreter Einsatz beginnt mit einem klar abgegrenzten Workflow und fiktiven Testdaten.
+            Pflege und Medizin beginnen mit einem klar abgegrenzten Workflow und fiktiven Testdaten. Pflegeentwürfe prüft die verantwortliche Fachkraft; medizinische Dokumente benötigen die Freigabe einer verifizierten ärztlichen Person. Umfang und Verfügbarkeit klären wir vor einem Einsatz.
           </p>
         </div>
       </section>

@@ -12,12 +12,12 @@ import { legalDetails } from "@/lib/legal-details";
 export const metadata: Metadata = {
   alternates: buildSeoAlternates("/en/about"),
   title: "About Quinn and founder Can Yilmaz",
-  description: "Who builds Quinn, where the product stands and which principles guide its documentation assistance."
+  description: "Who builds Quinn, where the product stands and which principles guide its documentation assistance for care and medicine."
 };
 
 const principles = [
   ["Assistant, not autopilot", "Quinn creates reviewable drafts. Professional responsibility, approval and handoff remain with the people in charge."],
-  ["Complement, not replace", "Existing care documentation and specialist systems remain leading. Quinn simplifies the work before and around them."],
+  ["Complement, not replace", "Existing care, practice and hospital systems remain leading. Quinn simplifies the work before and around them."],
   ["Trust through concrete controls", "Roles, review, approval, export and privacy assessment are made visible and traceable for each deployment."]
 ];
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
             Quinn is built directly by Can Yilmaz.
           </h1>
           <p className="mt-7 max-w-3xl text-lg leading-8 text-secondary-foreground">
-            Quinn is being developed as a review-first documentation assistant for care and healthcare. Product conversations, demo requests and pilot scoping currently run directly through the founder.
+            Quinn is being developed as a review-first documentation assistant for care and medicine. Product conversations, demo requests and pilot scoping currently run directly through the founder.
           </p>
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function AboutPage() {
               Less friction in documentation, without hiding responsibility.
             </h2>
             <p className="mt-6 text-lg leading-8 text-secondary-foreground">
-              The goal is not an autonomous system or a new resident record. Quinn should capture information calmly, prepare it in a structured way, make open points visible and support professional review.
+              The goal is not an autonomous system or a new resident or patient record. Quinn should capture information calmly, prepare it in a structured way, make open points visible and support professional review.
             </p>
             <div className="mt-9 divide-y divide-[#E8E8EC] border-y border-[#E8E8EC]">
               {principles.map(([title, text], index) => (

@@ -9,24 +9,24 @@ import { Button } from "@/components/ui/button";
 import { buildFaqJsonLd, buildSeoAlternates, publicFaqsByLocale } from "@/content/public-site";
 
 export const metadata: Metadata = {
-  title: "Pricing for AI care documentation | Quinn",
+  title: "Pricing for AI documentation in care and medicine | Quinn",
   description:
-    "Consultation-led Quinn pricing for Pilot facility, Facility / site and Operators & groups — without public user pricing.",
+    "Consultation-led Quinn pricing for Pilot organisation, Organisation / site and Operators & groups — without public user pricing.",
   alternates: buildSeoAlternates("/en/pricing")
 };
 
 const plans = [
   {
-    name: "Pilot facility",
+    name: "Pilot organisation",
     price: "pilot budget by scope",
-    subtitle: "4-6 weeks for one bounded intake, SIS-style or review workflow",
+    subtitle: "4–6 weeks for one bounded care or medical documentation workflow",
     audience:
       "For one facility that wants to test Quinn with fictional, anonymised or tightly scoped cases before real data and rollout are decided.",
     cta: "Request pilot pricing conversation",
     href: "/en/book-demo?intent=pilot-pricing" as Route,
     featured: true,
     features: [
-      "Defined workflow: intake, SIS-style documentation or review",
+      "One workflow: SIS in care or history/progress in medicine",
       "Measures: minutes per case, editing effort, completeness and review effort",
       "Evaluation after 4-6 weeks with team feedback and team acceptance",
       "relief is measured in the pilot, not promised in advance",
@@ -34,18 +34,18 @@ const plans = [
     ]
   },
   {
-    name: "Facility / site",
+    name: "Organisation / site",
     price: "monthly site scope",
     subtitle: "for recurring usage in one facility",
     audience:
-      "For care homes or sites that want to use Quinn continuously after a pilot for intake and documentation-adjacent workflows.",
+      "For care organisations, practices or clinical teams that want to use Quinn continuously after a pilot for intake and documentation-adjacent workflows.",
     cta: "Request site offer",
     href: "/en/book-demo?intent=site-offer" as Route,
     featured: false,
     features: [
       "usage based on active team, roles and documentation volume",
       "setup of review rules, standards and professional approval",
-      "support for care leadership and quality teams",
+      "support for responsible professionals and quality teams",
       "reviewed handoff into existing systems without changing systems",
       "regular review and quality evaluation"
     ]
@@ -55,7 +55,7 @@ const plans = [
     price: "custom by locations",
     subtitle: "for multiple facilities, quality management and shared rollout",
     audience:
-      "For operators and care groups that want to test Quinn step by step across several facilities and roll out based on pilot metrics.",
+      "For operators and healthcare groups that want to test Quinn step by step across several facilities and roll out based on pilot metrics.",
     cta: "Clarify operator scope",
     href: "/en/book-demo?intent=operator-scope" as Route,
     featured: false,
@@ -70,7 +70,7 @@ const plans = [
 ];
 
 const included = [
-  "Quinn complements existing care systems",
+  "Quinn complements existing care, practice and hospital systems",
   "reviewable documentation drafts",
   "professional approval by your team",
   "pilot metrics instead of generic promises",
@@ -103,7 +103,7 @@ export default function PricingPage() {
       <section className="quinn-container py-12 text-center sm:py-28">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Pricing</p>
         <h1 className="mx-auto mt-4 max-w-4xl text-[36px] font-semibold leading-tight tracking-[-0.03em] sm:mt-6 sm:text-[58px]">
-          Consultation-led pricing for pilots, facilities and operators.
+          Consultation-led pricing for care and medicine.
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-secondary-foreground sm:mt-6 sm:text-lg sm:leading-8">
           Quinn does not start with a standard tariff. A short pricing conversation aligns workflow, roles, privacy review, pilot budget and rollout with the reality of your organisation.

@@ -26,7 +26,15 @@ const websiteJsonLd = {
 };
 
 export function PublicStructuredData() {
-  const softwareJsonLd = buildSoftwareApplicationJsonLd("de");
+  // The root entity describes the bilingual product, not the current route.
+  const softwareJsonLd = {
+    ...buildSoftwareApplicationJsonLd("de"),
+    inLanguage: ["de-DE", "en"],
+    description: [
+      buildSoftwareApplicationJsonLd("de").description,
+      buildSoftwareApplicationJsonLd("en").description
+    ].join(" ")
+  };
 
   return (
     <>

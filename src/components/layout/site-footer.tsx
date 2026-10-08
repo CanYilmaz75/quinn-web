@@ -11,15 +11,15 @@ const columns: Array<{ title: string; links: Array<[string, Route]> }> = [
     title: "Produkt",
     links: [
       ["Übersicht", "/produkt/uebersicht"],
+      ["Prüfung & Qualität", "/produkt/pruefung-qualitaet"],
       ["Preise", "/preise"]
     ]
   },
   {
     title: "Entwickelt für",
     links: [
-      ["Pflege", "/loesungen/pflegeheime"],
-      ["Medizin", "/loesungen/medizin"],
-      ["Psychologen", "/loesungen/psychologen"]
+      ["Pflege", "/loesungen/pflege"],
+      ["Medizin", "/loesungen/medizin"]
     ]
   },
   {
@@ -27,7 +27,7 @@ const columns: Array<{ title: string; links: Array<[string, Route]> }> = [
     links: [
       ["Einsatzbereiche", "/kunden"],
       ["Updates", "/updates"],
-      ["Forschung", "/forschung"]
+      ["Auswertung", "/forschung"]
     ]
   },
   {
@@ -51,15 +51,15 @@ const englishColumns: Array<{ title: string; links: Array<[string, Route]> }> = 
     title: "Product",
     links: [
       ["Overview", "/en/product/overview"],
+      ["Review & quality", "/en/product/review-quality"],
       ["Pricing", "/en/pricing"]
     ]
   },
   {
     title: "Built for",
     links: [
-      ["Care homes", "/en/solutions/care-homes"],
-      ["Medicine", "/en/solutions/medicine"],
-      ["Psychologists", "/en/solutions/psychologists"]
+      ["Nursing", "/en/solutions/nursing-care"],
+      ["Medicine", "/en/solutions/medicine"]
     ]
   },
   {
@@ -67,7 +67,7 @@ const englishColumns: Array<{ title: string; links: Array<[string, Route]> }> = 
     links: [
       ["Use cases", "/en/customers"],
       ["Updates", "/en/updates"],
-      ["Research", "/en/research"]
+      ["Evaluation", "/en/research"]
     ]
   },
   {
@@ -90,8 +90,8 @@ export function SiteFooter({ locale = "de" }: { locale?: SiteLocale }) {
   const activeColumns = locale === "en" ? englishColumns : columns;
   const description =
     locale === "en"
-      ? "Quinn supports sensitive care and healthcare documentation. Quinn complements existing specialist systems and does not replace the resident record."
-      : "Quinn unterstützt sensible Pflege- und Versorgungsdokumentation. Quinn ergänzt bestehende Fachsysteme und ersetzt keine Bewohnerakte.";
+      ? "Quinn creates documentation drafts for nursing and medicine. Professional review remains with the responsible people. Quinn complements existing systems and replaces neither nursing nor patient records."
+      : "Quinn erstellt Dokumentationsentwürfe für Pflege und Medizin. Die fachliche Prüfung bleibt bei den verantwortlichen Personen. Quinn ergänzt bestehende Fachsysteme und ersetzt weder Pflege- noch Patientenakten.";
   const legalColumnTitle = locale === "en" ? "Legal" : "Rechtliches";
 
   return (

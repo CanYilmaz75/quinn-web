@@ -4,6 +4,10 @@ import { publicSeoPairs, publicSitePages, siteUrl } from "@/content/public-site"
 
 const staticRoutes = [
   "/",
+  "/loesungen/pflege",
+  "/en/solutions/nursing-care",
+  "/produkt/pruefung-qualitaet",
+  "/en/product/review-quality",
   "/agb",
   "/anwendungen/sis-aufnahme",
   "/anwendungen/sprachdokumentation-pflege",

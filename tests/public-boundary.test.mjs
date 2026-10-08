@@ -167,11 +167,19 @@ test("P1 trust and conversion surfaces are founder-led, concrete and low-frictio
   assert.match(about, /Can Yilmaz/);
   assert.match(englishAbout, /Can Yilmaz/);
   assert.doesNotMatch(`${about}\n${englishAbout}\n${demoForms}`, /Brand Guideline|brand guideline|teamMembers|\["MS", "AK", "JL", "TR"\]|unserem Team|our team/);
-  assert.match(productProof, /Offener Punkt/);
-  assert.match(productProof, /Open point/);
-  assert.match(productProof, /Freigegeben durch Fachkraft/);
-  assert.match(homepage, /ProductProofFlow/);
-  assert.match(englishHomepage, /ProductProofFlow/);
+  assert.match(productProof, /Noch zu klären/);
+  assert.match(productProof, /To clarify/);
+  assert.match(productProof, /Vor der Übernahme/);
+  assert.match(productProof, /verified physician/);
+  assert.match(productProof, /synthetische Beispiele/);
+  assert.match(productProof, /synthetic examples/);
+  assert.match(productProof, /\["care", "medicine"\]/);
+  assert.match(homepage, /<EqualPillarLanding locale="de"/);
+  assert.match(englishHomepage, /<EqualPillarLanding locale="en"/);
+  const landing = read("src/components/marketing/equal-pillar-landing.tsx");
+  assert.match(landing, /<ProductProofFlow locale=\{locale\}/);
+  assert.match(landing, /Pflegekräfte und medizinische Teams/);
+  assert.match(landing, /nursing care and medical teams/);
   assert.match(customers, /Einsatzbereiche/);
   assert.match(englishCustomers, /Use cases/);
   assert.match(header, /label: "Einsatzbereiche"/);
@@ -241,7 +249,7 @@ test("updates, research and pilot pages speak to care providers instead of inves
     assert.doesNotMatch(visiblePublicCopy, internalTerm);
   }
 
-  assert.match(customerPages, /Woran Sie nach dem Pilot erkennen, ob Quinn zu Ihrer Einrichtung passt/);
+  assert.match(customerPages, /Woran Sie nach dem Pilot erkennen, ob Quinn zu Ihrem Team passt/);
   assert.match(customerPages, /what your organisation can decide after the pilot/i);
   assert.match(customerPages, /weniger Nacharbeit/i);
   assert.match(customerPages, /less rework/i);
@@ -288,7 +296,7 @@ test("P2 SEO, language and funnel measurement are complete", () => {
   assert.doesNotMatch(homepage, /Dokumentationslayer|Review-Status|Dokumentationsreview|Live Review/);
 
   const seoPairs = [...publicSite.matchAll(/\["(\/[^"\n]*|\/)", "(\/en[^"\n]*)"\]/g)].map((match) => [match[1], match[2]]);
-  assert.equal(seoPairs.length, 21);
+  assert.equal(seoPairs.length, 23);
   for (const pair of seoPairs) {
     for (const slug of pair) {
       const pageFile = slug === "/" ? "src/app/page.tsx" : `src/app${slug}/page.tsx`;
@@ -318,7 +326,8 @@ test("adversarial UX tickets keep mobile conversion routes clear and contextual"
   const seoLanding = read("src/components/marketing/seo-landing-page.tsx");
 
   assert.match(globals, /quinn-container[\s\S]*min-w-0/);
-  assert.match(header, /hidden group-open:block/);
+  assert.match(header, /<details className="group\/mobile lg:hidden"/);
+  assert.match(header, /<nav[^>]*overflow-y-auto/);
   assert.match(header, /Prüfung & Qualität/);
   assert.doesNotMatch(header, /Review & Qualität/);
 
@@ -353,12 +362,12 @@ test("post-fix UX review keeps mobile navigation explicit and German conversion 
   const pricingEn = read("src/app/en/pricing/page.tsx");
   const demoDe = read("src/app/demo-buchen/demo-booking-tool.tsx");
 
-  assert.match(header, /Menu className="[^\"]*group-open:hidden/);
-  assert.match(header, /X className="hidden[^\"]*group-open:block/);
-  assert.match(header, /mobileNavOpen: "Menü öffnen"/);
-  assert.match(header, /mobileNavClose: "Menü schließen"/);
-  assert.match(header, /mobileNavOpen: "Open menu"/);
-  assert.match(header, /mobileNavClose: "Close menu"/);
+  assert.match(header, /Menu className="[^\"]*group-open\/mobile:hidden/);
+  assert.match(header, /X className="hidden[^\"]*group-open\/mobile:block/);
+  assert.match(header, /open: "Menü öffnen"/);
+  assert.match(header, /close: "Menü schließen"/);
+  assert.match(header, /open: "Open menu"/);
+  assert.match(header, /close: "Close menu"/);
   assert.doesNotMatch(header, /summary aria-label=\{labels\.mobileNav\}/);
 
   assert.match(sisPage, /Messwerte im Pilot/);
@@ -367,7 +376,7 @@ test("post-fix UX review keeps mobile navigation explicit and German conversion 
   assert.match(seoLanding, /metrics: "Messwerte im Pilot"/);
   assert.doesNotMatch(publicSite, /definieren Metriken/);
   assert.match(publicSite, /editRate: "Bearbeitungsaufwand"/);
-  assert.match(publicSite, /reviewEffort: "Prüfaufwand für PDL\/QM"/);
+  assert.match(publicSite, /reviewEffort: "Fachlicher Prüfaufwand"/);
 
   assert.match(pricingDe, /Kein öffentlicher Listenpreis:[\s\S]*Preisgespräch anfragen/);
   assert.match(pricingDe, /href="\/demo-buchen\?intent=pilot-pricing"/);
@@ -416,7 +425,7 @@ test("sitemap explicitly covers every public page route", () => {
       return relative || "/";
     });
 
-  assert.equal(routes.length, 44);
+  assert.equal(routes.length, 48);
   for (const route of routes) {
     assert.equal(sitemap.includes(`"${route}"`), true, `${route} fehlt in der Sitemap`);
   }

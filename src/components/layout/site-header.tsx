@@ -1,239 +1,56 @@
 import type { Route } from "next";
-import type { ComponentType } from "react";
 import Link from "next/link";
-import { BadgeCheck, BriefcaseMedical, ChevronDown, FileText, HeartHandshake, Menu, Mic, Newspaper, ShieldCheck, Stethoscope, Users, UserRoundCheck, X } from "lucide-react";
-
+import { ChevronDown, Menu, X } from "lucide-react";
 import { TrackedDemoLink } from "@/components/analytics/tracked-demo-link";
-import { Button } from "@/components/ui/button";
+import { LanguageSwitch } from "@/components/layout/language-switch";
+import type { DemoLanguageContext } from "@/lib/public-language";
 import { publicConfig } from "@/lib/public-config";
 
-type MenuLink = {
-  label: string;
-  href: Route;
-  icon?: ComponentType<{ className?: string }>;
-};
-
-type MenuGroup = {
-  label: string;
-  columns: Array<{
-    title?: string;
-    items: MenuLink[];
-  }>;
-};
-
-const productMenu: MenuGroup = {
-  label: "Produkt",
-  columns: [
-    {
-      title: "Produkt",
-      items: [
-        { label: "Übersicht", href: "/produkt/uebersicht" as Route, icon: FileText },
-        { label: "SIS-Aufnahme", href: "/anwendungen/sis-aufnahme" as Route, icon: FileText },
-        { label: "Sprachdokumentation Pflege", href: "/anwendungen/sprachdokumentation-pflege" as Route, icon: Mic },
-        { label: "Prüfung & Qualität", href: "/produkt/uebersicht#review" as Route, icon: BadgeCheck },
-        { label: "Preise", href: "/preise" as Route, icon: HeartHandshake }
-      ]
-    }
-  ]
-};
-
-const solutionMenu: MenuGroup = {
-  label: "Lösungen",
-  columns: [
-    {
-      title: "Entwickelt für",
-      items: [
-        { label: "Pflegeheime", href: "/loesungen/pflegeheime" as Route, icon: UserRoundCheck },
-        { label: "Träger & QM", href: "/loesungen/traeger-qm" as Route, icon: ShieldCheck },
-        { label: "Ambulante Pflege", href: "/loesungen/ambulante-pflege" as Route, icon: Stethoscope },
-        { label: "Medizin & Klinik", href: "/loesungen/medizin" as Route, icon: BriefcaseMedical },
-        { label: "Pilotprogramm", href: "/pilotprogramm" as Route, icon: Users }
-      ]
-    }
-  ]
-};
-
-const resourceMenu: MenuGroup = {
-  label: "Ressourcen",
-  columns: [
-    {
-      items: [
-        { label: "Einsatzbereiche", href: "/kunden" as Route, icon: Users },
-        { label: "Updates", href: "/updates" as Route, icon: Newspaper },
-        { label: "Forschung", href: "/forschung" as Route, icon: FileText },
-        { label: "Über Uns", href: "/ueber-uns" as Route, icon: BriefcaseMedical }
-      ]
-    }
-  ]
-};
-
-const menus = [productMenu, solutionMenu, resourceMenu];
-
-const englishMenus: MenuGroup[] = [
-  {
-    label: "Product",
-    columns: [
-      {
-        title: "Product",
-        items: [
-          { label: "Overview", href: "/en/product/overview" as Route, icon: FileText },
-          { label: "SIS Intake", href: "/en/use-cases/sis-intake" as Route, icon: FileText },
-          { label: "Voice documentation for care", href: "/en/use-cases/voice-documentation-care" as Route, icon: Mic },
-          { label: "Review & quality", href: "/en/product/overview#review" as Route, icon: BadgeCheck },
-          { label: "Pricing", href: "/en/pricing" as Route, icon: HeartHandshake }
-        ]
-      }
-    ]
-  },
-  {
-    label: "Solutions",
-    columns: [
-      {
-        title: "Built for",
-        items: [
-          { label: "Care homes", href: "/en/solutions/care-homes" as Route, icon: UserRoundCheck },
-          { label: "Operators & QM", href: "/en/solutions/operators-quality-management" as Route, icon: ShieldCheck },
-          { label: "Home care", href: "/en/solutions/home-care" as Route, icon: Stethoscope },
-          { label: "Medicine & clinics", href: "/en/solutions/medicine" as Route, icon: BriefcaseMedical },
-          { label: "Pilot program", href: "/en/pilot-program" as Route, icon: Users }
-        ]
-      }
-    ]
-  },
-  {
-    label: "Resources",
-    columns: [
-      {
-        items: [
-          { label: "Use cases", href: "/en/customers" as Route, icon: Users },
-          { label: "Updates", href: "/en/updates" as Route, icon: Newspaper },
-          { label: "Research", href: "/en/research" as Route, icon: FileText },
-          { label: "About", href: "/en/about" as Route, icon: BriefcaseMedical }
-        ]
-      }
-    ]
-  }
-];
-
 type SiteHeaderLocale = "de" | "en";
+type NavLink = { label: string; href: string };
+const pillarLinks = {
+  de: [{ label: "Pflege", href: "/loesungen/pflege" }, { label: "Medizin", href: "/loesungen/medizin" }],
+  en: [{ label: "Nursing care", href: "/en/solutions/nursing-care" }, { label: "Medicine", href: "/en/solutions/medicine" }]
+};
+const menus = {
+  de: [
+    { label: "Produkt", items: [{ label: "Übersicht", href: "/produkt/uebersicht" }, { label: "Prüfung & Qualität", href: "/produkt/pruefung-qualitaet" }, { label: "Preise", href: "/preise" }] },
+    { label: "Ressourcen", items: [{ label: "Einsatzbereiche", href: "/kunden" }, { label: "Pilotprogramm", href: "/pilotprogramm" }, { label: "Updates", href: "/updates" }, { label: "Forschung", href: "/forschung" }, { label: "Über uns", href: "/ueber-uns" }] }
+  ],
+  en: [
+    { label: "Product", items: [{ label: "Overview", href: "/en/product/overview" }, { label: "Review & quality", href: "/en/product/review-quality" }, { label: "Pricing", href: "/en/pricing" }] },
+    { label: "Resources", items: [{ label: "Use cases", href: "/en/customers" }, { label: "Pilot program", href: "/en/pilot-program" }, { label: "Updates", href: "/en/updates" }, { label: "Research", href: "/en/research" }, { label: "About", href: "/en/about" }] }
+  ]
+};
+const navClass = "inline-flex min-h-11 items-center rounded-lg px-3 text-sm font-medium text-secondary-foreground hover:text-[#1E6B72] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E6B72]";
 
-function DesktopMenu({ menu }: { menu: MenuGroup }) {
-  return (
-    <div className="group relative">
-      <button
-        type="button"
-        className="flex min-h-11 items-center gap-2 rounded-xl px-4 text-sm font-medium text-secondary-foreground transition-colors hover:bg-white hover:text-foreground group-hover:bg-white group-hover:text-foreground"
-      >
-        {menu.label}
-        <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
-      </button>
-      <div className="invisible absolute left-0 top-full z-40 w-[min(420px,calc(100vw-2rem))] pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
-        <div className="grid gap-6 rounded-xl border border-border bg-white p-4 shadow-subtle sm:grid-cols-2">
-          {menu.columns.map((column, columnIndex) => (
-            <div key={`${menu.label}-${columnIndex}`}>
-              {column.title ? <p className="mb-4 text-sm font-medium text-secondary-foreground">{column.title}</p> : null}
-              <div className="space-y-1">
-                {column.items.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="flex min-h-9 items-center gap-3 rounded-lg px-2 text-sm font-medium text-foreground transition-colors hover:bg-[#F4F4F6] hover:text-[#1E6B72]"
-                    >
-                      {Icon ? <Icon className="h-4 w-4 shrink-0 text-[#0A0A0F]" /> : null}
-                      {item.label}
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+function DesktopMenu({ menu }: { menu: { label: string; items: NavLink[] } }) {
+  return <details className="group/nav relative">
+    <summary className={`${navClass} cursor-pointer list-none gap-1.5 [&::-webkit-details-marker]:hidden`}>{menu.label}<ChevronDown className="h-3.5 w-3.5 transition-transform group-open/nav:rotate-180" aria-hidden="true" /></summary>
+    <div className="absolute left-0 top-full z-40 w-64 rounded-xl border border-border bg-white p-3 shadow-subtle">{menu.items.map((item) => <Link key={item.href} href={item.href as Route} className="flex min-h-11 items-center rounded-lg px-3 text-sm text-secondary-foreground hover:bg-[#F3F8F6] hover:text-[#1E6B72]">{item.label}</Link>)}</div>
+  </details>;
 }
 
-export function SiteHeader({ locale = "de" }: { locale?: SiteHeaderLocale }) {
-  const activeMenus = locale === "en" ? englishMenus : menus;
-  const labels =
-    locale === "en"
-      ? { home: "Quinn homepage", nav: "Main navigation", login: "Login", demo: "Request a demo", mobileNavOpen: "Open menu", mobileNavClose: "Close menu" }
-      : { home: "Quinn Startseite", nav: "Hauptnavigation", login: "Einloggen", demo: "Unverbindlich Demo anfragen", mobileNavOpen: "Menü öffnen", mobileNavClose: "Menü schließen" };
-
-  return (
-    <div className="sticky top-0 z-30 border-b border-border bg-quinn-warm">
-      <div className="quinn-container">
-        <header className="flex min-h-16 items-center justify-between gap-4">
-          <Link href={locale === "en" ? ("/en" as Route) : ("/" as Route)} className="inline-flex items-center" aria-label={labels.home}>
-            <span className="text-xl font-semibold tracking-[-0.04em] text-[#0A0A0F]">Quinn</span>
-          </Link>
-
-          <nav className="hidden items-center gap-1 md:flex" aria-label={labels.nav}>
-            {activeMenus.map((menu) => (
-              <DesktopMenu key={menu.label} menu={menu} />
-            ))}
-          </nav>
-
-          <div className="hidden items-center gap-3 sm:flex">
-            <div className="flex items-center rounded-xl border border-[#DDE8E4] bg-white p-1 text-xs font-semibold" aria-label="Language switch">
-              <Link href="/" aria-current={locale === "de" ? "page" : undefined} className={`rounded-lg px-2.5 py-1.5 ${locale === "de" ? "bg-[#0A0A0F] text-white" : "text-secondary-foreground hover:text-foreground"}`}>
-                DE
-              </Link>
-              <Link href="/en" aria-current={locale === "en" ? "page" : undefined} className={`rounded-lg px-2.5 py-1.5 ${locale === "en" ? "bg-[#0A0A0F] text-white" : "text-secondary-foreground hover:text-foreground"}`}>
-                EN
-              </Link>
-            </div>
-            <Button asChild variant="ghost" className="rounded-xl text-secondary-foreground hover:bg-white hover:text-foreground">
-              <a href={publicConfig.loginUrl}>{labels.login}</a>
-            </Button>
-            <Button asChild className="rounded-xl px-4">
-              <TrackedDemoLink href={locale === "en" ? "/en/book-demo" : "/demo-buchen"} locale={locale} source="site-header">{labels.demo}</TrackedDemoLink>
-            </Button>
-          </div>
-
-          <details className="group md:hidden">
-            <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-xl border border-border bg-white [&::-webkit-details-marker]:hidden">
-              <Menu className="h-5 w-5 text-secondary-foreground group-open:hidden" aria-hidden="true" />
-              <X className="hidden h-5 w-5 text-secondary-foreground group-open:block" aria-hidden="true" />
-              <span className="sr-only group-open:hidden">{labels.mobileNavOpen}</span>
-              <span className="sr-only hidden group-open:inline">{labels.mobileNavClose}</span>
-            </summary>
-            <div className="hidden group-open:block absolute left-4 right-4 z-40 mt-3 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl border border-border bg-white p-4 shadow-subtle">
-              {activeMenus.map((menu) => (
-                <div key={menu.label} className="border-b border-border py-3 last:border-b-0">
-                  <p className="px-2 text-sm font-semibold text-foreground">{menu.label}</p>
-                  {menu.columns.map((column, columnIndex) => (
-                    <div key={`${menu.label}-mobile-${columnIndex}`} className="mt-2">
-                      {column.title ? <p className="px-2 py-1 text-xs font-medium uppercase text-muted-foreground">{column.title}</p> : null}
-                      {column.items.map((item) => (
-                        <Link key={item.label} href={item.href} className="flex min-h-11 items-center rounded-xl px-2 text-sm text-secondary-foreground">
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              ))}
-              <div className="mt-3 flex items-center rounded-xl border border-[#DDE8E4] bg-[#FBFAF6] p-1 text-xs font-semibold" aria-label="Language switch">
-                <Link href="/" aria-current={locale === "de" ? "page" : undefined} className={`flex-1 rounded-lg px-3 py-2 text-center ${locale === "de" ? "bg-[#0A0A0F] text-white" : "text-secondary-foreground"}`}>
-                  Deutsch
-                </Link>
-                <Link href="/en" aria-current={locale === "en" ? "page" : undefined} className={`flex-1 rounded-lg px-3 py-2 text-center ${locale === "en" ? "bg-[#0A0A0F] text-white" : "text-secondary-foreground"}`}>
-                  English
-                </Link>
-              </div>
-              <TrackedDemoLink href={locale === "en" ? "/en/book-demo" : "/demo-buchen"} locale={locale} source="site-header" className="mt-1 flex min-h-11 items-center rounded-xl px-2 text-sm font-semibold text-foreground">
-                {labels.demo}
-              </TrackedDemoLink>
-              <a href={publicConfig.loginUrl} className="mt-1 flex min-h-11 items-center rounded-xl px-2 text-sm font-semibold text-foreground">
-                {labels.login}
-              </a>
-            </div>
-          </details>
-        </header>
-      </div>
-    </div>
-  );
+export function SiteHeader({ locale = "de", demoContext }: { locale?: SiteHeaderLocale; demoContext?: DemoLanguageContext }) {
+  const t = locale === "de" ? { home: "Quinn Startseite", nav: "Hauptnavigation", login: "Einloggen", demo: "Demo anfragen", open: "Menü öffnen", close: "Menü schließen" } : { home: "Quinn homepage", nav: "Main navigation", login: "Login", demo: "Request a demo", open: "Open menu", close: "Close menu" };
+  const activeMenus = menus[locale];
+  return <div className="sticky top-0 z-30 border-b border-border bg-white">
+    <header className="quinn-container flex min-h-[76px] items-center justify-between gap-4">
+      <Link href={locale === "de" ? "/" : "/en"} aria-label={t.home} className="inline-flex min-h-11 items-center"><span className="text-xl font-semibold tracking-[-0.04em] text-[#0A0A0F]">Quinn</span></Link>
+      <nav className="hidden items-center gap-1 lg:flex" aria-label={t.nav}>
+        <DesktopMenu menu={activeMenus[0]} />
+        {pillarLinks[locale].map((item) => <Link key={item.href} href={item.href as Route} className={navClass}>{item.label}</Link>)}
+        <DesktopMenu menu={activeMenus[1]} />
+      </nav>
+      <div className="ml-auto flex items-center gap-3 lg:ml-0"><LanguageSwitch locale={locale} demoContext={demoContext} /><a href={publicConfig.loginUrl} className="hidden min-h-11 items-center px-2 text-sm text-secondary-foreground lg:inline-flex">{t.login}</a><TrackedDemoLink href={locale === "de" ? "/demo-buchen" : "/en/book-demo"} locale={locale} source="site-header" className="hidden min-h-11 items-center rounded-lg bg-[#1E6B72] px-4 text-sm font-semibold text-white hover:bg-[#17555B] sm:inline-flex">{t.demo}</TrackedDemoLink></div>
+      <details className="group/mobile lg:hidden">
+        <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-lg border border-border [&::-webkit-details-marker]:hidden"><Menu className="h-5 w-5 group-open/mobile:hidden" aria-hidden="true" /><X className="hidden h-5 w-5 group-open/mobile:block" aria-hidden="true" /><span className="sr-only group-open/mobile:hidden">{t.open}</span><span className="sr-only hidden group-open/mobile:inline">{t.close}</span></summary>
+        <nav aria-label={t.nav} className="absolute left-4 right-4 z-40 mt-3 max-h-[calc(100dvh-7rem)] overflow-y-auto rounded-xl border border-border bg-white p-5 shadow-subtle">
+          <div className="grid grid-cols-2 gap-3 border-b border-border pb-4">{pillarLinks[locale].map((item) => <Link key={item.href} href={item.href as Route} className={`${navClass} justify-center border border-border`}>{item.label}</Link>)}</div>
+          {activeMenus.map((menu) => <div key={menu.label} className="border-b border-border py-4"><p className="px-3 text-sm font-semibold">{menu.label}</p><div className="mt-2 grid sm:grid-cols-2">{menu.items.map((item) => <Link key={item.href} href={item.href as Route} className={navClass}>{item.label}</Link>)}</div></div>)}
+          <TrackedDemoLink href={locale === "de" ? "/demo-buchen" : "/en/book-demo"} locale={locale} source="site-header" className="mt-4 flex min-h-11 items-center justify-center rounded-lg bg-[#1E6B72] px-4 text-sm font-semibold text-white">{t.demo}</TrackedDemoLink><a href={publicConfig.loginUrl} className="mt-2 flex min-h-11 items-center justify-center text-sm">{t.login}</a>
+        </nav>
+      </details>
+    </header>
+  </div>;
 }

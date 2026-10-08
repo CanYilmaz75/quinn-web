@@ -6,7 +6,7 @@ import { buildSeoAlternates } from "@/content/public-site";
 
 export const metadata: Metadata = {
   title: "Updates | Quinn",
-  description: "Quinn product updates: practical improvements for documentation, pilot delivery, professional review and handoff to existing systems.",
+  description: "Quinn product updates for care and medicine: practical improvements for documentation, pilot delivery, professional review and handoff to existing systems.",
   alternates: buildSeoAlternates("/en/updates")
 };
 
@@ -15,7 +15,7 @@ const updateBlocks = [
     label: "Pilot program",
     title: "A clearer view of process, roles and value",
     text:
-      "Care organisations can now see how a 4–6 week pilot works, which teams are involved and which results they receive for their own decision."
+      "Care and medical teams can now see how a 4–6 week pilot works, which teams are involved and which results they receive for their own decision."
   },
   {
     label: "Evaluation",
@@ -27,7 +27,7 @@ const updateBlocks = [
     label: "Public information",
     title: "Faster access to relevant information",
     text:
-      "Product, use cases, pilot program, pricing and demo are organised more clearly. Care organisations can find value, boundaries and next steps without technical or internal project language."
+      "Product, use cases, pilot program, pricing and demo are organised more clearly. Care and medical teams can find value, boundaries and next steps without technical or internal project language."
   },
   {
     label: "Documentation workflow",
@@ -39,7 +39,7 @@ const updateBlocks = [
     label: "Language & orientation",
     title: "Quinn is consistent in German and English",
     text:
-      "The most important information and paths are available in both languages. Navigation and page structure remain consistent and focused on care and healthcare teams."
+      "The most important information and paths are available in both languages. Navigation and page structure remain consistent and focused on care and medical teams."
   }
 ];
 
@@ -50,7 +50,7 @@ export default function UpdatesPage() {
       <section className="quinn-container py-20 sm:py-28">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Updates</p>
         <h1 className="mt-6 max-w-5xl text-[40px] font-semibold leading-tight tracking-[-0.03em] sm:text-[58px]">
-          What is improving for care organisations using Quinn.
+          What is improving for care and medicine with Quinn.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-secondary-foreground">
           We share relevant product changes from the organisation&apos;s perspective: clear, practical and focused on documentation work, professional review and team adoption.
@@ -61,7 +61,7 @@ export default function UpdatesPage() {
           <div className="rounded-[2rem] border border-[#DDE8E4] bg-white p-6 shadow-subtle sm:p-8 lg:p-10">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1E6B72]">Current</p>
             <h2 className="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-              More clarity on how Quinn can be assessed in everyday care work.
+              More clarity on how Quinn can be assessed in everyday documentation work.
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-secondary-foreground">
               The pilot program and evaluation now explain which workflow is tested, where relief may become visible and which boundaries need to be resolved before wider use.

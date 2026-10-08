@@ -7,14 +7,14 @@ import { pilotMetricsByLocale, publicFaqsByLocale } from "@/content/public-site"
 
 export const metadata: Metadata = {
   alternates: buildSeoAlternates("/pilotprogramm"),
-  title: "Pilotprogramm für KI-Dokumentation in der Pflege | Quinn",
-  description: "Quinn 4–6 Wochen in einem klaren Pflegeworkflow testen und Zeit, Nacharbeit, Vollständigkeit sowie Prüfaufwand nachvollziehbar auswerten."
+  title: "Pilotprogramm für KI-Dokumentation in Pflege und Medizin | Quinn",
+  description: "Quinn 4–6 Wochen in einem klaren Ablauf für Pflege und Medizin testen und Zeit, Nacharbeit, Vollständigkeit sowie Prüfaufwand nachvollziehbar auswerten."
 };
 
 const metrics = [
   { label: pilotMetricsByLocale.de.minutesPerCase, description: "Zeit vom Rohinput bis zum prüfbaren Entwurf je ausgewähltem Dokumentationsfall." },
   { label: pilotMetricsByLocale.de.editRate, description: "Wie viel wird ergänzt oder korrigiert, bevor ein Entwurf fachlich passt?" },
-  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Prüf- und Rückfrageaufwand für Fachkraft, PDL oder QM?" },
+  { label: pilotMetricsByLocale.de.reviewEffort, description: "Wie verändert sich der Prüf- und Rückfrageaufwand für Pflegefachkraft, ärztlich Verantwortliche oder QM?" },
   { label: pilotMetricsByLocale.de.teamAcceptance, description: "Ist der Ablauf verständlich und wird Quinn vom Team wiederholt genutzt?" }
 ];
 
@@ -22,22 +22,22 @@ export default function PilotprogrammPage() {
   return (
     <SeoLandingPage
       eyebrow="Pilotprogramm"
-      title="Quinn in einem klaren Pflegeworkflow testen"
+      title="Quinn in einem klaren Ablauf für Pflege und Medizin testen"
       description="In einem 4–6-wöchigen Pilot prüfen Sie, ob Quinn Ihren Dokumentationsalltag spürbar entlastet: mit weniger Nacharbeit, besser sichtbaren offenen Punkten und einem klaren Weg zur fachlichen Freigabe."
       primaryCta="Unverbindliches Pilotgespräch anfragen"
-      secondaryCta="SIS-Aufnahme ansehen"
-      secondaryHref="/anwendungen/sis-aufnahme"
+      secondaryCta="Produktablauf ansehen"
+      secondaryHref="/produkt/uebersicht"
       points={[
         "Mit einem fiktiven oder anonymisierten Fall starten.",
-        "Einen klar abgegrenzten Aufnahme-, SIS- oder Prüfablauf auswählen.",
+        "Einen klar abgegrenzten Ablauf auswählen: SIS in der Pflege oder Anamnese/Verlauf in der Medizin. Verfügbarkeit und Freigaberegeln werden vorab geklärt.",
         "Vorab festlegen, woran Ihre Einrichtung Entlastung, Qualität und Alltagstauglichkeit erkennt."
       ]}
       problemTitle="Für wen der Pilot geeignet ist"
-      problemDescription="Das Pilotprogramm richtet sich an Einrichtungen, die Dokumentationsentlastung in einem begrenzten Ablauf prüfen möchten, ohne Fachsystem oder fachliche Verantwortung zu ersetzen."
+      problemDescription="Das Pilotprogramm richtet sich an Organisationen in Pflege und Medizin, die Dokumentationsentlastung in einem begrenzten Ablauf prüfen möchten, ohne Fachsystem oder fachliche Verantwortung zu ersetzen."
       problemItems={[
         "Stationäre Pflegeeinrichtungen mit wiederkehrenden Aufnahmegesprächen und SIS-nahem Dokumentationsbedarf.",
-        "PDL- und QM-Teams, die Prüfaufwand, Rückfragen und Dokumentationslücken reduzieren möchten.",
-        "Heimleitungen oder Träger, die den Nutzen von Quinn vor einer breiteren Einführung nachvollziehbar bewerten wollen.",
+        "Ärztliche Teams in Praxis oder Klinik, die einen klar begrenzten Dokumentationsablauf prüfen möchten.",
+        "Einrichtungs-, Praxis- oder Klinikleitungen und Träger, die den Nutzen von Quinn vor einer breiteren Einführung nachvollziehbar bewerten wollen.",
         "Teams, die zunächst mit fiktiven oder anonymisierten Fällen beginnen möchten."
       ]}
       workflowTitle="4–6 Wochen mit klarer Begleitung"
@@ -45,7 +45,7 @@ export default function PilotprogrammPage() {
       workflow={[
         { title: "Woche 0: Ablauf festlegen", description: "Dokumentationsfall, Rollen, Datenpfad und Entscheidungskriterien gemeinsam klären." },
         { title: "Woche 1: Einführung", description: "Fiktive Fälle testen, Team einweisen und fachliche Prüfregeln abstimmen." },
-        { title: "Woche 2–5: Im Alltag testen", description: "Ausgewählte Aufnahme-, SIS- oder Prüffälle wiederholt mit Quinn bearbeiten." },
+        { title: "Woche 2–5: Im Alltag testen", description: "Den vereinbarten Pflege- oder medizinischen Dokumentationsablauf innerhalb der geklärten Daten- und Freigabegrenzen testen." },
         { title: "Woche 6: Gemeinsam auswerten", description: "Zeit, Nacharbeit, Vollständigkeit, Prüfaufwand und Teamfeedback besprechen." }
       ]}
       proofTitle="Klare Grenzen im Pilot"
