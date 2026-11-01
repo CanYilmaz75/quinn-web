@@ -177,7 +177,9 @@ test("P1 trust and conversion surfaces are founder-led, concrete and low-frictio
   assert.match(homepage, /<EqualPillarLanding locale="de"/);
   assert.match(englishHomepage, /<EqualPillarLanding locale="en"/);
   const landing = read("src/components/marketing/equal-pillar-landing.tsx");
-  assert.match(landing, /<ProductProofFlow locale=\{locale\}/);
+  assert.match(landing, /<MultilingualProof locale=\{locale\}/);
+  const multilingual = read("src/components/marketing/multilingual-proof.tsx");
+  for (const pattern of [/Noch zu klären/, /To clarify/, /Vor der Übernahme/, /verified physician/, /Fiktive Beispiele/, /Fictional examples/, /lang="de"/, /data-multilingual-document/]) assert.match(multilingual, pattern);
   assert.match(landing, /Pflegekräfte und medizinische Teams/);
   assert.match(landing, /nursing care and medical teams/);
   assert.match(customers, /Einsatzbereiche/);

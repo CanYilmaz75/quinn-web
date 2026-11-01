@@ -38,9 +38,10 @@ test('hero copy is exact, explicitly line-broken and equal in both locales', () 
   assert.equal((source.match(/className="block whitespace-nowrap/g) ?? []).length, 2);
   assert.match(source, /Pflegekräfte und medizinische Teams/);
   assert.match(source, /nursing care and medical teams/);
-  assert.match(source, /href="#bereiche"/);
+  assert.match(source, /href="#mehrsprachig"/);
   assert.match(source, /id="bereiche"/);
-  assert.match(source, /md:grid-cols-2/);
+  assert.match(source, /className="taste-pillars"/);
+  assert.match(read('src/app/globals.css'), /\.taste-pillars\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\)/);
   assert.match(source, /<SegmentDemoLink locale=\{locale\} segment="care"/);
   assert.match(source, /<SegmentDemoLink locale=\{locale\} segment="medicine"/);
 });
