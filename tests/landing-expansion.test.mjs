@@ -1,7 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 const read = p => readFileSync(new URL('../' + p, import.meta.url), 'utf8');
+
+test('public landing content is not hidden behind a JavaScript-only reveal boundary', () => {
+  assert.equal(existsSync(new URL('../src/app/loading.tsx', import.meta.url)), false);
+  const proof = read('src/components/marketing/multilingual-proof.tsx');
+  assert.match(proof, /defaultChecked/);
+  assert.match(proof, /<fieldset/);
+});
 
 test('homepage explains a scoped introduction before a demo, in both locales', () => {
   const page = read('src/components/marketing/equal-pillar-landing.tsx');

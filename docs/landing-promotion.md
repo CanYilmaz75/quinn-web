@@ -10,7 +10,7 @@ Promoted homepage source: `CanYilmaz75/quinn-web-staging` at `81ffb80d89dd913116
 
 Approved two-line hero and typographic Quinn branding are retained. General documentation assistance leads; multilingual capture remains optional and subject to suitability assessment. Pflege and Medizin examples stay equal, fictional and source-bound. Unknown information stays unknown; review responsibility and manual Fachsystem handoff remain explicit. Native example selectors and FAQ work without JavaScript.
 
-Production header/footer, login destination, demo/newsletter APIs, app proxy, consent-gated analytics, SEO metadata, robots and sitemap remain unchanged. Homepage anchor offsets account for the existing sticky production header.
+Production header/footer, login destination, demo/newsletter APIs, app proxy, consent-gated analytics, SEO metadata, robots and sitemap remain unchanged. Homepage anchor offsets account for the existing sticky production header. The obsolete global marketing loading boundary was removed after live no-JavaScript QA showed it hid the server-rendered content until React's reveal script ran; the homepage now renders directly.
 
 ## Hero asset provenance
 
